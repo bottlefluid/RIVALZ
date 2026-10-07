@@ -7,8 +7,9 @@
 <style>
 /* Layout: full-screen 3D canvas; menu is a left-aligned slab over a dimmed live map; HUD is minimal corners. */
 :root{
-  --bg:#0a0406; --panel:#150a0e; --panel2:#231016; --line:#4b1b25;
-  --ink:#fff1f3; --mute:#c99aa4; --accent:#ff3347; --hot:#ff7b6b; --cool:#ff6b7c; --ok:#4ee38a;
+  --bg:#080304; --panel:#150a0d; --panel2:#240d13; --line:#47161d;
+  --ink:#fff3f3; --mute:#c99ca0; --accent:#ff3b3b; --hot:#ff1f4b; --cool:#e0182d; --ok:#4ee38a; --gold:#ffc83d;
+  --grad:linear-gradient(135deg,#ff2a2a 0%,#8f0a18 55%,#2a0408 100%);
   --display:"Lilita One","Arial Black",system-ui,sans-serif;
   --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:dark;
@@ -19,26 +20,27 @@ body{padding-inline:0}
 #stage{position:fixed;inset:0}
 canvas#view{width:100%;height:100%;display:block;outline:none}
 button{font-family:var(--display);font-size:1rem;letter-spacing:.03em;border:0;border-radius:10px;padding:.7em 1.1em;background:var(--panel2);color:var(--ink);cursor:pointer;transition:transform .08s,background .15s}
-button:hover{background:#652b33}
+button:hover{background:#3a1219}
 button:active{transform:translateY(2px)}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--cool);outline-offset:2px}
-button.primary{background:var(--accent);color:#290104;box-shadow:0 4px 0 #b30513}
-button.primary:hover{background:#fb626f}
-button.hot{background:var(--hot);color:#fff;box-shadow:0 4px 0 #a82342}
-button.cool{background:var(--cool);color:#2d0107;box-shadow:0 4px 0 #aa1f31}
-input,select{font:inherit;color:var(--ink);background:#2f0e12;border:2px solid var(--line);border-radius:8px;padding:.55em .7em;min-width:0}
+button.primary{background:linear-gradient(180deg,#ff4d4d,#c4122a);color:#fff;box-shadow:0 4px 0 #6e0a16}
+button.primary:hover{background:linear-gradient(180deg,#ff6666,#d9162f)}
+button.hot{background:linear-gradient(180deg,#ff3a5e,#a80f2c);color:#fff;box-shadow:0 4px 0 #5e0a19}
+button.cool{background:linear-gradient(180deg,#8a1020,#4a0710);color:#fff;box-shadow:0 4px 0 #240308}
+input[type=range]{accent-color:var(--accent)}
+input,select{font:inherit;color:var(--ink);background:#0b0305;border:2px solid var(--line);border-radius:8px;padding:.55em .7em;min-width:0}
 label.f{display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
 
 /* Menu */
-#menu{position:fixed;inset:0;display:flex;background:linear-gradient(90deg,rgba(27,9,11,.96) 0%,rgba(27,9,11,.86) 52%,rgba(27,9,11,.35) 100%);z-index:10;overflow:auto}
+#menu{position:fixed;inset:0;display:flex;background:linear-gradient(90deg,rgba(8,2,4,.97) 0%,rgba(52,6,14,.88) 52%,rgba(8,2,4,.38) 100%);z-index:10;overflow:auto}
 #menuIn{width:min(920px,100%);padding:clamp(16px,3vw,36px);display:flex;flex-direction:column;gap:1.1rem;min-width:0}
-#logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4.4rem);line-height:.9;margin:0;color:var(--accent);text-shadow:0 5px 0 #87030e,0 10px 24px rgba(0,0,0,.5);cursor:pointer;width:max-content;max-width:100%;transform:rotate(-2deg);transition:transform .2s}
+#logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4.4rem);line-height:.9;margin:0;background:linear-gradient(180deg,#ff7a6a 0%,#ff2a2a 45%,#8f0a18 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 5px 0 #4a0710) drop-shadow(0 10px 18px rgba(0,0,0,.55));cursor:pointer;width:max-content;max-width:100%;transform:rotate(-2deg);transition:transform .2s}
 #logo small{display:block;font-size:.3em;color:var(--cool);letter-spacing:.35em;text-shadow:none;margin-top:.5em}
 #logo.spin{animation:spin 1s}
 @keyframes spin{to{transform:rotate(358deg) scale(1.1)}}
 nav#tabs{display:flex;gap:.5rem;flex-wrap:wrap}
 nav#tabs button{background:transparent;border:2px solid var(--line);color:var(--mute)}
-nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#2d0107}
+nav#tabs button.on{background:linear-gradient(180deg,#ff4d4d,#b01024);border-color:#ff4d4d;color:#fff}
 .tab{display:none;flex-direction:column;gap:1rem;min-width:0}
 .tab.on{display:flex}
 .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-end}
@@ -46,7 +48,7 @@ nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#2d0107
 .card{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
 .card h3{margin:0;font-family:var(--display);font-size:1.35rem;font-weight:400}
 .card p{margin:0;color:var(--mute);font-size:.88rem;line-height:1.4}
-.card.live{border-color:var(--hot);background:linear-gradient(160deg,#2a1530,var(--panel))}
+.card.live{border-color:var(--hot);background:linear-gradient(160deg,#431018,var(--panel))}
 .tag{display:inline-block;align-self:flex-start;font-size:.68rem;padding:.15em .55em;border-radius:99px;background:var(--panel2);color:var(--cool);text-transform:uppercase;letter-spacing:.08em}
 #mapGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.8rem}
 .mapc{border:3px solid transparent;border-radius:14px;overflow:hidden;background:var(--panel);cursor:pointer;text-align:left;padding:0;font-family:var(--body);box-shadow:none}
@@ -56,7 +58,7 @@ nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#2d0107
 .mapc.on{border-color:var(--accent)}
 .armory{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
 @media(max-width:760px){.armory{grid-template-columns:1fr}}
-#wprev{width:100%;aspect-ratio:16/10;border-radius:14px;background:radial-gradient(circle at 50% 40%,#652b33,#2f0e12);display:block}
+#wprev{width:100%;aspect-ratio:16/10;border-radius:14px;background:radial-gradient(circle at 50% 40%,#4d141c,#0b0305);display:block}
 #wstats{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.85rem;margin-top:.6rem}
 #wstats i{font-style:normal;color:var(--mute)}
 .slots3{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -67,7 +69,7 @@ nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#2d0107
 #wlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.4rem;max-height:340px;overflow:auto;padding-right:.3rem}
 .wi{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:.4rem .5rem;text-align:left;font-family:var(--body);font-size:.82rem;box-shadow:none;font-weight:800}
 .wi.sel{border-color:var(--cool)}
-.wi.eq{background:#692830}
+.wi.eq{background:#4a141c}
 #secretList{display:grid;gap:.5rem}
 .sec{display:flex;gap:.8rem;align-items:center;background:var(--panel);border:2px dashed var(--line);border-radius:12px;padding:.7rem .9rem}
 .sec.got{border-style:solid;border-color:var(--ok)}
@@ -95,7 +97,7 @@ kbd{background:var(--panel2);border:1px solid var(--line);border-bottom-width:3p
 #hit.on{opacity:1;transition:none}
 #hit:before,#hit:after{content:"";position:absolute;left:19px;top:2px;width:3px;height:36px;background:var(--hot);transform:rotate(45deg)}
 #hit:after{transform:rotate(-45deg)}
-#hit.head:before,#hit.head:after{background:var(--accent)}
+#hit.head:before,#hit.head:after{background:#fff}
 #dmg{position:absolute;inset:0;box-shadow:inset 0 0 120px 30px rgba(255,40,70,.0);transition:box-shadow .4s}
 #dmg.on{box-shadow:inset 0 0 120px 30px rgba(255,40,70,.55);transition:none}
 #scope{position:absolute;inset:0;display:none;background:radial-gradient(circle at 50% 50%,transparent 0,transparent 24vmin,#000 24.2vmin)}
@@ -112,35 +114,35 @@ kbd{background:var(--panel2);border:1px solid var(--line);border-bottom-width:3p
 #ammo small{font-size:1.2rem;color:var(--mute)}
 #wname{font-family:var(--display);color:var(--accent);font-size:1.1rem;text-shadow:0 2px 0 rgba(0,0,0,.6)}
 #slots{display:flex;gap:.4rem}
-#slots div{background:rgba(33,11,14,.7);border:2px solid rgba(255,255,255,.18);border-radius:8px;padding:.2rem .6rem;font-size:.78rem;min-width:84px;text-align:center}
+#slots div{background:rgba(16,4,7,.74);border:2px solid rgba(255,255,255,.18);border-radius:8px;padding:.2rem .6rem;font-size:.78rem;min-width:84px;text-align:center}
 #slots div.on{border-color:var(--accent);color:var(--accent)}
 #topInfo{left:50%;top:14px;transform:translateX(-50%);align-items:center;text-shadow:0 2px 0 rgba(0,0,0,.6)}
-#modeTxt{font-family:var(--display);font-size:1.3rem;background:rgba(33,11,14,.7);padding:.2rem 1rem;border-radius:99px}
+#modeTxt{font-family:var(--display);font-size:1.3rem;background:linear-gradient(90deg,rgba(120,8,22,.75),rgba(16,4,7,.8));padding:.2rem 1rem;border-radius:99px}
 #scoreTxt{font-size:.9rem;color:var(--mute)}
 #killfeed{right:16px;top:14px;align-items:flex-end}
-#killfeed div{background:rgba(33,11,14,.75);padding:.25rem .7rem;border-radius:8px;font-size:.85rem;animation:kf 5s forwards}
+#killfeed div{background:rgba(16,4,7,.78);border-right:3px solid var(--accent);padding:.25rem .7rem;border-radius:8px;font-size:.85rem;animation:kf 5s forwards}
 #killfeed b{color:var(--accent)}
 @keyframes kf{0%,85%{opacity:1}100%{opacity:0}}
 #banner{position:absolute;left:0;right:0;top:22%;text-align:center;font-family:var(--display);font-size:clamp(2rem,6vw,4.5rem);text-shadow:0 5px 0 rgba(0,0,0,.55);opacity:0;transition:opacity .4s}
 #banner.on{opacity:1}
 #prompt{position:absolute;left:0;right:0;bottom:24%;text-align:center;font-family:var(--display);font-size:1.2rem;text-shadow:0 2px 0 #000;opacity:0}
 #prompt.on{opacity:1}
-#toast{position:absolute;left:50%;top:78px;transform:translateX(-50%);background:var(--accent);color:#290104;font-family:var(--display);padding:.5rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+#toast{position:absolute;left:50%;top:78px;transform:translateX(-50%);background:linear-gradient(90deg,#c4122a,#ff3b3b);color:#fff;font-family:var(--display);padding:.5rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 #toast.on{opacity:1}
-#board{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(22,5,8,.55);pointer-events:none}
+#board{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(8,2,3,.55);pointer-events:none}
 #board.on{display:flex}
 #board table{background:var(--panel);border-radius:14px;border:2px solid var(--line);padding:.6rem;min-width:min(520px,92vw);border-collapse:separate;border-spacing:0 .2rem}
 #board th{font-family:var(--display);font-weight:400;color:var(--mute);text-align:left;padding:.3rem .8rem}
 #board td{padding:.35rem .8rem;background:var(--panel2)}
-#board tr.me td{background:#883641}
+#board tr.me td{background:#7a1824}
 #board td:first-child{border-radius:8px 0 0 8px}#board td:last-child{border-radius:0 8px 8px 0}
-#pause{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(22,5,8,.82)}
+#pause{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(5,8,22,.82)}
 #pause.on{display:flex}
 #pause h2{font-family:var(--display);font-weight:400;font-size:2.6rem;margin:0}
-#end{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(22,5,8,.88);text-align:center;padding:16px}
+#end{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:radial-gradient(ellipse at 50% 40%,rgba(80,8,18,.88),rgba(8,2,3,.94));text-align:center;padding:16px}
 #end.on{display:flex}
 #end h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,7vw,4rem);margin:0;color:var(--accent)}
-#loading{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:var(--bg);font-family:var(--display);font-size:1.6rem;flex-direction:column;gap:.5rem;text-align:center;padding:16px}
+#loading{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,#3a0a12,var(--bg));font-family:var(--display);font-size:1.6rem;flex-direction:column;gap:.5rem;text-align:center;padding:16px}
 #loading.off{display:none}
 .disco #logo{animation:disco 1s linear infinite}
 @keyframes disco{to{filter:hue-rotate(360deg)}}
@@ -148,112 +150,131 @@ kbd{background:var(--panel2);border:1px solid var(--line);border-bottom-width:3p
 
 /* ===== Accounts, shop, lock-on, admin client ===== */
 [hidden]{display:none!important}
-#auth{position:fixed;inset:0;z-index:25;display:flex;padding:20px;overflow:auto;background:radial-gradient(ellipse at 50% 38%,rgba(29,37,71,.78),rgba(8,11,28,.97) 72%)}
+#auth{position:fixed;inset:0;z-index:25;display:flex;padding:20px;overflow:auto;background:radial-gradient(ellipse at 50% 38%,rgba(90,10,22,.8),rgba(8,2,4,.97) 72%)}
 #auth.hidden{display:none}
 #authCard{width:min(400px,100%);margin:auto;background:var(--panel);border:2px solid var(--line);border-radius:18px;padding:1.7rem 1.5rem 1.4rem;display:flex;flex-direction:column;gap:.9rem;box-shadow:0 24px 60px rgba(0,0,0,.55)}
-.alogo{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,9vw,3.6rem);line-height:.9;margin:.2rem 0 .9rem;text-align:center;color:var(--accent);text-shadow:0 5px 0 #8a5a00,0 10px 24px rgba(0,0,0,.5);transform:rotate(-2deg)}
+.alogo{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,9vw,3.6rem);line-height:.9;margin:.2rem 0 .9rem;text-align:center;background:linear-gradient(180deg,#ff7a6a 0%,#ff2a2a 45%,#8f0a18 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 5px 0 #4a0710) drop-shadow(0 10px 18px rgba(0,0,0,.55));transform:rotate(-2deg)}
 .alogo small{display:block;font-size:.3em;color:var(--cool);letter-spacing:.35em;margin:.7em -.35em 0 0;text-shadow:none}
 #authCard .note{margin:.2rem 0 0;color:var(--mute);font-size:.8rem;line-height:1.45;text-align:center}
-.atabs{display:flex;gap:.5rem}.atabs button{flex:1;background:transparent;border:2px solid var(--line);color:var(--mute)}.atabs button.on{background:var(--cool);border-color:var(--cool);color:#00232e}
+.atabs{display:flex;gap:.5rem}.atabs button{flex:1;background:transparent;border:2px solid var(--line);color:var(--mute)}.atabs button.on{background:linear-gradient(180deg,#ff4d4d,#b01024);border-color:#ff4d4d;color:#fff}
 .aerr{min-height:1.4em;color:var(--hot);font-size:.9rem;line-height:1.35}
 button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 #acct{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 #acct .who{font-family:var(--display);font-size:1.2rem;margin-right:.2rem}
 #acct .pill{display:inline-flex;align-items:center;gap:.35em}
-#acct .capp{background:#3a2c0a;color:var(--accent)}
-#acct .adm{background:#3b1d5e;color:#d9b8ff}
+#acct .capp{background:#3a2c0a;color:var(--gold)}
+#acct .adm{background:#5a0f1a;color:#ffb3b8}
 button.slim{padding:.3em .8em;font-size:.85rem;background:transparent;border:2px solid var(--line);color:var(--mute)}
 .capi{vertical-align:-3px;flex:none}
 #wact{margin-top:.7rem;display:flex}#wact button{flex:1}#wact small{font-family:var(--body);opacity:.8}
 .wi{display:flex;flex-direction:column;gap:.1rem}
 .wi small{display:flex;align-items:center;gap:.3em;font-weight:600;color:var(--mute);font-size:.72rem}
-.wi.own small{color:var(--ok)}.wi.lock{opacity:.55}.wi:not(.own):not(.lock) small{color:var(--accent)}
-.cap-pop{position:absolute;left:50%;top:42%;display:flex;gap:.3em;align-items:center;font-family:var(--display);font-size:1.5rem;color:var(--accent);text-shadow:0 2px 0 rgba(0,0,0,.75);animation:pop .95s forwards}
+.wi.own small{color:var(--ok)}.wi.lock{opacity:.55}.wi:not(.own):not(.lock) small{color:var(--gold)}
+.cap-pop{position:absolute;left:50%;top:42%;display:flex;gap:.3em;align-items:center;font-family:var(--display);font-size:1.5rem;color:var(--gold);text-shadow:0 2px 0 rgba(0,0,0,.75);animation:pop .95s forwards}
 @keyframes pop{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-52px)}}
 #ov{position:absolute;inset:0;width:100%;height:100%}
 #warn{position:absolute;left:0;right:0;top:27%;text-align:center;font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.2rem);color:var(--hot);text-shadow:0 3px 0 rgba(0,0,0,.75);opacity:0}
 #warn.on{opacity:1;animation:blink .4s steps(2) infinite}
 @keyframes blink{50%{opacity:.25}}
-#ccArray{position:absolute;right:16px;top:210px;display:flex;flex-direction:column;align-items:flex-end;gap:1px;font:700 13px/1.25 "Chakra Petch",ui-monospace,Menlo,monospace;text-shadow:0 1px 0 rgba(0,0,0,.9);pointer-events:none}
-#ccArray div{padding:1px 8px;border-right:3px solid #ff3347;background:rgba(10,3,5,.6);color:#ffd5da}
-/* Meteor-style admin client */
-#cc{position:fixed;inset:0;z-index:40;display:none;background:rgba(14,0,3,.5);font:500 13px/1.3 "Chakra Petch",ui-monospace,Menlo,monospace;color:#fff;user-select:none;overflow:hidden}
+#ccArray{position:absolute;right:16px;top:36%;display:flex;flex-direction:column;align-items:flex-end;gap:2px;font:700 13px/1.2 "Chakra Petch",ui-monospace,Menlo,monospace;text-shadow:0 1px 0 rgba(0,0,0,.8);pointer-events:none}
+#ccArray div{padding:1px 8px;border-right:3px solid #ff2a2a;background:linear-gradient(270deg,rgba(120,8,22,.6),rgba(14,4,6,.35));color:#ffdede}
+#ccHud{position:absolute;left:14px;bottom:104px;display:none;font:700 12px/1.5 "Chakra Petch",ui-monospace,Menlo,monospace;color:#f3cfd2;text-shadow:0 1px 0 #000;pointer-events:none}
+#ccHud b{text-shadow:none;filter:drop-shadow(0 1px 0 #000);background:linear-gradient(90deg,#ff5a4a,#ff1f3b);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:15px;letter-spacing:.12em;margin-right:.3em}
+#ccHud span{display:block;color:#d9b0b4}
+/* ===== Meteor-style client ===== */
+#cc{position:fixed;inset:0;z-index:40;display:none;pointer-events:none;font:500 13px/1.3 "Chakra Petch",ui-monospace,Menlo,monospace;color:#f3dede;--cs:1;--co:.86}
 #cc.on{display:block}
-#ccTabs{position:absolute;left:50%;top:0;transform:translateX(-50%);display:flex;gap:2px;background:rgba(8,2,3,.9);border:1px solid #4b1b25;border-top:0;border-radius:0 0 6px 6px;padding:3px 6px;z-index:2}
-#ccTabs button{font:600 12px "Chakra Petch",sans-serif;background:transparent;color:#d8aab2;padding:2px 10px;border-radius:3px;box-shadow:none;letter-spacing:.03em}
-#ccTabs button:hover{color:#fff;background:transparent}#ccTabs button.on{color:#fff;background:#8f0f1e}
-#ccStage{position:absolute;left:0;top:0;transform-origin:0 0}
-.cp{position:absolute;width:168px;background:rgba(14,5,7,.94);border:1px solid #3a1219;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.5);overflow:hidden;max-height:calc(100vh - 56px);display:flex;flex-direction:column}
-.cp-h{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;font:700 13px "Chakra Petch",sans-serif;letter-spacing:.04em;background:linear-gradient(180deg,#e0213a,#8a0c1b);cursor:move;text-shadow:0 1px 0 rgba(0,0,0,.4)}
-.cp-h i{font-style:normal;font-size:.75em;opacity:.85;transition:transform .15s}.cp.c .cp-h i{transform:rotate(-90deg)}
-.cp-b{overflow:auto;scrollbar-width:thin;scrollbar-color:#5a1620 transparent}.cp.c .cp-b{display:none}
-.cm-h{padding:3px 8px;cursor:pointer;font-size:13px;color:#f0d9dc;border-left:3px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cm-h:hover{background:rgba(255,255,255,.08)}
-.cm.on .cm-h{color:#fff;font-weight:700;border-left-color:#ff3347;background:linear-gradient(90deg,rgba(255,51,71,.45),rgba(255,51,71,.1))}
-.cm-o{display:none;background:rgba(0,0,0,.4);padding:4px 8px 6px;border-left:3px solid #4b1b25}.cm.open .cm-o{display:block}
-.cm-d{font-size:11px;color:#b98d95;margin-bottom:4px;line-height:1.3;white-space:normal}.cm-d.pad{padding:6px 8px 8px}
-.co{display:flex;justify-content:space-between;align-items:center;gap:6px;min-height:21px;font-size:12px;color:#e8c9ce}
-.co.st{padding:2px 8px}.co .l{flex:none}
-.co button{font:600 11px "Chakra Petch",sans-serif;padding:1px 7px;border-radius:3px;background:#2a1117;color:#fff;box-shadow:none;max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:0}
-.co button:hover{background:#4a1822}.co button.on{background:#c4172b}
-.co input[type=range]{width:70px;accent-color:#ff3347;min-width:0;padding:0;background:none;border:0;height:14px}
-.co .v{min-width:34px;text-align:right;color:#ff8a98;font-size:11px}
-.co select{font:600 11px "Chakra Petch",sans-serif;background:#1a0a0e;border:1px solid #4b1b25;color:#fff;border-radius:3px;max-width:96px;padding:1px}
-.cs{width:calc(100% - 12px);margin:6px;font:500 12px "Chakra Petch",sans-serif;background:#0a0305;border:1px solid #4b1b25;color:#fff;border-radius:3px;padding:3px 6px}
-#ccTip{position:absolute;left:8px;bottom:8px;max-width:min(560px,80vw);font:500 12px/1.4 "Chakra Petch",sans-serif;color:#fff;text-shadow:0 1px 0 #000;pointer-events:none;display:none;background:rgba(8,2,3,.85);padding:5px 10px;border-radius:4px;border-left:3px solid #ff3347}
-#ccTip b{color:#ff8a98}#ccTip small{display:block;color:#b98d95}
-@media (prefers-reduced-motion:reduce){.cap-pop{animation-duration:.01s}#warn.on{animation:none}.cp-h i{transition:none}}
+#cc button:active{transform:none}
+.cc-dim{position:absolute;inset:0;pointer-events:auto;background:radial-gradient(ellipse at 50% 0%,rgba(130,8,24,.3),rgba(0,0,0,.58) 70%)}
+.cc-tabs{position:absolute;left:50%;top:14px;transform:translateX(-50%);display:flex;gap:2px;padding:4px;max-width:96vw;overflow:auto;background:rgba(12,4,6,.9);border:1px solid #4a1219;border-radius:9px;pointer-events:auto;box-shadow:0 10px 34px rgba(0,0,0,.55)}
+.cc-tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:68px;padding:.4em .7em;background:transparent;color:#caa5a8;font:600 .72rem "Chakra Petch",sans-serif;border-radius:6px;box-shadow:none;letter-spacing:.04em}
+.cc-tabs button:hover{background:rgba(255,255,255,.07);color:#fff}
+.cc-tabs button.on{background:linear-gradient(180deg,#ff3b3b,#8f0a18);color:#fff}
+.cc-tabs svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cc-win{position:absolute;pointer-events:auto;background:rgba(12,5,7,var(--co));border:1px solid #3d1118;border-radius:6px;box-shadow:0 12px 34px rgba(0,0,0,.55);overflow:hidden;transform:scale(var(--cs));transform-origin:0 0}
+.cc-win.drag{box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 0 1px #ff3b3b}
+.cc-wh{display:flex;align-items:center;justify-content:space-between;padding:.4em .45em .4em .8em;background:linear-gradient(90deg,#ff2d2d,#8a0a18 62%,#3a050b);color:#fff;font-weight:700;letter-spacing:.05em;cursor:grab;user-select:none}
+#cc.hsolid .cc-wh{background:#c4122a}
+.cc-win.drag .cc-wh{cursor:grabbing}
+.cc-arr{width:22px;height:22px;padding:0;background:transparent;box-shadow:none;border-radius:4px;color:#fff;position:relative}
+.cc-arr:hover{background:rgba(255,255,255,.18)}
+.cc-arr:after{content:"";position:absolute;left:6px;top:7px;border:5px solid transparent;border-top:6px solid #fff;border-bottom:0}
+.cc-win.col .cc-arr:after{transform:rotate(90deg);left:8px;top:6px}
+.cc-wb{max-height:calc((100vh - 130px)/var(--cs));overflow:auto}
+.cc-win.col .cc-wb{display:none}
+.cc-wb::-webkit-scrollbar{width:6px}.cc-wb::-webkit-scrollbar-thumb{background:#5a1820;border-radius:3px}
+.cc-m{display:flex;justify-content:space-between;align-items:center;gap:.5rem;width:100%;text-align:left;padding:.42em .8em;background:transparent;color:#b79b9e;font:600 .86rem "Chakra Petch",sans-serif;border-radius:0;box-shadow:none;letter-spacing:.02em;border:0}
+.cc-m:hover{background:rgba(255,255,255,.06);color:#fff}
+.cc-m.on{background:linear-gradient(90deg,rgba(255,42,42,.6),rgba(143,10,24,.22));color:#fff;box-shadow:inset 3px 0 0 #ff3b3b}
+.cc-m .bind{font-size:.68rem;color:#ff9a9a;font-weight:700}
+.cc-set{display:none;padding:.4em .8em .6em;background:rgba(0,0,0,.38);border-left:3px solid #ff2a2a}
+.cc-set.show{display:block}
+.cc-d{color:#c9a6a9;font-size:.74rem;line-height:1.35;margin-bottom:.4em}
+.cc-r{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center;margin:.35em 0;font-size:.78rem;color:#e8cfd1}
+.cc-r output{text-align:right;color:#ff8a8a;font-weight:700}
+.cc-r input[type=range]{grid-column:1/3;accent-color:#ff2a2a;min-width:0;padding:0;background:none;border:0;width:100%}
+.cc-r input[type=checkbox]{accent-color:#ff2a2a;width:16px;height:16px;justify-self:end}
+.cc-r select,.cc-in{font:600 .8rem "Chakra Petch",sans-serif;background:#0b0305;border:1px solid #5a1820;color:#f3dede;border-radius:3px;padding:.3em .4em;min-width:0;max-width:130px}
+.cc-in{width:100%;max-width:none;margin:.45em 0;padding:.45em .6em;border-radius:4px}
+.cc-win>.cc-wb>.cc-in{width:calc(100% - 1.4em);margin:.5em .7em}
+.cc-in:focus{outline:2px solid #ff3b3b;outline-offset:0}
+.cc-key{font:700 .72rem "Chakra Petch",sans-serif;background:#2a0b10;color:#ffb3b8;border:1px solid #5a1820;border-radius:3px;padding:.25em .6em;box-shadow:none;min-width:48px}
+.cc-key:hover{background:#4a1018;color:#fff}.cc-key.cap{background:#ff3b3b;color:#fff}
+.cc-run{display:block;width:100%;margin:.35em 0;font:700 .8rem "Chakra Petch",sans-serif;background:linear-gradient(180deg,#ff3b3b,#a80f22);color:#fff;border-radius:4px;padding:.5em;box-shadow:none}
+.cc-run:hover{background:linear-gradient(180deg,#ff5a5a,#c4122a)}
+.cc-run.ghost{background:#2a0b10;color:#ffb3b8;border:1px solid #5a1820}.cc-run.ghost:hover{background:#4a1018;color:#fff}
+.cc-pad{padding:.45em .8em .7em}
+.cc-br{margin:.2em 0}.cc-pair{display:flex;gap:4px}
+.cc-kv{display:flex;justify-content:space-between;font-size:.78rem;margin:.25em 0;color:#d9b9bc}.cc-kv b{color:#fff}
+.cc-note{color:#a98487;font-size:.72rem;line-height:1.35;padding:.5em .8em}.cc-pad .cc-note{padding:.5em 0 0}
+.cc-sync{font-size:.74rem;margin:.5em 0;padding:.35em .5em;border-radius:3px;background:rgba(255,255,255,.05);color:#c9a6a9}
+.cc-sync.saved{color:#7dffb0}.cc-sync.error{color:#ff8a8a}.cc-sync.saving{color:#ffd27a}
+.cc-hint{position:absolute;right:16px;bottom:12px;text-align:right;color:#d9b9bc;font-size:.8rem;line-height:1.5;pointer-events:none;text-shadow:0 1px 0 #000}.cc-hint b{color:#ff5a5a}
+#ccTip{position:fixed;display:none;max-width:260px;padding:.4em .65em;background:rgba(10,3,5,.96);border:1px solid #ff3b3b;border-radius:4px;font-size:.76rem;line-height:1.35;pointer-events:none;z-index:60;color:#fff}
+@media (prefers-reduced-motion:reduce){.cap-pop{animation-duration:.01s}#warn.on{animation:none}}
 
-/* ===== Roblox-style chat, game menu, mouse-lock hint ===== */
-#rb{position:absolute;left:10px;top:10px;width:min(360px,62vw);display:flex;flex-direction:column;gap:8px;pointer-events:none;font-family:"Nunito","Source Sans 3",system-ui,sans-serif}
-#rb *{pointer-events:auto}
-#rbBar{display:flex;gap:8px}
-#rbBar button{width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:8px;background:rgba(30,31,34,.72);box-shadow:none;color:#fff;border:1px solid rgba(255,255,255,.08)}
-#rbBar button:hover{background:rgba(72,74,80,.85)}#rbBar button.on{background:rgba(255,255,255,.92);color:#111}
-#rbBar svg{width:22px;height:22px}
-#rbChat{border-radius:8px;background:rgba(18,19,21,.5);overflow:hidden;transition:background .3s}
-#rbChat[hidden]{display:none}
-#rbLog{height:150px;overflow-y:auto;padding:6px 10px;display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent;user-select:text}
-#rbLog:before{content:"";margin-top:auto}
-.msg{font:700 14px/1.35 "Nunito","Source Sans 3",system-ui,sans-serif;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.9);word-break:break-word;transition:opacity .6s;padding:1px 0}
-.msg .n{font-weight:800}
-.msg.sys{color:#ffb0b8}
-#rbChat.idle:not(:hover):not(:focus-within){background:transparent}
-#rbChat.idle:not(:hover):not(:focus-within) .msg.aged{opacity:0}
-#rbIn{display:block;width:100%;border:0;border-radius:0;background:rgba(10,10,12,.6);color:#fff;font:700 14px "Nunito",system-ui,sans-serif;padding:9px 12px}
-#rbIn::placeholder{color:rgba(255,255,255,.55)}
-#rbIn:focus,#rbIn:focus-visible{background:rgba(10,10,12,.88);outline:2px solid rgba(255,255,255,.85);outline-offset:-2px}
-#pause{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);font-family:"Nunito",system-ui,sans-serif}
-#pause.on{display:flex}
-.rbp{width:min(440px,92vw);background:#232527;border-radius:10px;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6);overflow:hidden}
-.rbp[hidden]{display:none}
-.rbp-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #393b3d;font:800 1.1rem "Nunito",sans-serif}
-.rbp-h button{padding:0 .5em;font:700 1.4rem/1.2 "Nunito",sans-serif;background:transparent;color:#bdbebe;box-shadow:none;border-radius:6px}.rbp-h button:hover{background:#393b3d;color:#fff}
-.rbp-b{padding:18px 16px;color:#bdbebe;font-size:.92rem;line-height:1.5}
-.rbp-f{display:flex;gap:10px;padding:0 16px 16px}
-.rbp-f button{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;height:48px;padding:0 .8em;border:1px solid rgba(255,255,255,.8);background:transparent;color:#fff;font:800 1rem "Nunito",sans-serif;letter-spacing:0;border-radius:8px;box-shadow:none}
-.rbp-f button:hover{background:rgba(255,255,255,.14)}
-.rbp-f button.leave{border-color:#ff5560;color:#ff7983}.rbp-f button.leave:hover{background:rgba(255,85,96,.15)}
-.rbp-f button.yes{background:#e5303f;border-color:#e5303f;color:#fff}.rbp-f button.yes:hover{background:#ff4352}
-.rbp .k{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border:1px solid currentColor;border-radius:5px;font-size:.72rem;opacity:.8}
-#lockHint{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);display:none;background:rgba(18,19,21,.82);color:#fff;font:800 .92rem "Nunito",sans-serif;padding:.45rem 1rem;border-radius:99px;pointer-events:none;white-space:nowrap}
+/* ===== Roblox-style top bar, chat and leave menu ===== */
+#rbx{position:absolute;left:12px;top:10px;width:min(360px,74vw);display:flex;flex-direction:column;gap:8px;z-index:3}
+#rbxBar{display:flex;gap:8px}
+#rbxBar button{width:42px;height:42px;padding:0;display:flex;align-items:center;justify-content:center;background:rgba(18,20,22,.74);border:1px solid rgba(255,255,255,.12);border-radius:8px;pointer-events:auto;box-shadow:none}
+#rbxBar button:hover{background:rgba(220,30,50,.7)}
+#rbxBar button.off{opacity:.55}
+#rbxBar svg{width:22px;height:22px;fill:#fff}
+#chat{display:flex;flex-direction:column;pointer-events:auto}
+#chat.hid{display:none}
+#chatLog{height:150px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;padding:6px 9px;background:rgba(18,20,22,.4);border-radius:6px 6px 0 0;font:800 14px/1.3 var(--body);text-shadow:0 1px 2px rgba(0,0,0,.95);transition:background .3s}
+#chat.idle #chatLog{background:rgba(18,20,22,.1)}
+.cm{color:#fff;word-break:break-word;transition:opacity .7s}
+.cm.sys{color:#ffc9cf}
+.cm.old{opacity:0}
+#chat:hover .cm.old,#chat.focus .cm.old{opacity:1}
+#chatIn{width:100%;border:0;border-radius:0 0 6px 6px;background:rgba(18,20,22,.66);color:#fff;font:700 14px var(--body);padding:.55em .75em;pointer-events:auto}
+#chatIn::placeholder{color:rgba(255,255,255,.6)}
+#chatIn:focus-visible{outline:2px solid #ff3b3b;outline-offset:-2px}
+#lockHint{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);padding:.45em 1em;border-radius:99px;background:rgba(18,20,22,.8);border:1px solid rgba(255,59,59,.65);font:800 .9rem var(--body);display:none;pointer-events:none;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
 #lockHint.on{display:block}
-#lockHint kbd{background:#3a3c40;border-radius:4px;padding:0 .4em;margin:0 .15em}
-
-/* ===== Red / black theme overrides ===== */
-button.primary,.primary{background:linear-gradient(180deg,#ff4658,#cf1a2e);color:#fff;box-shadow:0 4px 0 #6c0b18}
-button.primary:hover{background:linear-gradient(180deg,#ff6272,#e32439)}
-button.cool{background:linear-gradient(180deg,#ff6b7c,#e0293e);color:#fff;box-shadow:0 4px 0 #7a0e1c}
-button.hot{background:linear-gradient(180deg,#ff6a5c,#d83a2c);color:#fff;box-shadow:0 4px 0 #7d1f17}
-#toast{color:#fff;background:linear-gradient(90deg,#ff3347,#a3101f)}
-#menu{background:linear-gradient(100deg,rgba(6,2,3,.97) 0%,rgba(34,6,11,.9) 55%,rgba(74,9,20,.42) 100%)}
-#auth{background:radial-gradient(ellipse at 50% 38%,rgba(70,10,20,.78),rgba(6,2,3,.97) 72%)}
-#logo,.alogo{background:linear-gradient(180deg,#ff7a88 0%,#e8213a 52%,#9a0f20 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 5px 0 #4a0710) drop-shadow(0 10px 16px rgba(0,0,0,.6))}
-#logo small,.alogo small{color:#ff8a98;text-shadow:none}
-nav#tabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-color:#ff4658;color:#fff}
-.atabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-color:#ff4658;color:#fff}
-#acct .capp{background:#3a1216;color:#ff8a98}
-#acct .adm{background:#4a0e17;color:#ffb4bc}
+#pause{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.58)}
+#pause.on{display:flex}
+#rm{width:min(720px,94vw);height:min(470px,88vh);display:flex;flex-direction:column;background:#232527;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.65);border:1px solid #3a3d40;font-family:var(--body)}
+#rmTabs{display:flex;background:#16181a}
+#rmTabs button{flex:1;background:transparent;color:#bdbebe;border-radius:0;padding:.9em;font:800 .95rem var(--body);border-bottom:3px solid transparent;box-shadow:none;letter-spacing:0}
+#rmTabs button.on{color:#fff;border-bottom-color:#ff3b3b;background:#2c2f32}
+#rmBody{flex:1;overflow:auto;padding:12px 16px}
+.rmp{display:flex;align-items:center;gap:10px;padding:8px 10px;background:#2c2f32;border-radius:6px;margin-bottom:5px;font-weight:800}
+.rmp i{width:26px;height:26px;border-radius:5px;flex:none}.rmp span{margin-left:auto;color:#bdbebe;font-size:.85rem}
+.rmp.me{outline:2px solid #ff3b3b}
+.rms{display:grid;grid-template-columns:1fr minmax(120px,240px);gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #393c3f;font-weight:800}
+.rms input[type=range]{padding:0;border:0;background:none;accent-color:#ff3b3b}
+#rmFoot{display:flex;gap:12px;padding:12px 16px;background:#16181a}
+#rmFoot button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:2px solid #d3d4d5;color:#fff;border-radius:6px;padding:.55em;box-shadow:none;font:800 1rem var(--body)}
+#rmFoot button small{font-size:.7rem;color:#bdbebe;font-weight:600}
+#rmFoot button:hover{background:#3a3d40}#rmFoot #btnQuit:hover{background:#b3162a;border-color:#ff5a6a}
+#rmConfirm{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);z-index:2}
+#rmConfirm.on{display:flex}
+#rmConfirm .box{width:min(420px,92vw);background:#2c2f32;border-radius:8px;padding:22px;text-align:center;font-weight:800}
+#rmConfirm h3{margin:0 0 6px;font:800 1.3rem var(--body)}#rmConfirm p{margin:0 0 16px;color:#bdbebe;font-weight:600}
+#rmConfirm .r{display:flex;gap:10px}#rmConfirm .r button{flex:1;border-radius:6px;font:800 1rem var(--body);box-shadow:none;border:2px solid #d3d4d5;background:transparent;color:#fff}
+#rmConfirm .r button.red{background:#c4122a;border-color:#ff5a6a}
 </style>
 
 </head>
@@ -298,7 +319,7 @@ nav#tabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-col
     <label class="f">Bots (deathmatch)<select id="botCount"><option>2</option><option selected>4</option><option>6</option><option>8</option></select></label>
     <label class="f">Mouse sensitivity<input id="sens" type="range" min="1" max="10" value="5"></label>
    </div>
-   <div class="keys"><span><kbd>WASD</kbd> move</span><span><kbd>Space</kbd> jump</span><span><kbd>Shift</kbd> sprint</span><span><kbd>Mouse</kbd> aim / fire</span><span><kbd>Right click</kbd> zoom</span><span><kbd>R</kbd> reload</span><span><kbd>1 2 3 4</kbd> or wheel: weapon</span><span><kbd>Q</kbd> last weapon</span><span><kbd>C</kbd> crouch</span><span><kbd>E</kbd> interact</span><span><kbd>Tab</kbd> scores</span><span><kbd>Ctrl</kbd> lock / unlock mouse</span><span><kbd>/</kbd> chat</span><span><kbd>M</kbd> menu</span></div>
+   <div class="keys"><span><kbd>WASD</kbd> move</span><span><kbd>Space</kbd> jump</span><span><kbd>Shift</kbd> sprint</span><span><kbd>Mouse</kbd> aim / fire</span><span><kbd>Right click</kbd> zoom</span><span><kbd>R</kbd> reload</span><span><kbd>1 2 3 4</kbd> or wheel: weapon</span><span><kbd>Q</kbd> last weapon</span><span><kbd>E</kbd> interact</span><span><kbd>Tab</kbd> scores</span><span><kbd>Ctrl</kbd> lock / unlock mouse</span><span><kbd>/</kbd> chat</span><span><kbd>Right Shift</kbd> admin client</span></div>
   </section>
 
   <section class="tab" id="tab-live">
@@ -344,32 +365,19 @@ nav#tabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-col
  <div class="corner" id="killfeed"></div>
  <div class="corner" id="hpBox"><div id="hpTxt">100</div><div class="bar"><div id="hpBar"></div></div></div>
  <div class="corner" id="ammoBox"><div id="wname"></div><div id="ammo"></div><div id="slots"></div></div>
- <div id="rb">
-  <div id="rbBar">
-   <button id="rbMenuBtn" type="button" aria-label="Menu" title="Menu (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-   <button id="rbChatBtn" type="button" aria-label="Chat" title="Chat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></button>
-  </div>
-  <div id="rbChat" class="idle"><div id="rbLog" role="log" aria-live="polite"></div><input id="rbIn" maxlength="160" autocomplete="off" spellcheck="false" placeholder="To chat click here or press / key" aria-label="Chat message"></div>
- </div>
- <canvas id="ov"></canvas><div id="warn">MISSILE INBOUND</div><div id="ccArray"></div>
- <div id="lockHint">Mouse unlocked · press <kbd>Ctrl</kbd> to lock it</div>
-
+ <canvas id="ov"></canvas><div id="warn">MISSILE INBOUND</div><div id="ccArray"></div><div id="ccHud"></div>
+ <div id="rbx"><div id="rbxBar"><button id="rbxMenuBtn" aria-label="Game menu" title="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18v2.4H3zM3 10.8h18v2.4H3zM3 15.6h18V18H3z"/></svg></button><button id="rbxChatBtn" aria-label="Show or hide chat" title="Chat"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H11l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></button></div>
+ <div id="chat" class="idle"><div id="chatLog" aria-live="polite"></div><input id="chatIn" maxlength="120" placeholder="To chat click here or press / key" autocomplete="off" aria-label="Chat message"></div></div>
+ <div id="lockHint">Mouse unlocked · press Ctrl or click the game to lock it</div>
  <div id="banner"></div><div id="prompt"></div><div id="toast"></div>
 </div>
 <div id="board"><table id="boardT"></table></div>
-<div id="pause">
-  <div class="rbp" id="rbMain" role="dialog" aria-label="Menu">
-    <div class="rbp-h"><span>Menu</span><button id="rbX" type="button" aria-label="Close menu">×</button></div>
-    <div class="rbp-b">The match keeps running while this menu is open. Press <b>Ctrl</b> to lock your mouse again.</div>
-    <div class="rbp-f"><button id="btnQuit" type="button" class="leave">Leave Game</button><button id="btnResume" type="button">Resume <span class="k">M</span></button></div>
-  </div>
-  <div class="rbp" id="rbConfirm" role="alertdialog" aria-label="Leave game" hidden>
-    <div class="rbp-h"><span>Leave Game</span></div>
-    <div class="rbp-b">Are you sure you want to leave this match and go back to the main menu?</div>
-    <div class="rbp-f"><button id="btnLeaveNo" type="button">Don't Leave</button><button id="btnLeaveYes" type="button" class="yes">Leave</button></div>
-  </div>
+<div id="pause"><div id="rm" role="dialog" aria-label="Game menu">
+ <div id="rmTabs"><button data-rm="players" class="on">Players</button><button data-rm="settings">Settings</button></div>
+ <div id="rmBody"><div id="rmPlayers"></div><div id="rmSettings" hidden><div class="rms"><span>Mouse sensitivity</span><input id="rmSens" type="range" min="1" max="10" value="5" aria-label="Mouse sensitivity"></div><div class="rms"><span>Lock / unlock mouse</span><span><kbd>Ctrl</kbd></span></div><div class="rms"><span>Chat</span><span><kbd>/</kbd></span></div></div></div>
+ <div id="rmFoot"><button id="btnQuit">Leave<small>Quit to main menu</small></button><button id="btnResume">Resume<small>Back to the game</small></button></div>
 </div>
-
+<div id="rmConfirm"><div class="box"><h3>Leave the game?</h3><p>Are you sure you want to quit to the main menu?</p><div class="r"><button id="rmYes" class="red">Leave</button><button id="rmNo">Don't leave</button></div></div></div></div>
 <div id="end"><h2 id="endT"></h2><div id="endS" class="note"></div><button class="primary" id="btnAgain">Play again</button><button id="btnMenu">Back to menu</button></div>
 <div id="cc"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -394,7 +402,7 @@ const store = {
   set(k, v) { try { localStorage.setItem('rvz_' + k, JSON.stringify(v)); } catch (e) { } }
 };
 /* ===== Admin client state (GUI + logic live further down; game hooks read this) ===== */
-const Cheat = { on: {}, v: { abMode: 'fire', abFov: 70, abSmooth: 55, abBone: 'auto', abVis: 1, abPredict: 1, abBots: 1, trigDelay: 0, rapidMul: 3, dmgMul: 5, hitboxMul: 2, flySpeed: 14, speedMul: 1.6, jumpMul: 2, gravVal: 8, espBoxes: 1, espNames: 1, espHealth: 1, espTrace: 1, espMax: 120, fovVal: 100, timeScale: .5, healRate: 20, hitRange: 60, hitTarget: 'near', hitBots: 1 }, ui: { key: 'ShiftRight', scale: 1, arr: 1, tips: 1 }, binds: { aimbot: 'KeyZ', esp: 'KeyX', fly: 'KeyG', noclip: 'KeyN', a_tp: 'KeyT', god: 'KeyH' } };
+const Cheat = { on: {}, v: { abMode: 'fire', abFov: 70, abSmooth: 55, abBone: 'auto', abVis: 1, abPredict: 1, abBots: 1, trigDelay: 0, rapidMul: 3, dmgMul: 5, hitboxMul: 2, flySpeed: 14, speedMul: 1.6, jumpMul: 2, gravVal: 8, espBoxes: 1, espNames: 1, espHealth: 1, espTrace: 1, espMax: 120, fovVal: 100, timeScale: .5, healRate: 20 } };
 const Warn = { missile: -9, beep: 0 };
 function rayBox(o, d, b, maxT) {
   let tmin = 0, tmax = maxT;
@@ -1798,23 +1806,27 @@ function doMelee(a, w) {
   const me = a.local ? 1 : .6; Snd.shot(w.snd, me, w.snp); swingFx(a, w);
   if (a.local && typeof localSwing === 'function') localSwing(w);
   if (a.net) netShot(a, w, a.pos, [0, 0, 0], true);
-  if (a.local && Cheat.on.hittp && hitTP(a, w)) return;
   later(Math.min(.13, 60 / w.rpm * .4), () => {
     if (!a.alive) return;
-    const o = eyePos(a), d = lookDir(a.yaw, 0); let any = false;
-    for (const v of Actors) {
-      if (v === a || !v.alive || v.spawnShield > 0) continue;
-      const cx = v.pos[0] - o[0], cz = v.pos[2] - o[2], dist = Math.hypot(cx, cz);
-      if (dist > w.rng + .35 || Math.abs((v.pos[1] + 1) - o[1]) > 1.6) continue;
-      const dot = (cx * d[0] + cz * d[2]) / (dist || 1); if (dist > .8 && dot < .3) continue;
-      if (!visibleFrom(o, [v.pos[0], v.pos[1] + 1.1, v.pos[2]])) continue;
-      let dmg = w.dmg; const vf = lookDir(v.yaw, 0); if (w.bs && (vf[0] * d[0] + vf[2] * d[2]) > .5) dmg *= w.bs;
-      const head = o[1] - v.pos[1] > 1.45 && Math.random() < .25; if (head) dmg *= (w.hs || 1.3);
-      dealDamage(v, Math.round(dmg), a, w, head); any = true; burst([v.pos[0], v.pos[1] + 1.2, v.pos[2]], 5, '#ff3b3b', 3, .35, 8, .06);
-    }
-    if (typeof eggMelee === 'function') eggMelee(a, o, d, w);
-    if (any && w.id === 'fryingpan') Snd.shot('bonk', a.local ? 1 : .6);
+    const tp = (a.local && Account.admin && Cheat.on.hittp) ? hitTpIn(a, w) : null;
+    meleeStrike(a, w, !!tp);
+    if (tp) hitTpOut(a, tp);
   });
+}
+function meleeStrike(a, w, force) {
+  const o = eyePos(a), d = lookDir(a.yaw, 0); let any = false;
+  for (const v of Actors) {
+    if (v === a || !v.alive || v.spawnShield > 0) continue;
+    const cx = v.pos[0] - o[0], cz = v.pos[2] - o[2], dist = Math.hypot(cx, cz);
+    if (dist > w.rng + .35 || Math.abs((v.pos[1] + 1) - o[1]) > 1.6) continue;
+    const dot = (cx * d[0] + cz * d[2]) / (dist || 1); if (!force && dist > .8 && dot < .3) continue;
+    if (!force && !visibleFrom(o, [v.pos[0], v.pos[1] + 1.1, v.pos[2]])) continue;
+    let dmg = w.dmg; const vf = lookDir(v.yaw, 0); if (w.bs && (vf[0] * d[0] + vf[2] * d[2]) > .5) dmg *= w.bs;
+    const head = o[1] - v.pos[1] > 1.45 && Math.random() < .25; if (head) dmg *= (w.hs || 1.3);
+    dealDamage(v, Math.round(dmg), a, w, head); any = true; burst([v.pos[0], v.pos[1] + 1.2, v.pos[2]], 5, '#ff3b3b', 3, .35, 8, .06);
+  }
+  if (typeof eggMelee === 'function') eggMelee(a, o, d, w);
+  if (any && w.id === 'fryingpan') Snd.shot('bonk', a.local ? 1 : .6);
 }
 
 /* ---- projectiles ---- */
@@ -2248,13 +2260,14 @@ function clearActors() { while (Actors.length) { const a = Actors[0]; removeActo
 
 /* ---- modes ---- */
 function startMatch(mode, opts) {
-  if (!Account.name) return; opts = opts || {}; Snd.init(); Chat.clear(); Chat.sys('Welcome, ' + Account.name + '. Press / to chat. Chat is never saved.'); G.session++; G.mode = mode; G.over = false; G.paused = false; G.freeze = false; G.running = true; G.wins = { me: 0, bot: 0 }; G.round = 0;
+  if (!Account.name) return; opts = opts || {}; Snd.init(); G.session++; G.mode = mode; G.over = false; G.paused = false; G.freeze = false; G.running = true; G.wins = { me: 0, bot: 0 }; G.round = 0;
   clearActors(); if (typeof eggsReset === 'function') eggsReset();
   loadMap(G.mapIdx); World.sky.visible = true;
-  const me = makeActor({ local: true, name: (G.name || 'You'), color: '#ff3347' }); G.player = me; G.loadout = sanitizeLoadout(G.loadout);
+  const me = makeActor({ local: true, name: (G.name || 'You'), color: '#ff3b3b' }); G.player = me; G.loadout = sanitizeLoadout(G.loadout);
   VM.init && !VM.root && VM.init();
   $('menu').style.display = 'none'; $('hud').classList.add('on'); $('end').classList.remove('on'); $('pause').classList.remove('on'); $('board').classList.remove('on');
   $('modeTxt').textContent = ''; $('killfeed').innerHTML = '';
+  Chat.clear(); Chat.add('', mode === 'live' ? 'Press / to chat. Press Ctrl to lock or unlock your mouse.' : 'Press / to chat (only you can see it vs bots). Press Ctrl to lock or unlock your mouse.', true);
   if (mode === 'dm') { G.target = 15; makeBots(G.nbots).forEach(b => { botPickLoadout(b); spawnActor(b); }); giveLoadout(me, G.loadout); spawnActor(me); banner('Deathmatch: first to ' + G.target, 2200); }
   else if (mode === 'gg') {
     const pool = WEAPONS.filter(w => !w.secret && w.slot !== 'G' && !w.nobot && w.id !== 'fryingpan' && w.id !== 'minigun'); G.ggSeq = pool.sort(() => Math.random() - .5).slice(0, 14).map(w => w.id).concat(['fryingpan']);
@@ -2275,7 +2288,7 @@ function startRound() {
   spawnActor(me); spawnActor(opp); opp.spawnShield = 0; me.spawnShield = 0;
   updateScoreTxt(); hudAmmo(); hudSlots();
   const steps = [['Round ' + G.round, 0], ['3', .8], ['2', 1.6], ['1', 2.4], ['FIGHT!', 3.2]];
-  steps.forEach(([t, d]) => later(d, () => { if (G.session !== s || G.over) return; banner(t, t === 'FIGHT!' ? 700 : 0, t === 'FIGHT!' ? '#ff3347' : '#fff'); if (t === 'FIGHT!') G.freeze = false; }));
+  steps.forEach(([t, d]) => later(d, () => { if (G.session !== s || G.over) return; banner(t, t === 'FIGHT!' ? 700 : 0, t === 'FIGHT!' ? '#ff3b3b' : '#fff'); if (t === 'FIGHT!') G.freeze = false; }));
 }
 function onKill(v, killer, w, head) {
   if (killer && killer.local && killer !== v && G.mode !== 'live') Account.onKill(head);
@@ -2305,12 +2318,12 @@ function endMatch(title, sub, won) {
   if (typeof netLeave === 'function' && G.mode === 'live') { /* stay in room until the player leaves */ }
 }
 function quitToMenu() {
-  Account.flush(); Chat.clear(); Chat.blur(false); closeMenu(false); G.running = false; G.over = true; G.session++; if (G.mode === 'live' && typeof netLeave === 'function') netLeave();
-  $('hud').classList.remove('on'); $('pause').classList.remove('on'); $('end').classList.remove('on'); $('board').classList.remove('on'); $('menu').style.display = 'flex';
+  Account.flush(); G.running = false; G.over = true; G.session++; if (G.mode === 'live' && typeof netLeave === 'function') netLeave();
+  Chat.clear();   $('hud').classList.remove('on'); $('pause').classList.remove('on'); $('end').classList.remove('on'); $('board').classList.remove('on'); $('menu').style.display = 'flex';
   if (document.pointerLockElement) document.exitPointerLock(); clearActors(); G.player = null; if (VM.model) { VM.root.remove(VM.model); VM.model = null; } R.camera.fov = 78; R.camera.updateProjectionMatrix();
   loadMap(G.mapIdx); setPrompt(null); $('scope').classList.remove('on'); if (typeof eggsBuild === 'function') eggsBuild();
 }
-function onLockLost() { /* the match never pauses: Ctrl locks the mouse again */ }
+function onLockLost() { /* losing the mouse lock never pauses: the game keeps running, press Ctrl or click to lock again */ }
 
 /* ---- local player ---- */
 function updatePlayer(dt) {
@@ -2481,7 +2494,7 @@ const Account = {
     if (d.rvzSecrets === undefined) patch.rvzSecrets = {}; if (d.rvzLoadout === undefined) patch.rvzLoadout = { P: 'assaultrifle', S: 'handgun', M: 'combatknife', G: 'fraggrenade' };
     if (Object.keys(patch).length) { await this.db.collection('users').doc(u).set(patch, { merge: true }); Object.assign(d, patch); }
     this.name = u; this.pend = 0; this.pendK = 0; localStorage.setItem(SESSION_KEY, u);
-    this.apply(d); this.lastLevel = myLevel();
+    Admin.load(d.rvzClient); this.apply(d); this.lastLevel = myLevel();
     G.loadout = sanitizeLoadout(Object.assign({ P: 'assaultrifle', S: 'handgun', M: 'combatknife', G: 'fraggrenade' }, d.rvzLoadout || {}));
     G.name = u; $('pname').value = u; $('pname').readOnly = true;
     if (this.unsub) this.unsub();
@@ -2499,13 +2512,8 @@ const Account = {
     if (was && !this.admin) Admin.revoked(); else if (this.admin !== was) Admin.sync();
   },
   sched() { clearTimeout(this.flushT); this.flushT = setTimeout(() => this.flush(), 30000); },
-  saveClient(obj) { if (!this.name || !this.admin) return; this.clientPending = obj; clearTimeout(this.clientT); this.clientT = setTimeout(() => this.flushClient(), 3000); },
-  async flushClient() {
-    clearTimeout(this.clientT); const o = this.clientPending; if (!o || !this.name) return; this.clientPending = null;
-    try { await this.ref().update({ rvzClient: o }); } catch (e) { this.clientPending = o; this.clientT = setTimeout(() => this.flushClient(), 8000); }
-  },
   async flush() {
-    this.flushClient(); clearTimeout(this.flushT); if (!this.name || (!this.pend && !this.pendK)) return;
+    clearTimeout(this.flushT); if (!this.name || (!this.pend && !this.pendK)) return;
     const n = this.pend, k = this.pendK; this.pend = 0; this.pendK = 0;
     try { const u = {}; if (n) u.rvzCaps = this.FV.increment(n); if (k) u.rvzKills = this.FV.increment(k); await this.ref().update(u); }
     catch (e) { this.pend += n; this.pendK += k; this.sched(); }
@@ -2531,7 +2539,7 @@ const Account = {
     await this.flush(); if (this.unsub) { this.unsub(); this.unsub = null; }
     if (G.running) quitToMenu();
     localStorage.removeItem(SESSION_KEY); this.name = null; this.profile = null; this.admin = false; this.owned = new Set(); this.secrets = {}; this.caps = 0; this.kills = 0;
-    Admin.revoked(true); G.loadout = { P: 'assaultrifle', S: 'handgun', M: 'combatknife', G: 'fraggrenade' };
+    Admin.revoked(true); Admin.reset(); G.loadout = { P: 'assaultrifle', S: 'handgun', M: 'combatknife', G: 'fraggrenade' };
     $('pname').readOnly = false; $('pname').value = ''; $('aPass').value = ''; showAuth(msg);
   },
   async boot() {
@@ -2576,7 +2584,7 @@ function wireAuth() {
 function updateAcct() {
   const el = $('acct'); if (!el || !Account.name) return;
   const lv = myLevel(), nxt = LVL_AT[lv];
-  el.innerHTML = '<span class="who">' + esc(Account.name) + '</span><span class="pill">Level ' + lv + (nxt != null ? ' · ' + (nxt - Account.kills) + ' elims to level ' + (lv + 1) : ' · max level') + '</span><span class="pill capp" title="Bottlecaps">' + CAP_ICON + ' ' + Account.caps.toLocaleString() + '</span>' + (Account.admin ? '<span class="pill adm">Admin · press ' + esc(keyName(Cheat.ui.key)) + '</span>' : '') + '<button id="btnOut" class="slim">Log out</button>';
+  el.innerHTML = '<span class="who">' + esc(Account.name) + '</span><span class="pill">Level ' + lv + (nxt != null ? ' · ' + (nxt - Account.kills) + ' elims to level ' + (lv + 1) : ' · max level') + '</span><span class="pill capp" title="Bottlecaps">' + CAP_ICON + ' ' + Account.caps.toLocaleString() + '</span>' + (Account.admin ? '<span class="pill adm">Admin · press Right Shift</span>' : '') + '<button id="btnOut" class="slim">Log out</button>';
   $('btnOut').onclick = () => Account.logout();
   if ($('tab-armory').classList.contains('on') && armSel) updateWact(armSel);
 }
@@ -2655,10 +2663,10 @@ function wireUI() {
   $('pname').value = G.name; $('ggTag').textContent = WEAPONS.filter(w => w.slot !== 'G' && !w.nobot).length + ' weapons';
   const startOff = mode => { if (!Account.name) return; G.diff = +$('diff').value; G.nbots = +$('botCount').value; store.set('diff', G.diff); store.set('bots', G.nbots); G.name = $('pname').value.trim() || G.name || 'You'; startMatch(mode); };
   $('btnDuel').onclick = () => startOff('duel'); $('btnDM').onclick = () => startOff('dm'); $('btnGG').onclick = () => startOff('gg');
-  $('btnMenu').onclick = quitToMenu;
+  RM.wire(); Chat.wire(); $('btnMenu').onclick = quitToMenu;
   $('btnAgain').onclick = () => { if (G.mode === 'live') quitToMenu(); else startMatch(G.mode); };
   $('view').addEventListener('click', () => { if (G.running && !Input.locked && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } } });
-  document.addEventListener('pointerlockchange', () => { if (Input.locked && G.running) { G.paused = false; $('pause').classList.remove('on'); } });
+  document.addEventListener('pointerlockchange', () => { if (Input.locked && G.running) { G.paused = false; RM.close(false); } });
   document.addEventListener('pointerlockerror', () => toast('Click the game to capture your mouse', 3000));
 }
 /* ===== Live multiplayer on Firebase Realtime Database ===== */
@@ -2721,14 +2729,14 @@ async function joinRoom(code, create, opts) {
     dealDamage(me, v.d, Net.remote[v.f] || null, WBY[v.w] || { name: 'Unknown', id: 'x' }, !!v.h);
   });
   on(db.ref(base + '/shots'), 'child_added', s => { const v = s.val(); if (!v || v.f === Net.uid || v.t < Net.joinT - 800) return; remoteShot(v); });
+  on(db.ref(base + '/chat'), 'child_added', s => { const v = s.val(); if (!v || v.f === Net.uid || v.t < Net.joinT - 500) return; Chat.add(String(v.n || 'Player').slice(0, 20), String(v.m || '').slice(0, 120)); });
   on(db.ref(base + '/events'), 'child_added', s => { const v = s.val(); if (!v || v.t < Net.joinT - 800) return; netEvent(v); });
-  on(db.ref(base + '/chat'), 'child_added', s => { const v = s.val(); if (!v || v.f === Net.uid || v.t < Net.joinT - 800) return; Chat.add(String(v.n || 'Player').slice(0, 20), String(v.m || '').slice(0, 160)); });
   on(db.ref(base + '/meta/round'), 'value', s => { const r = s.val() | 0; if (r > Net.round) { Net.round = r; liveRoundOver(); } });
   db.ref(base + '/players/' + Net.uid).onDisconnect().remove();
   netPublish(true);
   if (Net.pub) db.ref('lobby/' + code).set({ map: G.mapIdx, t: ts });
   toast('Room ' + code + (Net.pub ? ' (public)' : ' (private). Share the code!'), 5000); netStatus('');
-  feed('Room code: <b>' + code + '</b>');
+  feed('Room code: <b>' + code + '</b>'); Chat.add('', 'Room code: ' + code + '. Others who join can chat with you here. Messages are never saved.', true);
 }
 function netLeave() {
   if (!Net.room) return; try { Net.refs.forEach(([r, ev, fn]) => r.off(ev, fn)); Net.refs = []; Net.db.ref(Net.base + '/players/' + Net.uid).remove(); } catch (e) { }
@@ -2749,7 +2757,7 @@ function netTick(dt) {
 }
 function remoteUpdate(id, v, isNew) {
   if (id === Net.uid || !v) return; let a = Net.remote[id];
-  if (!a) { a = makeActor({ remote: true, id, name: v.n || 'Player', color: v.c }); a.alive = false; a.tx = v.x; a.ty = v.y; a.tz = v.z; a.pos = [v.x, v.y, v.z]; Net.remote[id] = a; if (!isNew || Net.joinT + 1000 < netNow()) { toast((v.n || 'A player') + ' joined', 2200); Chat.sys((v.n || 'A player') + ' joined the game'); } }
+  if (!a) { a = makeActor({ remote: true, id, name: v.n || 'Player', color: v.c }); a.alive = false; a.tx = v.x; a.ty = v.y; a.tz = v.z; a.pos = [v.x, v.y, v.z]; Net.remote[id] = a; if (!isNew || Net.joinT + 1000 < netNow()) { toast((v.n || 'A player') + ' joined', 2200); Chat.add('', (v.n || 'A player') + ' joined the room', true); } }
   a.tx = v.x; a.ty = v.y; a.tz = v.z; a.tyaw = v.yaw; a.tpitch = v.pitch; a.crouch = !!v.cr; a.kills = v.k | 0; a.deaths = v.d | 0; a.hp = v.hp;
   if (v.w !== a.wid) { a.wid = v.w; if (WBY[v.w]) { a.slots = { P: v.w, S: null, M: null }; a.cur = 'P'; setHeld(a); } }
   if (v.sw !== a.sw) { if (a.sw !== undefined) a.swingT = 0; a.sw = v.sw; }
@@ -2757,7 +2765,7 @@ function remoteUpdate(id, v, isNew) {
   if (al && !a.alive) { a.alive = true; a.deadT = 0; a.pos = [v.x, v.y, v.z]; a.yaw = v.yaw || 0; a.mesh.rotation.x = 0; }
   if (!al && a.alive) { a.alive = false; a.deadT = 1.2; }
 }
-function remoteRemove(id) { const a = Net.remote[id]; if (!a) return; toast(a.name + ' left', 2000); Chat.sys(a.name + ' left the game'); removeActor(a); delete Net.remote[id]; }
+function remoteRemove(id) { const a = Net.remote[id]; if (!a) return; toast(a.name + ' left', 2000); Chat.add('', a.name + ' left the room', true); removeActor(a); delete Net.remote[id]; }
 function netInterp(a, dt) {
   if (a.tx === undefined) return; const k = 1 - Math.exp(-dt * 16), ox = a.pos[0], oz = a.pos[2];
   if (Math.hypot(a.tx - a.pos[0], a.tz - a.pos[2]) > 7) { a.pos[0] = a.tx; a.pos[2] = a.tz; }
@@ -2802,7 +2810,7 @@ function netEvent(e) {
 }
 function liveRoundOver() {
   Net.db.ref(Net.base + '/meta/winner').once('value').then(s => {
-    const win = s.val() || 'Someone', me = G.player; if (!me) return; G.freeze = true; banner(win + ' wins the round!', 4200, '#ff3347'); Snd.secret(); if (win === me.name) Account.award(75);
+    const win = s.val() || 'Someone', me = G.player; if (!me) return; G.freeze = true; banner(win + ' wins the round!', 4200, '#ff3b3b'); Snd.secret(); if (win === me.name) Account.award(75);
     const sess = G.session;
     later(4.5, () => { if (G.session !== sess) return; me.kills = 0; me.deaths = 0; G.freeze = false; giveLoadout(me, G.loadout); spawnActor(me); netPublish(true); banner('New round!', 1200); });
   });
@@ -2811,62 +2819,66 @@ function wireNet() {
   $('btnQuick').onclick = quickMatch; $('btnCreate').onclick = createRoom; $('btnJoin').onclick = joinByCode;
   $('rcode').addEventListener('keydown', e => { if (e.key === 'Enter') joinByCode(); });
 }
-/* ===== Admin client (Meteor-style). Opens with Right Shift (rebindable) for accounts with rvzAdmin: true in Firestore ===== */
-const keyName = c => !c ? 'None' : ({ ShiftRight: 'R-Shift', ShiftLeft: 'L-Shift', ControlLeft: 'L-Ctrl', ControlRight: 'R-Ctrl', AltLeft: 'L-Alt', AltRight: 'R-Alt', Space: 'Space', Backquote: '`', Minus: '-', Equal: '=', BracketLeft: '[', BracketRight: ']', Semicolon: ';', Quote: "'", Comma: ',', Period: '.', Slash: '/', Backslash: '\\' }[c] || c.replace(/^Key|^Digit/, '').replace(/^Numpad/, 'Num ').replace(/^Arrow/, ''));
+/* ===== Admin client (Right Shift): Meteor-style GUI, per-module binds, config saved to your Firebase account ===== */
 const CHEAT_DEFS = [
   { cat: 'Combat', mods: [
-    { id: 'aimbot', name: 'Aimbot', desc: 'Pulls your crosshair onto the best target inside your FOV.', opts: [
-      { id: 'abMode', name: 'Active', type: 'sel', list: [['always', 'Always'], ['fire', 'Shooting'], ['ads', 'Aiming']] },
+    { id: 'aimbot', name: 'Aimbot', desc: 'Pulls your crosshair onto the best target in range.', opts: [
+      { id: 'abMode', name: 'Active', type: 'sel', list: [['always', 'Always'], ['fire', 'While shooting'], ['ads', 'While aiming']] },
       { id: 'abFov', name: 'FOV', min: 5, max: 180, step: 1, unit: '°' }, { id: 'abSmooth', name: 'Strength', min: 1, max: 100, step: 1, unit: '%' },
       { id: 'abBone', name: 'Target', type: 'sel', list: [['auto', 'Auto'], ['head', 'Head'], ['body', 'Body']] },
-      { id: 'abVis', name: 'Visible only', type: 'chk' }, { id: 'abPredict', name: 'Lead target', type: 'chk' }, { id: 'abBots', name: 'Bots', type: 'chk' }] },
-    { id: 'trigger', name: 'Trigger', desc: 'Fires on its own when an enemy is under your crosshair.', opts: [{ id: 'trigDelay', name: 'Delay', min: 0, max: 300, step: 10, unit: 'ms' }] },
-    { id: 'norecoil', name: 'No Recoil', desc: 'Removes the camera kick when you shoot.' },
-    { id: 'nospread', name: 'No Spread', desc: 'Every shot goes exactly where you aim.' },
-    { id: 'rapid', name: 'Rapid Fire', desc: 'Fires faster and recharges gadgets quicker.', opts: [{ id: 'rapidMul', name: 'Speed', min: 1.5, max: 10, step: .5, unit: 'x' }] },
+      { id: 'abVis', name: 'Visible only', type: 'chk' }, { id: 'abPredict', name: 'Lead targets', type: 'chk' }, { id: 'abBots', name: 'Target bots', type: 'chk' }] },
+    { id: 'trigger', name: 'Triggerbot', desc: 'Fires on its own when an enemy is under your crosshair.', opts: [{ id: 'trigDelay', name: 'Delay', min: 0, max: 300, step: 10, unit: ' ms' }] },
+    { id: 'norecoil', name: 'No Recoil', desc: 'Your view no longer kicks when you shoot.' },
+    { id: 'nospread', name: 'No Spread', desc: 'Every bullet goes exactly where you aim.' },
+    { id: 'rapid', name: 'Rapid Fire', desc: 'Faster fire rate and faster gadget recharge.', opts: [{ id: 'rapidMul', name: 'Multiplier', min: 1.5, max: 10, step: .5, unit: 'x' }] },
     { id: 'infammo', name: 'Inf Ammo', desc: 'Your magazine never runs dry.' },
-    { id: 'noreload', name: 'Fast Reload', desc: 'Reloads finish immediately.' },
-    { id: 'damage', name: 'Damage', desc: 'Multiplies all damage you deal.', opts: [{ id: 'dmgMul', name: 'Amount', min: 1.5, max: 50, step: .5, unit: 'x' }] },
-    { id: 'hitbox', name: 'Hitboxes', desc: 'Makes enemy hitboxes bigger so shots land more easily.', opts: [{ id: 'hitboxMul', name: 'Scale', min: 1.2, max: 5, step: .1, unit: 'x' }] },
-    { id: 'instalock', name: 'InstaLock', desc: 'The Homing Launcher locks on the moment you aim.' },
-    { id: 'hittp', name: 'HitTP', desc: 'Every melee swing teleports you to a target, lands the hit, then snaps you straight back.', opts: [
-      { id: 'hitRange', name: 'Range', min: 5, max: 150, step: 5, unit: 'm' }, { id: 'hitTarget', name: 'Target', type: 'sel', list: [['near', 'Nearest'], ['aim', 'Crosshair']] }, { id: 'hitBots', name: 'Bots', type: 'chk' }] }] },
+    { id: 'noreload', name: 'Quick Reload', desc: 'Reloads finish instantly.' },
+    { id: 'damage', name: 'Damage', desc: 'Multiplies the damage you deal.', opts: [{ id: 'dmgMul', name: 'Multiplier', min: 1.5, max: 50, step: .5, unit: 'x' }] },
+    { id: 'hitbox', name: 'Hitboxes', desc: 'Makes enemy hitboxes bigger so shots land easier.', opts: [{ id: 'hitboxMul', name: 'Scale', min: 1.2, max: 5, step: .1, unit: 'x' }] },
+    { id: 'instalock', name: 'Instalock', desc: 'The Homing Launcher locks on the moment you aim.' },
+    { id: 'hittp', name: 'HitTP', desc: 'When you swing a melee weapon you teleport to the nearest target, land the hit, then teleport straight back.', opts: [
+      { id: 'hitRange', name: 'Range', min: 5, max: 150, step: 5, unit: ' m' },
+      { id: 'hitBehind', name: 'Hit from behind', type: 'chk' }, { id: 'hitBots', name: 'Target bots', type: 'chk' }] }] },
   { cat: 'Player', mods: [
-    { id: 'god', name: 'God', desc: 'You take no damage at all.' },
-    { id: 'autoheal', name: 'Regen', desc: 'Regenerates your health over time.', opts: [{ id: 'healRate', name: 'Per second', min: 2, max: 100, step: 2, unit: 'hp' }] },
-    { id: 'autosprint', name: 'Sprint', desc: 'Sprints whenever you move forward.' }] },
+    { id: 'god', name: 'God Mode', desc: 'You take no damage and shake off status effects.' },
+    { id: 'autoheal', name: 'Regen', desc: 'Heals you over time.', opts: [{ id: 'healRate', name: 'Per second', min: 2, max: 100, step: 2, unit: ' hp' }] },
+    { id: 'bigheads', name: 'Big Heads', desc: 'Every head in the match gets huge.', set(on) { G.bigHead = on; applyBigHead(); } },
+    { id: 'timescale', name: 'Timer', desc: 'Slow motion or fast forward for the whole game.', opts: [{ id: 'timeScale', name: 'Speed', min: .1, max: 3, step: .1, unit: 'x' }] }] },
   { cat: 'Movement', mods: [
-    { id: 'fly', name: 'Fly', desc: 'Fly where you look. Space goes up, C goes down, Left Shift boosts.', opts: [{ id: 'flySpeed', name: 'Speed', min: 4, max: 60, step: 1, unit: 'm/s' }] },
+    { id: 'fly', name: 'Fly', desc: 'WASD along your view, Space up, C down, Left Shift boosts.', opts: [{ id: 'flySpeed', name: 'Speed', min: 4, max: 60, step: 1, unit: ' m/s' }] },
     { id: 'noclip', name: 'Noclip', desc: 'Fly straight through walls. Uses the Fly speed.' },
-    { id: 'speed', name: 'Speed', desc: 'Multiplies your walking and sprinting speed.', opts: [{ id: 'speedMul', name: 'Amount', min: 1.1, max: 5, step: .1, unit: 'x' }] },
-    { id: 'jump', name: 'High Jump', desc: 'Jump much higher.', opts: [{ id: 'jumpMul', name: 'Amount', min: 1.2, max: 4, step: .1, unit: 'x' }] },
-    { id: 'infjump', name: 'Air Jump', desc: 'Press Space in mid-air to jump again.' },
-    { id: 'lowgrav', name: 'Gravity', desc: 'Changes how hard gravity pulls you down.', opts: [{ id: 'gravVal', name: 'Pull', min: 1, max: 24, step: 1, unit: '' }] },
-    { id: 'a_tp', name: 'Teleport', desc: 'Teleports you to the spot you are looking at.', action() { if (G.running) Cheat.tp(G.player); } }] },
+    { id: 'speed', name: 'Speed', desc: 'Run faster than normal.', opts: [{ id: 'speedMul', name: 'Multiplier', min: 1.1, max: 5, step: .1, unit: 'x' }] },
+    { id: 'jump', name: 'High Jump', desc: 'Jump much higher.', opts: [{ id: 'jumpMul', name: 'Multiplier', min: 1.2, max: 4, step: .1, unit: 'x' }] },
+    { id: 'infjump', name: 'Air Jump', desc: 'Press Space in mid air to jump again.' },
+    { id: 'lowgrav', name: 'Gravity', desc: 'Changes how hard gravity pulls you down.', opts: [{ id: 'gravVal', name: 'Strength', min: 1, max: 24, step: 1, unit: '' }] },
+    { id: 'autosprint', name: 'Auto Sprint', desc: 'Sprint whenever you move forward.' },
+    { id: 'a_tp', name: 'Click TP', desc: 'Teleports you to the spot you are looking at. Bound to T by default.', action() { if (G.running) Cheat.tp(G.player); } }] },
   { cat: 'Render', mods: [
-    { id: 'esp', name: 'ESP', desc: 'Boxes, names and health bars for everyone, through walls.', opts: [
-      { id: 'espBoxes', name: 'Boxes', type: 'chk' }, { id: 'espNames', name: 'Names', type: 'chk' }, { id: 'espHealth', name: 'Health', type: 'chk' }, { id: 'espTrace', name: 'Tracers', type: 'chk' },
-      { id: 'espMax', name: 'Range', min: 20, max: 300, step: 10, unit: 'm' }] },
+    { id: 'esp', name: 'ESP', desc: 'Boxes, names and health for everyone, through walls.', opts: [
+      { id: 'espBoxes', name: 'Boxes', type: 'chk' }, { id: 'espNames', name: 'Names', type: 'chk' }, { id: 'espHealth', name: 'Health bars', type: 'chk' }, { id: 'espTrace', name: 'Tracers', type: 'chk' },
+      { id: 'espMax', name: 'Max distance', min: 20, max: 300, step: 10, unit: ' m' }] },
     { id: 'chams', name: 'Chams', desc: 'Lights up players so you can see them through walls.' },
-    { id: 'xray', name: 'X-Ray', desc: 'Makes the map walls see-through.' },
-    { id: 'fullbright', name: 'Fullbright', desc: 'Maximum brightness everywhere.' },
-    { id: 'nofog', name: 'No Fog', desc: 'Removes distance fog so you can see the whole map.' },
-    { id: 'bigheads', name: 'Big Heads', desc: 'Gives everyone an oversized head.', set(on) { G.bigHead = on; applyBigHead(); } },
-    { id: 'fov', name: 'FOV', desc: 'Changes your field of view.', opts: [{ id: 'fovVal', name: 'Angle', min: 60, max: 140, step: 1, unit: '°' }] }] },
+    { id: 'xray', name: 'Xray', desc: 'Makes the map see-through.' },
+    { id: 'fullbright', name: 'Fullbright', desc: 'Everything is fully lit, even the dark maps.' },
+    { id: 'nofog', name: 'No Fog', desc: 'Removes the distance fog.' },
+    { id: 'fov', name: 'FOV', desc: 'Sets your camera field of view.', opts: [{ id: 'fovVal', name: 'FOV', min: 60, max: 140, step: 1, unit: '°' }] }] },
   { cat: 'World', mods: [
-    { id: 'botfreeze', name: 'Freeze Bots', desc: 'Bots stop moving and shooting.' },
-    { id: 'timescale', name: 'Timer', desc: 'Slow motion or fast forward for the whole game.', opts: [{ id: 'timeScale', name: 'Speed', min: .1, max: 3, step: .1, unit: 'x' }] },
-    { id: 'a_spawn', name: 'Spawn Bots', desc: 'Adds 4 more bots to the match. Bot matches only.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); makeBots(4).forEach(b => { botPickLoadout(b); spawnActor(b); }); } },
-    { id: 'a_kill', name: 'Kill Bots', desc: 'Eliminates every bot in the match. Bot matches only.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); Actors.slice().forEach(a => { if (a.bot && a.alive) killActor(a, G.player, { name: 'Admin', id: 'admin' }, false); }); } },
-    { id: 'a_boom', name: 'Airstrike', desc: 'Drops a huge explosion where you are looking.', action() { if (!G.running) return; const p = G.player, o = eyePos(p), d = lookDir(p.yaw, p.pitch), t = Math.min(200, World.ray(o, d, 200)); explode([o[0] + d[0] * t, o[1] + d[1] * t, o[2] + d[2] * t], { name: 'Admin Strike', id: 'admin', rad: 9, dmg: 200 }, p); } }] },
+    { id: 'botfreeze', name: 'Freeze Bots', desc: 'Bots stand still and do nothing.' },
+    { id: 'a_spawn', name: 'Spawn Bots', desc: 'Adds 4 more bots to a bot match.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); makeBots(4).forEach(b => { botPickLoadout(b); spawnActor(b); }); } },
+    { id: 'a_kill', name: 'Kill Bots', desc: 'Eliminates every bot at once.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); Actors.slice().forEach(a => { if (a.bot && a.alive) killActor(a, G.player, { name: 'Admin', id: 'admin' }, false); }); } },
+    { id: 'a_boom', name: 'Boom', desc: 'Drops a huge explosion where your crosshair points.', action() { if (!G.running) return; const p = G.player, o = eyePos(p), d = lookDir(p.yaw, p.pitch), t = Math.min(200, World.ray(o, d, 200)); explode([o[0] + d[0] * t, o[1] + d[1] * t, o[2] + d[2] * t], { name: 'Admin Strike', id: 'admin', rad: 9, dmg: 200 }, p); } }] },
   { cat: 'Misc', mods: [
     { id: 'unlockall', name: 'Unlock All', desc: 'Every weapon is usable this session. Nothing is bought.' },
-    { id: 'a_caps', name: 'Bottlecaps', desc: 'Adds 1,000 Bottlecaps to your account.', action() { Account.award(1000); } },
-    { id: 'give', name: 'Give Weapon', desc: 'Equip any weapon, even ones you have not bought.', type: 'give' },
-    { id: 'a_off', name: 'Disable All', desc: 'Turns every module off at once.', action() { Admin.allOff(); } }] }
+    { id: 'a_caps', name: 'Free Caps', desc: 'Gives you 1,000 Bottlecaps.', action() { Account.award(1000); } },
+    { id: 'give', name: 'Equip', desc: 'Equips any weapon straight into your hands. Pick it in the settings.', type: 'give' }] }
 ];
 const MOD_BY_ID = {}; CHEAT_DEFS.forEach(c => c.mods.forEach(m => { MOD_BY_ID[m.id] = m; }));
-function ccSave() { if (typeof Admin === 'undefined' || !Account.admin) return; Account.saveClient(JSON.parse(JSON.stringify({ on: Cheat.on, v: Cheat.v, ui: Cheat.ui, binds: Cheat.binds, pos: Admin.pos, col: Admin.col }))); }
+Object.assign(Cheat.v, { hitRange: 60, hitBehind: 1, hitBots: 1 });
+Cheat.binds = { fly: 'KeyF', speed: 'KeyV', aimbot: 'KeyZ', esp: 'KeyX', hittp: 'KeyJ', a_tp: 'KeyT' };
+Cheat.friends = []; Cheat.profiles = {};
+Cheat.ui = { scale: 1, op: .86, hdr: 'grad', list: 1, mark: 1, coords: 0, fps: 0, tips: 1, toast: 1, pos: {}, col: {} };
+const isFriend = a => !!a && !a.bot && Cheat.friends.indexOf(String(a.name || '').toLowerCase()) >= 0;
+const keyName = c => !c ? 'None' : c.replace(/^Key|^Digit/, '').replace('Arrow', '').replace('ShiftLeft', 'LShift').replace('ShiftRight', 'RShift').replace('ControlLeft', 'LCtrl').replace('ControlRight', 'RCtrl').replace('AltLeft', 'LAlt').replace('AltRight', 'RAlt').replace('Backquote', '`').replace('Numpad', 'Num ').replace('Bracket', ' [').replace('Semicolon', ';').replace('Quote', "'").replace('Comma', ',').replace('Period', '.').replace('Slash', '/').replace('Minus', '-').replace('Equal', '=').replace('Backslash', '\\');
 
 Cheat.flyMove = function (p, dt, fw, st) {
   const sp = Cheat.v.flySpeed * (Input.down('ShiftLeft') ? 2 : 1), look = lookDir(p.yaw, p.pitch), r = [Math.cos(p.yaw), 0, -Math.sin(p.yaw)];
@@ -2884,7 +2896,7 @@ Cheat.aim = function (p, w, dt) {
   if (!(m === 'always' || (m === 'fire' && (Input.lmb || p.trig)) || (m === 'ads' && Input.rmb))) return;
   const eye = eyePos(p), look = lookDir(p.yaw, p.pitch), half = v.abFov * Math.PI / 360; let best = null, ba = 1e9, bp = null;
   for (const t of Actors) {
-    if (t === p || !t.alive || t.spawnShield > 0 || (t.bot && !v.abBots)) continue;
+    if (t === p || !t.alive || t.spawnShield > 0 || (t.bot && !v.abBots) || isFriend(t)) continue;
     const dist = Math.hypot(t.pos[0] - eye[0], t.pos[2] - eye[2]), head = v.abBone === 'head' || (v.abBone === 'auto' && dist < 45);
     let pt = [t.pos[0], t.pos[1] + (head ? (t.crouch ? 1.25 : 1.72) : (t.crouch ? .75 : 1.15)), t.pos[2]];
     if (w.proj && v.abPredict && w.spd) { const tt = dist2(eye, pt) / w.spd; pt = [pt[0] + t.vel[0] * tt, pt[1] + (w.grav ? .5 * w.grav * tt * tt : 0), pt[2] + t.vel[2] * tt]; }
@@ -2900,8 +2912,8 @@ Cheat.aim = function (p, w, dt) {
 Cheat.trig = function (p, w, dt) {
   if (!w || !p.alive || G.freeze || p.reloadT >= 0) return;
   const eye = eyePos(p), d = lookDir(p.yaw, p.pitch); let hit = false;
-  if (w.melee) { for (const v of Actors) { if (v === p || !v.alive || v.spawnShield > 0) continue; const dx = v.pos[0] - eye[0], dz = v.pos[2] - eye[2], dist = Math.hypot(dx, dz); if (dist < w.rng && (dx * d[0] + dz * d[2]) / (dist || 1) > .85) { hit = true; break; } } }
-  else { const tw = Math.min(w.rng, World.ray(eye, d, w.rng)); for (const v of Actors) { if (v === p || !v.alive || v.spawnShield > 0) continue; const hb = hitBoxes(v); if (rayBox(eye, d, hb.body, tw) < Infinity || rayBox(eye, d, hb.head, tw) < Infinity) { hit = true; break; } } }
+  if (w.melee) { for (const v of Actors) { if (v === p || !v.alive || v.spawnShield > 0 || isFriend(v)) continue; const dx = v.pos[0] - eye[0], dz = v.pos[2] - eye[2], dist = Math.hypot(dx, dz); if (dist < w.rng && (dx * d[0] + dz * d[2]) / (dist || 1) > .85) { hit = true; break; } } }
+  else { const tw = Math.min(w.rng, World.ray(eye, d, w.rng)); for (const v of Actors) { if (v === p || !v.alive || v.spawnShield > 0 || isFriend(v)) continue; const hb = hitBoxes(v); if (rayBox(eye, d, hb.body, tw) < Infinity || rayBox(eye, d, hb.head, tw) < Infinity) { hit = true; break; } } }
   if (hit) { Cheat._tt = (Cheat._tt || 0) + dt; if (Cheat._tt * 1000 >= Cheat.v.trigDelay) { p.trig = true; p.edgeT = .15; } } else Cheat._tt = 0;
 };
 Cheat.tick = function (p, dt) {
@@ -2922,181 +2934,320 @@ Cheat.chams = function () {
 };
 Cheat.apply = function () {
   const on = Cheat.on;
-  // fullbright
   const hl = World.lights && World.lights[0];
   if (hl) { if (hl._i0 === undefined) hl._i0 = hl.intensity; hl.intensity = on.fullbright ? 3 : hl._i0; }
-  // fog
   if (R.scene && R.scene.fog) { if (R.scene.fog._f0 === undefined) R.scene.fog._f0 = R.scene.fog.far; R.scene.fog.far = on.nofog ? 1e5 : R.scene.fog._f0; }
-  // x-ray
   Cheat._xm = Cheat._xm || new Map();
   if (on.xray && World.group) World.group.traverse(o => { if (o.isMesh && o.material && !o.userData.own && !Cheat._xm.has(o.material) && o.material.opacity === 1) { Cheat._xm.set(o.material, [o.material.transparent, o.material.depthWrite]); o.material.transparent = true; o.material.opacity = .28; o.material.depthWrite = false; o.material.needsUpdate = true; } });
   else if (!on.xray && Cheat._xm.size) { Cheat._xm.forEach((v, m) => { m.transparent = v[0]; m.opacity = 1; m.depthWrite = v[1]; m.needsUpdate = true; }); Cheat._xm.clear(); }
   Cheat.chams();
 };
 Cheat.reapply = function () { if (World.lights[0]) World.lights[0]._i0 = undefined; if (R.scene.fog) R.scene.fog._f0 = undefined; Cheat.apply(); };
-/* HitTP: a melee swing jumps you to a target, lands the hit, and puts you straight back */
-function hitTP(a, w) {
-  const v = Cheat.v, o = eyePos(a), look = lookDir(a.yaw, a.pitch); let best = null, bs = 1e9;
-  for (const t of Actors) {
-    if (t === a || !t.alive || t.spawnShield > 0 || (t.bot && !v.hitBots)) continue;
-    const dx = t.pos[0] - a.pos[0], dy = t.pos[1] + 1 - o[1], dz = t.pos[2] - a.pos[2], dist = Math.hypot(dx, dy, dz); if (dist > v.hitRange) continue;
-    const score = v.hitTarget === 'aim' ? Math.acos(clamp((dx * look[0] + dy * look[1] + dz * look[2]) / (dist || 1), -1, 1)) : dist;
-    if (score < bs) { bs = score; best = t; }
-  }
-  if (!best) return false;
-  const hx = a.pos[0], hy = a.pos[1], hz = a.pos[2], dx = best.pos[0] - hx, dz = best.pos[2] - hz, L = Math.hypot(dx, dz) || 1, stand = Math.min(1.1, w.rng * .5);
-  a.pos[0] = best.pos[0] - dx / L * stand; a.pos[1] = best.pos[1]; a.pos[2] = best.pos[2] - dz / L * stand;
-  const dirv = [dx / L, 0, dz / L], vf = lookDir(best.yaw, 0); let dmg = w.dmg; if (w.bs && (vf[0] * dirv[0] + vf[2] * dirv[2]) > .5) dmg *= w.bs;
-  const head = Math.random() < .25; if (head) dmg *= (w.hs || 1.3);
-  const tp = [best.pos[0], best.pos[1] + 1.1, best.pos[2]];
-  dealDamage(best, Math.round(dmg), a, w, head);
-  arc([o[0], o[1] - .3, o[2]], tp, '#ff3347', .06); glow(tp, [0, 0, 0], .25, 1.1, .1, '#ffffff', '#ff3347', 0, 0); glow([o[0], o[1] - .4, o[2]], [0, 0, 0], .25, .9, .1, '#ffffff', '#ff3347', 0, 0);
-  burst(tp, 6, '#ff3b3b', 3, .35, 8, .06); Snd.tone(1300, 260, .12, .25, 'sawtooth'); if (w.id === 'fryingpan') Snd.shot('bonk', 1);
-  a.pos[0] = hx; a.pos[1] = hy; a.pos[2] = hz;   // back where you were, in the same frame
-  return true;
-}
 function giveWeapon(p, w) {
   p.slots[w.slot] = w.id; p.ammo[w.slot] = w.mag || 0; p.heldId = null; p.cur = w.slot; p.reloadT = -1; p.burst = 0; p.cd = .2; setHeld(p); localEquip();
 }
 
+/* ---- HitTP: teleport to the nearest target for the instant of a melee hit, then straight back ---- */
+function hitTpIn(a, w) {
+  const v = Cheat.v, eye = eyePos(a), look = lookDir(a.yaw, a.pitch); let best = null, ba = 1e9;
+  for (const t of Actors) {
+    if (t === a || !t.alive || t.spawnShield > 0 || (t.bot && !v.hitBots) || isFriend(t)) continue;
+    const dx = t.pos[0] - a.pos[0], dy = t.pos[1] + 1 - eye[1], dz = t.pos[2] - a.pos[2], dl = Math.hypot(dx, dy, dz) || 1; if (dl > v.hitRange) continue;
+    const sc = Math.acos(clamp((dx * look[0] + dy * look[1] + dz * look[2]) / dl, -1, 1)) + dl * .002;
+    if (sc < ba) { ba = sc; best = t; }
+  }
+  if (!best) return null;
+  const back = { pos: a.pos.slice(), yaw: a.yaw, vel: a.vel.slice(), at: best.pos.slice() }, off = Math.min(1, (w.rng || 2) * .6), tf = lookDir(best.yaw, 0); let ox, oz;
+  if (v.hitBehind) { ox = -tf[0]; oz = -tf[2]; } else { ox = a.pos[0] - best.pos[0]; oz = a.pos[2] - best.pos[2]; const l = Math.hypot(ox, oz) || 1; ox /= l; oz /= l; }
+  burst([a.pos[0], a.pos[1] + 1, a.pos[2]], 10, '#ff2a2a', 4, .4, 0, .1);
+  a.pos = [best.pos[0] + ox * off, best.pos[1], best.pos[2] + oz * off];
+  a.yaw = Math.atan2(-(best.pos[0] - a.pos[0]), -(best.pos[2] - a.pos[2]));
+  return back;
+}
+function hitTpOut(a, b) {
+  burst([b.at[0], b.at[1] + 1, b.at[2]], 10, '#ff2a2a', 4, .4, 0, .1);
+  a.pos = b.pos; a.yaw = b.yaw; a.vel = b.vel;
+}
+
+const CC_ICONS = {
+  Modules: '<svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>',
+  Config: '<svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></svg>',
+  GUI: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',
+  HUD: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h5"/></svg>',
+  Friends: '<svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M15 15c3 0 6 1.5 6 4"/></svg>',
+  Profiles: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>'
+};
+const CC_TABS = ['Modules', 'Config', 'GUI', 'HUD', 'Friends', 'Profiles'];
+const CC_RESERVED = ['ShiftRight', 'ControlLeft', 'ControlRight', 'Escape', 'Tab', 'Enter', 'Space', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyR', 'KeyQ', 'KeyE', 'KeyC', 'ShiftLeft', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Slash'];
+
 const Admin = {
-  open: false, built: false, view: 'mods', pos: {}, col: {}, openMods: {}, listen: null, q: '',
-  loaded: false,
-  loadSaved() {
-    const d = (Account.profile && Account.profile.rvzClient) || {};
-    Object.assign(Cheat.v, d.v || {}); Object.assign(Cheat.ui, d.ui || {}); if (d.binds) Cheat.binds = d.binds; this.pos = d.pos || {}; this.col = d.col || {};
-    Cheat.on = {}; for (const id of Object.keys(d.on || {})) { const m = MOD_BY_ID[id]; if (d.on[id] && m && !m.action && m.type !== 'give') { Cheat.on[id] = true; if (m.set) m.set(true); } }
-    this.loaded = true; try { Cheat.apply(); } catch (e) { } this.arr();
+  open: false, built: false, tab: 'Modules', openMods: {}, cap: null, saveT: null, state: 'idle', savedOn: null, onApplied: false, query: '', giveId: 'assaultrifle', _ax: 0, _ay: 0, _fps: 60, _t: 0, _hf: 0,
+  DEF: JSON.parse(JSON.stringify({ v: Cheat.v, binds: Cheat.binds, ui: Cheat.ui })),
+  /* ---- account hooks ---- */
+  sync() {
+    document.body.classList.toggle('isadmin', !!Account.admin);
+    if (Account.admin) { if (!this.built) this.build(); if (!this.onApplied) { this.onApplied = true; this.applyOn(this.savedOn || {}); } if (this.open) this.render(); } else this.close(true);
+    this.arr();
   },
-  sync() { document.body.classList.toggle('isadmin', !!Account.admin); if (Account.admin) { if (!this.built) this.build(); if (!this.loaded) this.loadSaved(); } else this.close(true); this.arr(); if (typeof updateAcct === 'function') updateAcct(); },
-  revoked(silent) { this.allOff(true); this.loaded = false; this.close(true); this.arr(); if (!silent) toast('Admin access was removed from this account', 3500); },
-  allOff(quiet) {
-    Object.keys(Cheat.on).forEach(k => { const m = MOD_BY_ID[k]; if (Cheat.on[k] && m && m.set) m.set(false); });
-    Cheat.on = {}; if (G.bigHead) { G.bigHead = false; applyBigHead(); }
-    try { Cheat.apply(); } catch (e) { } if (G.player) { G.player.nograv = false; G.player.noclip = false; }
-    this.arr(); if (this.built) this.render(); ccSave(); if (!quiet) toast('All modules disabled', 1200);
+  revoked(silent) { Cheat.on = {}; this.onApplied = false; if (G.bigHead) { G.bigHead = false; applyBigHead(); } try { Cheat.apply(); } catch (e) { } if (G.player) { G.player.nograv = false; G.player.noclip = false; } this.close(true); this.arr(); if (!silent) toast('Admin access was removed from this account', 3500); },
+  reset() { const d = JSON.parse(JSON.stringify(this.DEF)); Cheat.v = d.v; Cheat.binds = d.binds; Cheat.ui = d.ui; Cheat.friends = []; Cheat.profiles = {}; this.savedOn = null; this.state = 'idle'; this.applyUi(); },
+  load(d) {
+    if (!d && Account.name) d = store.get('client_' + Account.name, null);
+    if (!d || typeof d !== 'object') { this.savedOn = null; return; }
+    if (d.v) Object.assign(Cheat.v, d.v);
+    if (d.binds) Cheat.binds = Object.assign({}, d.binds);
+    if (Array.isArray(d.friends)) Cheat.friends = d.friends.map(s => String(s).toLowerCase()).slice(0, 60);
+    if (d.ui) { const u = d.ui; Object.assign(Cheat.ui, u); Cheat.ui.pos = Object.assign({}, u.pos || {}); Cheat.ui.col = Object.assign({}, u.col || {}); }
+    if (d.profiles && typeof d.profiles === 'object') Cheat.profiles = d.profiles;
+    this.savedOn = d.on || {}; this.applyUi();
   },
+  applyOn(on) { Object.keys(on).forEach(id => { const m = MOD_BY_ID[id]; if (m && !m.action && on[id]) { try { this.setMod(id, true); } catch (e) { console.error(e); } } }); },
+  setAll(on) { Object.keys(Cheat.on).forEach(id => { if (Cheat.on[id] && !on[id]) this.setMod(id, false); }); this.applyOn(on); },
+  snapshot() {
+    const on = {}; Object.keys(Cheat.on).forEach(k => { const m = MOD_BY_ID[k]; if (Cheat.on[k] && m && !m.action) on[k] = 1; });
+    return JSON.parse(JSON.stringify({ ver: 2, on, v: Cheat.v, binds: Cheat.binds, friends: Cheat.friends, ui: Cheat.ui, profiles: Cheat.profiles, t: Date.now() }));
+  },
+  queueSave() { if (!Account.admin || !Account.name) return; this.state = 'saving'; this.stat(); clearTimeout(this.saveT); this.saveT = setTimeout(() => this.flush(), 800); },
+  async flush() {
+    clearTimeout(this.saveT); if (!Account.admin || !Account.name) return; const snap = this.snapshot(); store.set('client_' + Account.name, snap);
+    try { if (!Account.db) throw new Error('offline'); await Account.ref().update({ rvzClient: snap }); this.state = 'saved'; } catch (e) { this.state = 'error'; console.error(e); }
+    this.stat();
+  },
+  stat() { const e = $('ccSync'); if (!e) return; e.textContent = { idle: 'Nothing changed yet', saving: 'Saving to Firebase…', saved: 'Saved to your Firebase account', error: 'Could not reach Firebase (kept on this device)' }[this.state]; e.className = 'cc-sync ' + this.state; },
+  /* ---- open / close ---- */
   toggle() { this.open ? this.close() : this.show(); },
-  show() { if (!Account.admin) return; this.open = true; $('cc').classList.add('on'); if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; this.render(); },
-  close(quiet) { const was = this.open; this.open = false; this.listen = null; $('cc').classList.remove('on'); const tp = $('ccTip'); if (tp) tp.style.display = 'none'; if (was && !quiet && G.running && !G.over) relockMouse(); },
+  show() { if (!Account.admin) return; this.open = true; $('cc').classList.add('on'); this.render(); if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; },
+  close(quiet) { const was = this.open; this.open = false; this.cap = null; $('cc').classList.remove('on'); const t = $('ccTip'); if (t) t.style.display = 'none'; if (was && !quiet && G.running && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } } },
   arr() {
-    const el = $('ccArray'); if (!el) return;
-    const list = !Cheat.ui.arr ? [] : Object.keys(Cheat.on).filter(k => Cheat.on[k] && MOD_BY_ID[k]).map(k => MOD_BY_ID[k].name).sort((a, b) => b.length - a.length || a.localeCompare(b));
-    el.innerHTML = list.map(n => '<div>' + esc(n) + '</div>').join('');
+    const list = Cheat.ui.list && Account.admin ? Object.keys(Cheat.on).filter(k => Cheat.on[k] && MOD_BY_ID[k] && !MOD_BY_ID[k].action).map(k => MOD_BY_ID[k].name).sort((a, b) => b.length - a.length) : [];
+    $('ccArray').innerHTML = list.map(n => '<div>' + esc(n) + '</div>').join('');
   },
-  setMod(id, v) {
-    const m = MOD_BY_ID[id]; Cheat.on[id] = v; if (m && m.set) m.set(v); Cheat.apply();
-    if (G.player && !v && (id === 'fly' || id === 'noclip')) { G.player.nograv = false; G.player.noclip = false; }
-    this.arr(); ccSave();
+  setMod(id, v) { const m = MOD_BY_ID[id]; Cheat.on[id] = v; if (m && m.set) m.set(v); Cheat.apply(); if (G.player && !v && (id === 'fly' || id === 'noclip')) { G.player.nograv = false; G.player.noclip = false; } this.arr(); },
+  fire(id) {
+    const m = MOD_BY_ID[id]; if (!m) return;
+    if (m.action) { m.action(); return; } if (m.type === 'give') { this.doGive(); return; }
+    const v = !Cheat.on[id]; this.setMod(id, v); this.refresh(); if (Cheat.ui.toast && !this.open) toast(m.name + (v ? ' enabled' : ' disabled'), 1100); this.queueSave();
   },
-  run(id, fromBind) {
-    const m = MOD_BY_ID[id]; if (!m || m.type === 'give') return;
-    if (m.action) { m.action(); if (fromBind) toast(m.name, 700); return; }
-    const v = !Cheat.on[id]; this.setMod(id, v); if (fromBind) toast(m.name + (v ? ' enabled' : ' disabled'), 900); if (this.open) this.syncRows();
+  doGive() { if (G.running && G.player) { giveWeapon(G.player, WBY[this.giveId]); toast('Equipped ' + WBY[this.giveId].name); } else toast('Start a match first'); },
+  refresh() { document.querySelectorAll('#cc .cc-m').forEach(b => { b.classList.toggle('on', !!Cheat.on[b.dataset.id]); this.stampBind(b); }); },
+  stampBind(b) { const k = Cheat.binds[b.dataset.id], s = b.querySelector('.bind'); if (s) s.textContent = k ? '[' + keyName(k) + ']' : ''; },
+  byKey(code) { for (const id in Cheat.binds) if (Cheat.binds[id] === code && MOD_BY_ID[id]) return id; return null; },
+  /* ---- bind capture ---- */
+  startCap(id, btn) { this.cap = { id, btn }; btn.textContent = 'Press a key…'; btn.classList.add('cap'); },
+  capKey(e) {
+    e.preventDefault(); e.stopImmediatePropagation(); const c = this.cap; if (!c || e.repeat) return;
+    if (e.code === 'Escape') { this.cap = null; this.render(); return; }
+    if (e.code === 'Backspace' || e.code === 'Delete') delete Cheat.binds[c.id];
+    else if (CC_RESERVED.indexOf(e.code) >= 0) { toast(keyName(e.code) + ' is used by the game. Pick another key.', 1800); return; }
+    else { Object.keys(Cheat.binds).forEach(k => { if (Cheat.binds[k] === e.code) delete Cheat.binds[k]; }); Cheat.binds[c.id] = e.code; }
+    this.cap = null; this.queueSave(); this.render();
   },
-  setBind(id, code) {
-    if (id !== '_gui' && code && code === Cheat.ui.key) { toast(keyName(code) + ' already opens this menu', 1800); return; }
-    for (const k of Object.keys(Cheat.binds)) if (code && Cheat.binds[k] === code && k !== id) delete Cheat.binds[k];
-    if (id === '_gui') Cheat.ui.key = code || 'ShiftRight'; else if (code) Cheat.binds[id] = code; else delete Cheat.binds[id];
-    ccSave(); if (typeof updateAcct === 'function') updateAcct();
-  },
-  syncRows() { document.querySelectorAll('#ccStage .cm').forEach(r => r.classList.toggle('on', !!Cheat.on[r.dataset.id])); },
+  /* ---- UI ---- */
+  applyUi() { const c = $('cc'); if (!c) return; c.style.setProperty('--cs', Cheat.ui.scale); c.style.setProperty('--co', Cheat.ui.op); c.classList.toggle('hsolid', Cheat.ui.hdr === 'solid'); },
   build() {
-    this.built = true;
-    $('cc').innerHTML = '<div id="ccTabs"></div><div id="ccStage"></div><div id="ccTip"></div>';
-    window.addEventListener('mousemove', e => {
-      const d = this._drag; if (!d) return; const s = Cheat.ui.scale;
-      const x = clamp(e.clientX / s - d.dx, -100, window.innerWidth / s - 40), y = clamp(e.clientY / s - d.dy, 0, window.innerHeight / s - 30);
-      d.el.style.left = x + 'px'; d.el.style.top = y + 'px'; this.pos[d.key] = [Math.round(x), Math.round(y)];
-    });
-    window.addEventListener('mouseup', () => { if (this._drag) { this._drag = null; ccSave(); } });
-    window.addEventListener('resize', () => { if (this.open) this.render(); });
-  },
-  tip(m) {
-    const t = $('ccTip'); if (!m || !Cheat.ui.tips) { t.style.display = 'none'; return; }
-    t.innerHTML = '<b>' + esc(m.name) + '</b> ' + esc(m.desc || '') + '<small>' + (m.action ? 'Left click - Run' : 'Left click - Toggle module') + ' · Right click - Open module settings</small>'; t.style.display = 'block';
-  },
-  panel(key, title, body, i) {
-    const s = Cheat.ui.scale, W = window.innerWidth / s, per = Math.max(1, Math.floor((W - 14) / 174)), p = this.pos[key] || [14 + (i % per) * 174, 40 + Math.floor(i / per) * 120];
-    const el = document.createElement('div'); el.className = 'cp' + (this.col[key] ? ' c' : ''); el.style.left = p[0] + 'px'; el.style.top = p[1] + 'px';
-    const h = document.createElement('div'); h.className = 'cp-h'; h.innerHTML = '<span>' + esc(title) + '</span><i>▾</i>'; el.appendChild(h);
-    h.addEventListener('mousedown', e => { if (e.button !== 0) return; const r = el.getBoundingClientRect(); this._drag = { el, key, dx: (e.clientX - r.left) / s, dy: (e.clientY - r.top) / s }; e.preventDefault(); });
-    h.addEventListener('contextmenu', e => { e.preventDefault(); this.col[key] = !this.col[key]; el.classList.toggle('c', !!this.col[key]); ccSave(); });
-    const b = document.createElement('div'); b.className = 'cp-b'; el.appendChild(b); body(b); return el;
-  },
-  bindBtn(id) {
-    const b = document.createElement('button'); const cur = id === '_gui' ? Cheat.ui.key : Cheat.binds[id];
-    b.textContent = this.listen === id ? 'Press a key…' : '[' + keyName(cur) + ']'; if (this.listen === id) b.classList.add('on');
-    b.title = 'Click, then press a key. Backspace clears.'; b.onclick = () => { this.listen = this.listen === id ? null : id; this.render(); };
-    return b;
-  },
-  optRow(o) {
-    const r = document.createElement('div'); r.className = 'co'; const l = document.createElement('span'); l.className = 'l'; l.textContent = o.name; r.appendChild(l);
-    if (o.type === 'sel') { const b = document.createElement('button'); const lab = () => (o.list.find(x => x[0] === Cheat.v[o.id]) || o.list[0])[1]; b.textContent = lab(); b.onclick = () => { const i = o.list.findIndex(x => x[0] === Cheat.v[o.id]); Cheat.v[o.id] = o.list[(i + 1) % o.list.length][0]; b.textContent = lab(); ccSave(); }; r.appendChild(b); }
-    else if (o.type === 'chk') { const b = document.createElement('button'); const lab = () => { b.textContent = Cheat.v[o.id] ? 'ON' : 'OFF'; b.classList.toggle('on', !!Cheat.v[o.id]); }; lab(); b.onclick = () => { Cheat.v[o.id] = Cheat.v[o.id] ? 0 : 1; lab(); ccSave(); }; r.appendChild(b); }
-    else { const i = document.createElement('input'); i.type = 'range'; i.min = o.min; i.max = o.max; i.step = o.step; i.value = Cheat.v[o.id]; const v = document.createElement('span'); v.className = 'v'; const show = () => { v.textContent = (+i.value) + (o.unit || ''); }; show(); i.oninput = () => { Cheat.v[o.id] = +i.value; show(); ccSave(); }; r.appendChild(i); r.appendChild(v); }
-    return r;
-  },
-  modRow(m) {
-    const row = document.createElement('div'); row.dataset.id = m.id; row.className = 'cm' + (Cheat.on[m.id] ? ' on' : '') + (this.openMods[m.id] ? ' open' : '');
-    const h = document.createElement('div'); h.className = 'cm-h'; h.textContent = m.name; row.appendChild(h);
-    h.onclick = () => { if (m.type === 'give') { this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); return; } this.run(m.id); };
-    h.oncontextmenu = e => { e.preventDefault(); this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); };
-    h.onmouseenter = () => this.tip(m); h.onmouseleave = () => this.tip(null);
-    const o = document.createElement('div'); o.className = 'cm-o'; const d = document.createElement('div'); d.className = 'cm-d'; d.textContent = m.desc || ''; o.appendChild(d);
-    if (m.type === 'give') {
-      const r = document.createElement('div'); r.className = 'co'; const sel = document.createElement('select');
-      ['P', 'S', 'M', 'G'].forEach(s => { const g = document.createElement('optgroup'); g.label = SLOT_NAME[s]; WEAPONS.filter(w => w.slot === s).forEach(w => { const op = document.createElement('option'); op.value = w.id; op.textContent = w.name; g.appendChild(op); }); sel.appendChild(g); });
-      const b = document.createElement('button'); b.textContent = 'Equip'; b.onclick = () => { if (G.running && G.player) { giveWeapon(G.player, WBY[sel.value]); toast('Equipped ' + WBY[sel.value].name); } else toast('Start a match first'); };
-      r.appendChild(sel); r.appendChild(b); o.appendChild(r);
-    } else {
-      (m.opts || []).forEach(op => o.appendChild(this.optRow(op)));
-      const br = document.createElement('div'); br.className = 'co'; const l = document.createElement('span'); l.className = 'l'; l.textContent = 'Bind'; br.appendChild(l); br.appendChild(this.bindBtn(m.id)); o.appendChild(br);
-    }
-    row.appendChild(o); return row;
+    this.built = true; const cc = $('cc');
+    cc.innerHTML = '<div class="cc-dim"></div><div class="cc-tabs" id="ccTabs"></div><div id="ccWins"></div><div class="cc-hint"><b>Left click</b> - Toggle module<br><b>Right click</b> - Open module settings<br><b>Right Shift</b> - Close</div><div id="ccTip"></div>';
+    let drag = null;
+    cc.addEventListener('mousedown', e => { const h = e.target.closest && e.target.closest('.cc-wh'); if (!h || e.target.closest('.cc-arr')) return; const w = h.parentNode, r = w.getBoundingClientRect(); drag = { w, dx: e.clientX - r.left, dy: e.clientY - r.top }; w.classList.add('drag'); e.preventDefault(); });
+    window.addEventListener('mousemove', e => { if (!drag) return; drag.w.style.left = clamp(e.clientX - drag.dx, 0, window.innerWidth - 90) + 'px'; drag.w.style.top = clamp(e.clientY - drag.dy, 0, window.innerHeight - 36) + 'px'; });
+    window.addEventListener('mouseup', () => { if (!drag) return; drag.w.classList.remove('drag'); Cheat.ui.pos[drag.w.dataset.id] = [parseInt(drag.w.style.left), parseInt(drag.w.style.top)]; drag = null; this.queueSave(); });
+    this.applyUi();
   },
   render() {
-    if (!this.built) return; const s = Cheat.ui.scale, st = $('ccStage'); st.innerHTML = ''; st.style.transform = 'scale(' + s + ')'; st.style.width = (100 / s) + '%'; st.style.height = (100 / s) + '%';
-    const tabs = $('ccTabs'); tabs.innerHTML = ''; [['mods', 'Modules'], ['set', 'Settings'], ['binds', 'Binds']].forEach(([v, t]) => { const b = document.createElement('button'); b.textContent = t; b.className = this.view === v ? 'on' : ''; b.onclick = () => { this.view = v; this.render(); }; tabs.appendChild(b); });
-    if (this.view === 'mods') {
-      CHEAT_DEFS.forEach((c, i) => st.appendChild(this.panel(c.cat, c.cat, b => c.mods.forEach(m => b.appendChild(this.modRow(m))), i)));
-      st.appendChild(this.panel('Search', 'Search', b => {
-        const inp = document.createElement('input'); inp.className = 'cs'; inp.placeholder = 'Search modules…'; inp.value = this.q; b.appendChild(inp); const res = document.createElement('div'); b.appendChild(res);
-        const fill = () => { res.innerHTML = ''; const q = this.q.trim().toLowerCase(); if (!q) return; Object.values(MOD_BY_ID).filter(m => m.name.toLowerCase().includes(q) || (m.desc || '').toLowerCase().includes(q)).slice(0, 14).forEach(m => res.appendChild(this.modRow(m))); };
-        inp.oninput = () => { this.q = inp.value; fill(); }; fill(); setTimeout(() => { if (this.q) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } }, 0);
-      }, CHEAT_DEFS.length));
-    } else if (this.view === 'set') {
-      st.appendChild(this.panel('GUI', 'GUI', b => {
-        const row = (label, ctl) => { const r = document.createElement('div'); r.className = 'co st'; const l = document.createElement('span'); l.className = 'l'; l.textContent = label; r.appendChild(l); r.appendChild(ctl); b.appendChild(r); };
-        row('GUI key', this.bindBtn('_gui'));
-        const sc = document.createElement('input'); sc.type = 'range'; sc.min = .7; sc.max = 1.5; sc.step = .05; sc.value = Cheat.ui.scale; sc.onchange = () => { Cheat.ui.scale = +sc.value; ccSave(); this.render(); }; row('Scale', sc);
-        const tg = (k) => { const x = document.createElement('button'); const lab = () => { x.textContent = Cheat.ui[k] ? 'ON' : 'OFF'; x.classList.toggle('on', !!Cheat.ui[k]); }; lab(); x.onclick = () => { Cheat.ui[k] = Cheat.ui[k] ? 0 : 1; lab(); ccSave(); this.arr(); }; return x; };
-        row('Arraylist', tg('arr')); row('Tooltips', tg('tips'));
-        const rl = document.createElement('button'); rl.textContent = 'Reset'; rl.onclick = () => { this.pos = {}; this.col = {}; ccSave(); this.render(); }; row('Panel layout', rl);
-        const off = document.createElement('button'); off.textContent = 'Run'; off.onclick = () => this.allOff(); row('Disable all', off);
-        const hint = document.createElement('div'); hint.className = 'cm-d pad'; hint.textContent = 'Left click a module to toggle it. Right click a module to open its settings and bind. Right click a panel title to collapse it. Drag titles to move panels.'; b.appendChild(hint);
-      }, 0));
-    } else {
-      st.appendChild(this.panel('Binds', 'Binds', b => {
-        Object.values(MOD_BY_ID).filter(m => m.type !== 'give').forEach(m => { const r = document.createElement('div'); r.className = 'co st'; const l = document.createElement('span'); l.className = 'l'; l.textContent = m.name; r.appendChild(l); r.appendChild(this.bindBtn(m.id)); b.appendChild(r); });
-        const clr = document.createElement('div'); clr.className = 'co st'; const cb = document.createElement('button'); cb.textContent = 'Clear all binds'; cb.onclick = () => { Cheat.binds = {}; ccSave(); this.render(); }; clr.appendChild(cb); b.appendChild(clr);
-      }, 0));
+    if (!this.built) this.build();
+    const tabs = $('ccTabs'); tabs.innerHTML = '';
+    CC_TABS.forEach(t => { const b = document.createElement('button'); b.className = t === this.tab ? 'on' : ''; b.innerHTML = CC_ICONS[t] + '<span>' + t + '</span>'; b.onclick = () => { this.tab = t; this.cap = null; this.render(); }; tabs.appendChild(b); });
+    $('ccWins').innerHTML = ''; this._ax = 0; this._ay = 0; this._row = 0;
+    const T = this.tab;
+    if (T === 'Modules') { ['Combat', 'Player', 'Movement', 'Render', 'World', 'Misc'].forEach(c => this.win(c, c, b => CHEAT_DEFS.find(d => d.cat === c).mods.forEach(m => b.appendChild(this.modRow(m))))); this.win('Search', 'Search', b => this.searchBody(b)); }
+    else if (T === 'Config') { this.win('Config', 'Config', b => this.configBody(b)); this.win('Binds', 'Binds', b => this.bindsBody(b), 250); }
+    else if (T === 'GUI') this.win('Appearance', 'GUI', b => this.guiBody(b));
+    else if (T === 'HUD') this.win('HUD', 'HUD', b => this.hudBody(b));
+    else if (T === 'Friends') this.win('Friends', 'Friends', b => this.friendsBody(b), 240);
+    else if (T === 'Profiles') this.win('Profiles', 'Profiles', b => this.profilesBody(b), 240);
+    this.stat();
+  },
+  win(id, title, fill, w) {
+    w = w || 196; const el = document.createElement('div'); el.className = 'cc-win' + (Cheat.ui.col[id] ? ' col' : ''); el.dataset.id = id; el.style.width = w + 'px';
+    let pos = Cheat.ui.pos[id];
+    if (!pos) { if (this._ax + w > window.innerWidth / Cheat.ui.scale - 12 && this._ax > 0) { this._ax = 0; this._ay += 340; } pos = [18 + this._ax, 84 + this._ay]; this._ax += w + 12; }
+    el.style.left = clamp(pos[0], 0, Math.max(0, window.innerWidth - 90)) + 'px'; el.style.top = clamp(pos[1], 0, Math.max(0, window.innerHeight - 36)) + 'px';
+    el.innerHTML = '<div class="cc-wh"><span>' + esc(title) + '</span><button class="cc-arr" aria-label="Collapse ' + esc(title) + '"></button></div><div class="cc-wb"></div>';
+    el.querySelector('.cc-arr').onclick = () => { const c = !el.classList.contains('col'); el.classList.toggle('col', c); if (c) Cheat.ui.col[id] = 1; else delete Cheat.ui.col[id]; this.queueSave(); };
+    fill(el.querySelector('.cc-wb')); $('ccWins').appendChild(el);
+  },
+  tip(el, text) {
+    const t = $('ccTip'); el.addEventListener('mouseenter', e => { if (!Cheat.ui.tips || !text) return; t.textContent = text; t.style.display = 'block'; });
+    el.addEventListener('mousemove', e => { t.style.left = Math.min(window.innerWidth - 270, e.clientX + 16) + 'px'; t.style.top = (e.clientY + 18) + 'px'; });
+    el.addEventListener('mouseleave', () => { t.style.display = 'none'; });
+  },
+  modRow(m) {
+    const wrap = document.createElement('div'), b = document.createElement('button'); b.className = 'cc-m' + (Cheat.on[m.id] ? ' on' : ''); b.dataset.id = m.id; b.innerHTML = '<span>' + esc(m.name) + '</span><span class="bind"></span>'; this.stampBind(b);
+    const st = document.createElement('div'); st.className = 'cc-set' + (this.openMods[m.id] ? ' show' : '');
+    b.onclick = () => this.fire(m.id);
+    b.oncontextmenu = e => { e.preventDefault(); this.openMods[m.id] = !this.openMods[m.id]; st.classList.toggle('show', !!this.openMods[m.id]); };
+    this.tip(b, m.desc); this.fillSettings(st, m); wrap.appendChild(b); wrap.appendChild(st); return wrap;
+  },
+  fillSettings(st, m) {
+    const d = document.createElement('div'); d.className = 'cc-d'; d.textContent = m.desc || ''; st.appendChild(d);
+    if (m.type === 'give') {
+      const r = document.createElement('label'); r.className = 'cc-r'; r.innerHTML = '<span>Weapon</span>'; const sel = document.createElement('select');
+      ['P', 'S', 'M', 'G'].forEach(s => { const g = document.createElement('optgroup'); g.label = SLOT_NAME[s]; WEAPONS.filter(w => w.slot === s).forEach(w => { const o = document.createElement('option'); o.value = w.id; o.textContent = w.name; g.appendChild(o); }); sel.appendChild(g); });
+      sel.value = this.giveId; sel.onchange = () => { this.giveId = sel.value; }; r.appendChild(sel); st.appendChild(r);
+      const go = document.createElement('button'); go.className = 'cc-run'; go.textContent = 'Equip now'; go.onclick = () => this.doGive(); st.appendChild(go);
     }
+    (m.opts || []).forEach(o => {
+      const l = document.createElement('label'); l.className = 'cc-r'; const nm = document.createElement('span'); nm.textContent = o.name; l.appendChild(nm);
+      if (o.type === 'sel') { const s = document.createElement('select'); o.list.forEach(([v, t]) => { const op = document.createElement('option'); op.value = v; op.textContent = t; s.appendChild(op); }); s.value = Cheat.v[o.id]; s.onchange = () => { Cheat.v[o.id] = s.value; this.queueSave(); }; l.appendChild(s); }
+      else if (o.type === 'chk') { const c = document.createElement('input'); c.type = 'checkbox'; c.checked = !!Cheat.v[o.id]; c.onchange = () => { Cheat.v[o.id] = c.checked ? 1 : 0; this.queueSave(); }; l.appendChild(c); }
+      else { const r = document.createElement('input'); r.type = 'range'; r.min = o.min; r.max = o.max; r.step = o.step; r.value = Cheat.v[o.id]; const out = document.createElement('output'); const show = () => { out.textContent = (+r.value) + (o.unit || ''); }; show(); r.oninput = () => { Cheat.v[o.id] = +r.value; show(); this.queueSave(); }; l.appendChild(out); l.appendChild(r); }
+      st.appendChild(l);
+    });
+    const br = document.createElement('div'); br.className = 'cc-r'; br.innerHTML = '<span>Bind</span>'; const bb = document.createElement('button'); bb.className = 'cc-key'; bb.textContent = keyName(Cheat.binds[m.id]); bb.onclick = () => this.startCap(m.id, bb); br.appendChild(bb); st.appendChild(br);
+  },
+  searchBody(b) {
+    const inp = document.createElement('input'); inp.className = 'cc-in'; inp.placeholder = 'Search modules…'; inp.value = this.query; inp.setAttribute('aria-label', 'Search modules'); const res = document.createElement('div');
+    const go = () => { this.query = inp.value; const q = inp.value.trim().toLowerCase(); res.innerHTML = ''; if (!q) { res.innerHTML = '<div class="cc-note">Type a module name or what it does.</div>'; return; } let n = 0; CHEAT_DEFS.forEach(c => c.mods.forEach(m => { if (n < 14 && (m.name.toLowerCase().includes(q) || (m.desc || '').toLowerCase().includes(q))) { res.appendChild(this.modRow(m)); n++; } })); if (!n) res.innerHTML = '<div class="cc-note">No module found.</div>'; };
+    inp.oninput = go; b.appendChild(inp); b.appendChild(res); go();
+  },
+  row(b, label, ctl) { const l = document.createElement('label'); l.className = 'cc-r'; const s = document.createElement('span'); s.textContent = label; l.appendChild(s); if (ctl) l.appendChild(ctl); b.appendChild(l); return l; },
+  chk(b, label, obj, key, after) { const c = document.createElement('input'); c.type = 'checkbox'; c.checked = !!obj[key]; c.onchange = () => { obj[key] = c.checked ? 1 : 0; if (after) after(); this.queueSave(); }; this.row(b, label, c); },
+  btn(b, text, fn, cls) { const x = document.createElement('button'); x.className = 'cc-run' + (cls ? ' ' + cls : ''); x.textContent = text; x.onclick = fn; b.appendChild(x); return x; },
+  configBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    pad.innerHTML = '<div class="cc-kv"><span>Open / close menu</span><b>Right Shift</b></div><div class="cc-kv"><span>Lock / unlock mouse</span><b>Ctrl</b></div><div class="cc-kv"><span>Chat</span><b>/</b></div>';
+    this.chk(pad, 'Module tooltips', Cheat.ui, 'tips'); this.chk(pad, 'Toast when a bind toggles', Cheat.ui, 'toast');
+    const s = document.createElement('div'); s.id = 'ccSync'; s.className = 'cc-sync'; pad.appendChild(s);
+    this.btn(pad, 'Save to Firebase now', () => this.flush());
+    this.btn(pad, 'Turn all modules off', () => { this.setAll({}); this.refresh(); this.queueSave(); toast('All modules off', 1200); }, 'ghost');
+    this.btn(pad, 'Reset settings to default', () => { Cheat.v = JSON.parse(JSON.stringify(this.DEF.v)); this.setAll({}); this.queueSave(); this.render(); toast('Module settings reset', 1400); }, 'ghost');
+  },
+  bindsBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    CHEAT_DEFS.forEach(c => c.mods.forEach(m => { const r = document.createElement('div'); r.className = 'cc-r cc-br'; r.innerHTML = '<span>' + esc(m.name) + '</span>'; const k = document.createElement('button'); k.className = 'cc-key'; k.textContent = keyName(Cheat.binds[m.id]); k.onclick = () => this.startCap(m.id, k); r.appendChild(k); pad.appendChild(r); }));
+    const f = document.createElement('div'); f.className = 'cc-note'; f.textContent = 'Click a key, press the new key. Backspace clears it.'; pad.appendChild(f);
+    this.btn(pad, 'Clear all binds', () => { Cheat.binds = {}; this.queueSave(); this.render(); }, 'ghost');
+    this.btn(pad, 'Default binds', () => { Cheat.binds = JSON.parse(JSON.stringify(this.DEF.binds)); this.queueSave(); this.render(); }, 'ghost');
+  },
+  guiBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    const rng = (label, key, min, max, step, fmt) => { const r = document.createElement('input'); r.type = 'range'; r.min = min; r.max = max; r.step = step; r.value = Cheat.ui[key]; const o = document.createElement('output'); o.textContent = fmt(+r.value); r.oninput = () => { Cheat.ui[key] = +r.value; o.textContent = fmt(+r.value); this.applyUi(); this.queueSave(); }; const l = this.row(pad, label, o); l.appendChild(r); };
+    rng('Scale', 'scale', .8, 1.3, .05, v => Math.round(v * 100) + '%'); rng('Opacity', 'op', .5, 1, .02, v => Math.round(v * 100) + '%');
+    const sel = document.createElement('select'); [['grad', 'Red gradient'], ['solid', 'Solid red']].forEach(([v, t]) => { const o = document.createElement('option'); o.value = v; o.textContent = t; sel.appendChild(o); }); sel.value = Cheat.ui.hdr; sel.onchange = () => { Cheat.ui.hdr = sel.value; this.applyUi(); this.queueSave(); }; this.row(pad, 'Headers', sel);
+    this.btn(pad, 'Reset window positions', () => { Cheat.ui.pos = {}; Cheat.ui.col = {}; this.queueSave(); this.render(); }, 'ghost');
+  },
+  hudBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    this.chk(pad, 'Module list', Cheat.ui, 'list', () => this.arr()); this.chk(pad, 'Watermark', Cheat.ui, 'mark'); this.chk(pad, 'FPS', Cheat.ui, 'fps'); this.chk(pad, 'Coordinates', Cheat.ui, 'coords');
+  },
+  friendsBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    const inp = document.createElement('input'); inp.className = 'cc-in'; inp.maxLength = 20; inp.placeholder = 'Player name…'; inp.setAttribute('aria-label', 'Friend name'); pad.appendChild(inp);
+    const add = () => { const n = inp.value.trim().toLowerCase(); if (!n || Cheat.friends.includes(n)) return; if (Cheat.friends.length >= 60) return toast('Friend list is full'); Cheat.friends.push(n); this.queueSave(); this.render(); };
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') add(); }); this.btn(pad, 'Add friend', add);
+    Cheat.friends.forEach(n => { const r = document.createElement('div'); r.className = 'cc-r cc-br'; r.innerHTML = '<span>' + esc(n) + '</span>'; const x = document.createElement('button'); x.className = 'cc-key'; x.textContent = 'Remove'; x.onclick = () => { Cheat.friends = Cheat.friends.filter(f => f !== n); this.queueSave(); this.render(); }; r.appendChild(x); pad.appendChild(r); });
+    const f = document.createElement('div'); f.className = 'cc-note'; f.textContent = 'Friends are skipped by Aimbot, Triggerbot and HitTP, and shown green on ESP.'; pad.appendChild(f);
+  },
+  profilesBody(b) {
+    const pad = document.createElement('div'); pad.className = 'cc-pad'; b.appendChild(pad);
+    const inp = document.createElement('input'); inp.className = 'cc-in'; inp.maxLength = 20; inp.placeholder = 'Profile name…'; inp.setAttribute('aria-label', 'Profile name'); pad.appendChild(inp);
+    const save = () => { const n = inp.value.trim().replace(/[^\w \-]/g, '').slice(0, 20); if (!n) return toast('Type a profile name first'); if (!Cheat.profiles[n] && Object.keys(Cheat.profiles).length >= 12) return toast('Up to 12 profiles'); const s = this.snapshot(); Cheat.profiles[n] = { on: s.on, v: s.v, binds: s.binds }; this.queueSave(); this.render(); toast('Saved profile ' + n, 1400); };
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') save(); }); this.btn(pad, 'Save current setup', save);
+    Object.keys(Cheat.profiles).forEach(n => {
+      const r = document.createElement('div'); r.className = 'cc-r cc-br'; r.innerHTML = '<span>' + esc(n) + '</span>'; const l = document.createElement('button'); l.className = 'cc-key'; l.textContent = 'Load';
+      l.onclick = () => { const p = Cheat.profiles[n]; if (!p) return; Cheat.v = Object.assign(JSON.parse(JSON.stringify(this.DEF.v)), p.v || {}); Cheat.binds = Object.assign({}, p.binds || {}); this.setAll(p.on || {}); this.queueSave(); this.render(); toast('Loaded profile ' + n, 1400); };
+      const x = document.createElement('button'); x.className = 'cc-key'; x.textContent = 'Del'; x.onclick = () => { delete Cheat.profiles[n]; this.queueSave(); this.render(); };
+      const g = document.createElement('span'); g.className = 'cc-pair'; g.appendChild(l); g.appendChild(x); r.appendChild(g); pad.appendChild(r);
+    });
+    const f = document.createElement('div'); f.className = 'cc-note'; f.textContent = 'A profile stores which modules are on, their settings and binds. Saved to your Firebase account.'; pad.appendChild(f);
+  },
+  hudTick() {
+    const el = $('ccHud'), u = Cheat.ui; if (!el) return; const t = performance.now(); if (this._t) this._fps += (1000 / Math.max(1, t - this._t) - this._fps) * .1; this._t = t;
+    if (++this._hf % 10) return; const p = G.player;
+    if (!Account.admin || !(u.mark || u.fps || u.coords)) { el.style.display = 'none'; return; }
+    el.style.display = 'block'; el.innerHTML = (u.mark ? '<b>RIVALZ</b> CLIENT' : '') + (u.fps ? '<span>' + Math.round(this._fps) + ' FPS</span>' : '') + (u.coords && p ? '<span>' + p.pos.map(v => v.toFixed(1)).join(' ') + '</span>' : '');
   }
 };
+window.addEventListener('pagehide', () => { Admin.flush(); });
 window.addEventListener('keydown', e => {
-  const t = e.target, typing = t && (t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox'));
-  if (Admin.listen) {
-    e.preventDefault(); e.stopImmediatePropagation();
-    if (e.code !== 'Escape') Admin.setBind(Admin.listen, ['Backspace', 'Delete'].includes(e.code) ? '' : e.code);
-    Admin.listen = null; Admin.render(); return;
-  }
+  if (Admin.cap) { Admin.capKey(e); return; }
+  const t = e.target, tag = t && t.tagName, typing = tag === 'TEXTAREA' || (tag === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox');
   if (e.code === 'Escape' && Admin.open) { e.stopImmediatePropagation(); Admin.close(); return; }
-  if (typing || !Account.admin || !Account.name) return;
-  if (e.code === Cheat.ui.key && !e.repeat) { e.preventDefault(); Admin.toggle(); return; }
-  if (e.repeat || !G.running || (typeof Chat !== 'undefined' && Chat.open)) return;
-  for (const id of Object.keys(Cheat.binds)) if (Cheat.binds[id] === e.code && MOD_BY_ID[id]) { e.preventDefault(); Admin.run(id, true); return; }
+  if (!Account.admin || !Account.name || e.repeat) return;
+  if (e.code === 'ShiftRight') { e.preventDefault(); if (typing && t.blur) t.blur(); Admin.toggle(); return; }
+  if (typing) return;
+  const id = Admin.byKey(e.code); if (id) { e.preventDefault(); Admin.fire(id); }
 }, true);
+
+/* ===== Roblox-style chat + leave menu. Chat lives in memory only: nothing is stored anywhere. ===== */
+const NAME_COLS = ['#fd2943', '#01a2ff', '#02b857', '#da8541', '#f5cd30', '#a75eb8', '#e8bac8', '#ff7a5c'];
+const nameCol = n => NAME_COLS[hashStr(String(n)) % NAME_COLS.length];
+const Chat = {
+  hidden: false, last: 0,
+  focused() { return document.activeElement === $('chatIn'); },
+  add(name, text, sys) {
+    const log = $('chatLog'), d = document.createElement('div'); d.className = 'cm' + (sys ? ' sys' : ''); d.dataset.t = Date.now();
+    if (!sys) { const b = document.createElement('b'); b.style.color = nameCol(name); b.textContent = name + ': '; d.appendChild(b); d.appendChild(document.createTextNode(text)); } else d.textContent = text;
+    log.appendChild(d); while (log.children.length > 40) log.removeChild(log.firstChild); this.fade();
+  },
+  fade() {
+    const now = Date.now(), f = this.focused(); $('chat').classList.toggle('focus', f);
+    let fresh = f; document.querySelectorAll('#chatLog .cm').forEach(m => { const old = now - (+m.dataset.t) > 14000; m.classList.toggle('old', old); if (!old) fresh = true; });
+    $('chat').classList.toggle('idle', !fresh);
+  },
+  clear() { $('chatLog').innerHTML = ''; $('chatIn').value = ''; },
+  open() { if (!G.running || G.over || this.hidden) return; if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; Input.keys = {}; $('chatIn').focus(); this.fade(); },
+  send() {
+    const inp = $('chatIn'), text = inp.value.replace(/\s+/g, ' ').trim().slice(0, 120); inp.value = '';
+    if (text) {
+      if (Date.now() - this.last < 700) { toast('You are chatting too fast', 1000); } else {
+        this.last = Date.now(); const me = (G.player && G.player.name) || Account.name || 'Player'; this.add(me, text);
+        if (Net.room && Net.db) { try { const r = Net.db.ref(Net.base + '/chat').push({ f: Net.uid, n: me, m: text, t: netNow() }); setTimeout(() => { try { r.remove(); } catch (e) { } }, 5000); } catch (e) { } }
+      }
+    }
+    inp.blur(); if (G.running && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } }
+  },
+  wire() {
+    const inp = $('chatIn');
+    inp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') { e.preventDefault(); this.send(); } else if (e.key === 'Escape') { inp.blur(); } });
+    inp.addEventListener('focus', () => this.fade()); inp.addEventListener('blur', () => this.fade());
+    $('rbxChatBtn').onclick = () => { this.hidden = !this.hidden; $('chat').classList.toggle('hid', this.hidden); $('rbxChatBtn').classList.toggle('off', this.hidden); if (this.hidden && this.focused()) inp.blur(); };
+    setInterval(() => this.fade(), 1000);
+  }
+};
+const RM = {
+  tab: 'players',
+  open() { if (!G.running) return; if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; $('rmConfirm').classList.remove('on'); $('pause').classList.add('on'); this.show(this.tab); },
+  close(relock) { $('pause').classList.remove('on'); $('rmConfirm').classList.remove('on'); if (relock && G.running && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } } },
+  show(t) {
+    this.tab = t; document.querySelectorAll('#rmTabs button').forEach(b => b.classList.toggle('on', b.dataset.rm === t)); $('rmPlayers').hidden = t !== 'players'; $('rmSettings').hidden = t !== 'settings';
+    if (t === 'players') { const box = $('rmPlayers'); box.innerHTML = ''; Actors.slice().sort((a, b) => (b.kills | 0) - (a.kills | 0)).forEach(a => { const r = document.createElement('div'); r.className = 'rmp' + (a.local ? ' me' : ''); const i = document.createElement('i'); i.style.background = a.color || '#888'; const n = document.createElement('div'); n.textContent = a.name || 'Player'; const k = document.createElement('span'); k.textContent = (a.kills | 0) + ' K · ' + (a.deaths | 0) + ' D'; r.append(i, n, k); box.appendChild(r); }); }
+    else { const s = $('rmSens'); s.value = G.sens; }
+  },
+  wire() {
+    document.querySelectorAll('#rmTabs button').forEach(b => { b.onclick = () => this.show(b.dataset.rm); });
+    $('rbxMenuBtn').onclick = () => { $('pause').classList.contains('on') ? this.close(true) : this.open(); };
+    $('btnResume').onclick = () => this.close(true);
+    $('btnQuit').onclick = () => $('rmConfirm').classList.add('on');
+    $('rmNo').onclick = () => $('rmConfirm').classList.remove('on');
+    $('rmYes').onclick = () => { this.close(false); quitToMenu(); };
+    $('rmSens').oninput = e => { G.sens = +e.target.value; store.set('sens', G.sens); $('sens').value = G.sens; };
+    $('pause').addEventListener('mousedown', e => { if (e.target === $('pause')) this.close(true); });
+  }
+};
+/* Ctrl toggles the mouse lock. Escape never pauses the game. */
+window.addEventListener('keydown', e => {
+  if ((e.code === 'ControlLeft' || e.code === 'ControlRight') && !e.repeat) {
+    if (!G.running || G.over || Admin.open || Chat.focused() || $('pause').classList.contains('on')) return;
+    e.preventDefault(); if (document.pointerLockElement) document.exitPointerLock(); else { try { $('view').requestPointerLock(); } catch (er) { } }
+    return;
+  }
+  if ((e.key === '/' || e.code === 'Slash') && !e.repeat && G.running && !G.over && !Admin.open && !Chat.focused() && !$('pause').classList.contains('on') && !(e.target && /INPUT|SELECT|TEXTAREA/.test(e.target.tagName))) { e.preventDefault(); Chat.open(); }
+}, true);
+setInterval(() => {
+  const h = $('lockHint'); if (!h) return;
+  h.classList.toggle('on', !!(G.running && !G.over && !Input.locked && !Admin.open && !Chat.focused() && !$('pause').classList.contains('on')));
+}, 200);
 
 /* ---- overlay canvas: homing lock-on reticle, missile warning, admin ESP ---- */
 let _ov = null, _og = null; const _pv = new THREE.Vector3();
@@ -3105,12 +3256,12 @@ function toScreen(x, y, z, W, H) {
   _pv.applyMatrix4(R.camera.projectionMatrix); return [(_pv.x * .5 + .5) * W, (-_pv.y * .5 + .5) * H];
 }
 function drawOverlay() {
+  Admin.hudTick();
   if (!_ov) { _ov = $('ov'); _og = _ov.getContext('2d'); }
   const W = window.innerWidth, H = window.innerHeight; if (_ov.width !== W || _ov.height !== H) { _ov.width = W; _ov.height = H; }
   const g = _og; g.clearRect(0, 0, W, H); const p = G.player; if (!p) return;
   R.camera.updateMatrixWorld(true); R.camera.matrixWorldInverse.copy(R.camera.matrixWorld).invert();
   $('warn').classList.toggle('on', NOW - Warn.missile < .3 && p.alive);
-  $('lockHint').classList.toggle('on', G.running && !G.over && !Input.locked && !Admin.open && !Chat.open && !menuOpen());
   const w = curW(p), L = p.lk;
   if (L && L.c && L.c.alive && w && w.lock) {
     const s = toScreen(L.c.pos[0], L.c.pos[1] + 1, L.c.pos[2], W, H);
@@ -3118,9 +3269,9 @@ function drawOverlay() {
       const [x, y] = s; g.lineWidth = 3; g.font = '800 15px Nunito, sans-serif'; g.textAlign = 'center';
       if (L.ok) { g.strokeStyle = '#ff4b6e'; g.beginPath(); g.moveTo(x, y - 34); g.lineTo(x + 34, y); g.lineTo(x, y + 34); g.lineTo(x - 34, y); g.closePath(); g.stroke(); g.fillStyle = '#ff4b6e'; g.fillText('LOCKED', x, y + 56); }
       else {
-        const f = clamp(L.t / w.lock, 0, 1), r = 46 - 20 * f; g.strokeStyle = '#ff3347'; g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + TAU * f); g.stroke();
+        const f = clamp(L.t / w.lock, 0, 1), r = 46 - 20 * f; g.strokeStyle = '#ffc83d'; g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + TAU * f); g.stroke();
         g.lineWidth = 2; g.beginPath(); g.moveTo(x - r, y - r + 12); g.lineTo(x - r, y - r); g.lineTo(x - r + 12, y - r); g.moveTo(x + r, y - r + 12); g.lineTo(x + r, y - r); g.lineTo(x + r - 12, y - r); g.moveTo(x - r, y + r - 12); g.lineTo(x - r, y + r); g.lineTo(x - r + 12, y + r); g.moveTo(x + r, y + r - 12); g.lineTo(x + r, y + r); g.lineTo(x + r - 12, y + r); g.stroke();
-        g.fillStyle = '#ff3347'; g.fillText('LOCKING ' + Math.max(0, w.lock - L.t).toFixed(1) + 's', x, y + r + 22);
+        g.fillStyle = '#ffc83d'; g.fillText('LOCKING ' + Math.max(0, w.lock - L.t).toFixed(1) + 's', x, y + r + 22);
       }
     }
   } else if (w && w.lock && p.ads && p.alive) { g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '800 14px Nunito, sans-serif'; g.textAlign = 'center'; g.fillText('Keep aiming at an enemy to lock on', W / 2, H / 2 + 60); }
@@ -3131,70 +3282,12 @@ function drawOverlay() {
     const hb = hitBoxes(a), x0 = hb.body[0], x1 = hb.body[3], z0 = hb.body[2], z1 = hb.body[5], y0 = a.pos[1], y1 = hb.head[4];
     let minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9, n = 0;
     for (const x of [x0, x1]) for (const y of [y0, y1]) for (const z of [z0, z1]) { const s = toScreen(x, y, z, W, H); if (!s) continue; n++; minX = Math.min(minX, s[0]); maxX = Math.max(maxX, s[0]); minY = Math.min(minY, s[1]); maxY = Math.max(maxY, s[1]); }
-    if (n < 4) continue; const col = a.bot ? '#ffb347' : '#ff4b6e';
+    if (n < 4) continue; const col = isFriend(a) ? '#4ee38a' : a.bot ? '#ffb347' : '#ff4b6e';
     if (v.espBoxes) { g.strokeStyle = col; g.strokeRect(minX, minY, maxX - minX, maxY - minY); }
     if (v.espHealth) { const f = clamp(a.hp / 100, 0, 1); g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(minX - 6, minY, 3, maxY - minY); g.fillStyle = f > .5 ? '#4ee38a' : f > .25 ? '#ffc83d' : '#ff4b6e'; g.fillRect(minX - 6, maxY - (maxY - minY) * f, 3, (maxY - minY) * f); }
     if (v.espNames) { g.fillStyle = '#fff'; g.fillText(a.name + ' · ' + Math.round(dist) + 'm', (minX + maxX) / 2, minY - 5); }
     if (v.espTrace) { g.strokeStyle = col + '99'; g.beginPath(); g.moveTo(W / 2, H); g.lineTo((minX + maxX) / 2, maxY); g.stroke(); }
   }
-}
-/* ===== Chat (Roblox-style, never saved), game menu, and Ctrl to lock / unlock the mouse ===== */
-const CHAT_COLS = ['#fd2943', '#01a2ff', '#02b857', '#a75eb8', '#f58225', '#f5cd30', '#e91e8c', '#9ad94b'];
-function relockMouse() { try { const p = $('view').requestPointerLock(); if (p && p.catch) p.catch(() => { }); } catch (e) { } }
-const menuOpen = () => $('pause').classList.contains('on');
-const Chat = {
-  open: false, max: 80, last: 0, idleT: 0,
-  colorFor(n) { let h = 0; for (let i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) | 0; return CHAT_COLS[Math.abs(h) % CHAT_COLS.length]; },
-  push(d) {
-    const log = $('rbLog'); log.appendChild(d); while (log.children.length > this.max) log.removeChild(log.firstChild);
-    log.scrollTop = log.scrollHeight; setTimeout(() => d.classList.add('aged'), 9000); this.poke();
-  },
-  add(name, text) {
-    const d = document.createElement('div'); d.className = 'msg'; const n = document.createElement('span'); n.className = 'n'; n.style.color = this.colorFor(name); n.textContent = '[' + name + ']:';
-    const t = document.createElement('span'); t.textContent = ' ' + text; d.appendChild(n); d.appendChild(t); this.push(d);
-  },
-  sys(text) { const d = document.createElement('div'); d.className = 'msg sys'; d.textContent = text; this.push(d); },
-  poke() { const c = $('rbChat'); c.classList.remove('idle'); clearTimeout(this.idleT); this.idleT = setTimeout(() => { if (!this.open) c.classList.add('idle'); }, 9000); },
-  clear() { $('rbLog').innerHTML = ''; },
-  focus() {
-    if (!G.running || G.over) return; this.open = true; $('rbChat').hidden = false; $('rbChatBtn').classList.add('on');
-    Input.keys = {}; Input.lmb = false; Input.rmb = false; if (document.pointerLockElement) document.exitPointerLock(); $('rbIn').focus(); this.poke();
-  },
-  blur(relock) { this.open = false; $('rbIn').value = ''; $('rbIn').blur(); $('rbChatBtn').classList.toggle('on', !$('rbChat').hidden && false); this.poke(); if (relock && G.running && !G.over) relockMouse(); },
-  send(raw) {
-    const t = String(raw || '').replace(/\s+/g, ' ').trim().slice(0, 160); if (!t) return;
-    const now = performance.now(); if (now - this.last < 700) { this.sys('You are chatting too fast.'); return; } this.last = now;
-    this.add(Account.name, t);
-    if (G.mode === 'live' && Net.room) { try { const r = Net.db.ref(Net.base + '/chat').push({ f: Net.uid, n: Account.name, m: t, t: netNow() }); setTimeout(() => { try { r.remove(); } catch (e) { } }, 6000); } catch (e) { } }
-  }
-};
-function openMenu() { if (!G.running || G.over) return; Chat.blur(false); $('rbMain').hidden = false; $('rbConfirm').hidden = true; $('pause').classList.add('on'); if (document.pointerLockElement) document.exitPointerLock(); Input.keys = {}; }
-function closeMenu(relock) { $('pause').classList.remove('on'); if (relock && G.running && !G.over) relockMouse(); }
-function wireChat() {
-  $('rbIn').addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); Chat.send($('rbIn').value); Chat.blur(true); }
-    else if (e.key === 'Escape') { e.preventDefault(); Chat.blur(true); }
-  });
-  $('rbChatBtn').onclick = () => { const c = $('rbChat'); c.hidden = !c.hidden; $('rbChatBtn').classList.toggle('on', !c.hidden); if (!c.hidden) { Chat.focus(); } };
-  $('rbChatBtn').classList.add('on');
-  $('rbMenuBtn').onclick = () => (menuOpen() ? closeMenu(true) : openMenu());
-  $('rbX').onclick = () => closeMenu(true); $('btnResume').onclick = () => closeMenu(true);
-  $('btnQuit').onclick = () => { $('rbMain').hidden = true; $('rbConfirm').hidden = false; };
-  $('btnLeaveNo').onclick = () => { $('rbMain').hidden = false; $('rbConfirm').hidden = true; };
-  $('btnLeaveYes').onclick = () => { closeMenu(false); quitToMenu(); };
-  window.addEventListener('keydown', e => {
-    if (!Account.name || !G.running || G.over) return;
-    if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
-      if (e.repeat) return;
-      if (Chat.open) Chat.blur(true); else if (Admin.open) Admin.close(); else if (menuOpen()) closeMenu(true);
-      else if (document.pointerLockElement) document.exitPointerLock(); else relockMouse();
-      return;
-    }
-    const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
-    if (e.ctrlKey || e.metaKey || e.altKey) return;
-    if (e.code === 'Slash' || e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); if (!Admin.open && !menuOpen()) Chat.focus(); }
-    else if (e.code === 'KeyM' && !e.repeat && !Admin.open) { if (menuOpen()) closeMenu(true); else openMenu(); }
-  }, true);
 }
 
 /* ===== Easter eggs + boot ===== */
@@ -3326,7 +3419,7 @@ setInterval(() => { if (G.bigHead) applyBigHead(); }, 1500);
 function boot() {
   try {
     if (typeof THREE === 'undefined') throw new Error('Three.js could not be loaded. Check your connection and reload.');
-    initRenderer(); initFX(); VM.init(); wireUI(); wireNet(); wireAuth(); wireChat();
+    initRenderer(); initFX(); VM.init(); wireUI(); wireNet(); wireAuth();
     let lc = 0, lt = 0;
     $('logo').onclick = () => { const n = Date.now(); if (n - lt > 4000) lc = 0; lt = n; lc++; if (lc >= 7) { lc = 0; $('logo').classList.remove('spin'); void $('logo').offsetWidth; $('logo').classList.add('spin'); Snd.init(); foundSecret('logo'); } };
     eggsBuild(); requestAnimationFrame(loop); $('menu').inert = true; $('menu').style.visibility = 'hidden'; Account.boot().then(() => $('loading').classList.add('off'), () => $('loading').classList.add('off'));
