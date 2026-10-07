@@ -7,8 +7,8 @@
 <style>
 /* Layout: full-screen 3D canvas; menu is a left-aligned slab over a dimmed live map; HUD is minimal corners. */
 :root{
-  --bg:#0c1022; --panel:#151b36; --panel2:#1d2547; --line:#2d386b;
-  --ink:#f3f6ff; --mute:#9aa6d6; --accent:#ffc83d; --hot:#ff4b6e; --cool:#38d0ff; --ok:#4ee38a;
+  --bg:#0a0406; --panel:#150a0e; --panel2:#231016; --line:#4b1b25;
+  --ink:#fff1f3; --mute:#c99aa4; --accent:#ff3347; --hot:#ff7b6b; --cool:#ff6b7c; --ok:#4ee38a;
   --display:"Lilita One","Arial Black",system-ui,sans-serif;
   --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:dark;
@@ -19,26 +19,26 @@ body{padding-inline:0}
 #stage{position:fixed;inset:0}
 canvas#view{width:100%;height:100%;display:block;outline:none}
 button{font-family:var(--display);font-size:1rem;letter-spacing:.03em;border:0;border-radius:10px;padding:.7em 1.1em;background:var(--panel2);color:var(--ink);cursor:pointer;transition:transform .08s,background .15s}
-button:hover{background:#2a3566}
+button:hover{background:#652b33}
 button:active{transform:translateY(2px)}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--cool);outline-offset:2px}
-button.primary{background:var(--accent);color:#2a1d00;box-shadow:0 4px 0 #b88a00}
-button.primary:hover{background:#ffd75e}
+button.primary{background:var(--accent);color:#290104;box-shadow:0 4px 0 #b30513}
+button.primary:hover{background:#fb626f}
 button.hot{background:var(--hot);color:#fff;box-shadow:0 4px 0 #a82342}
-button.cool{background:var(--cool);color:#00232e;box-shadow:0 4px 0 #1b8aae}
-input,select{font:inherit;color:var(--ink);background:#0d1230;border:2px solid var(--line);border-radius:8px;padding:.55em .7em;min-width:0}
+button.cool{background:var(--cool);color:#2d0107;box-shadow:0 4px 0 #aa1f31}
+input,select{font:inherit;color:var(--ink);background:#2f0e12;border:2px solid var(--line);border-radius:8px;padding:.55em .7em;min-width:0}
 label.f{display:flex;flex-direction:column;gap:.3rem;font-size:.78rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
 
 /* Menu */
-#menu{position:fixed;inset:0;display:flex;background:linear-gradient(90deg,rgba(8,11,28,.96) 0%,rgba(8,11,28,.86) 52%,rgba(8,11,28,.35) 100%);z-index:10;overflow:auto}
+#menu{position:fixed;inset:0;display:flex;background:linear-gradient(90deg,rgba(27,9,11,.96) 0%,rgba(27,9,11,.86) 52%,rgba(27,9,11,.35) 100%);z-index:10;overflow:auto}
 #menuIn{width:min(920px,100%);padding:clamp(16px,3vw,36px);display:flex;flex-direction:column;gap:1.1rem;min-width:0}
-#logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4.4rem);line-height:.9;margin:0;color:var(--accent);text-shadow:0 5px 0 #8a5a00,0 10px 24px rgba(0,0,0,.5);cursor:pointer;width:max-content;max-width:100%;transform:rotate(-2deg);transition:transform .2s}
+#logo{font-family:var(--display);font-size:clamp(2.4rem,7vw,4.4rem);line-height:.9;margin:0;color:var(--accent);text-shadow:0 5px 0 #87030e,0 10px 24px rgba(0,0,0,.5);cursor:pointer;width:max-content;max-width:100%;transform:rotate(-2deg);transition:transform .2s}
 #logo small{display:block;font-size:.3em;color:var(--cool);letter-spacing:.35em;text-shadow:none;margin-top:.5em}
 #logo.spin{animation:spin 1s}
 @keyframes spin{to{transform:rotate(358deg) scale(1.1)}}
 nav#tabs{display:flex;gap:.5rem;flex-wrap:wrap}
 nav#tabs button{background:transparent;border:2px solid var(--line);color:var(--mute)}
-nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#00232e}
+nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#2d0107}
 .tab{display:none;flex-direction:column;gap:1rem;min-width:0}
 .tab.on{display:flex}
 .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-end}
@@ -56,7 +56,7 @@ nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#00232e
 .mapc.on{border-color:var(--accent)}
 .armory{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
 @media(max-width:760px){.armory{grid-template-columns:1fr}}
-#wprev{width:100%;aspect-ratio:16/10;border-radius:14px;background:radial-gradient(circle at 50% 40%,#2a3566,#0d1230);display:block}
+#wprev{width:100%;aspect-ratio:16/10;border-radius:14px;background:radial-gradient(circle at 50% 40%,#652b33,#2f0e12);display:block}
 #wstats{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.85rem;margin-top:.6rem}
 #wstats i{font-style:normal;color:var(--mute)}
 .slots3{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -67,7 +67,7 @@ nav#tabs button.on{background:var(--cool);border-color:var(--cool);color:#00232e
 #wlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.4rem;max-height:340px;overflow:auto;padding-right:.3rem}
 .wi{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:.4rem .5rem;text-align:left;font-family:var(--body);font-size:.82rem;box-shadow:none;font-weight:800}
 .wi.sel{border-color:var(--cool)}
-.wi.eq{background:#26346b}
+.wi.eq{background:#692830}
 #secretList{display:grid;gap:.5rem}
 .sec{display:flex;gap:.8rem;align-items:center;background:var(--panel);border:2px dashed var(--line);border-radius:12px;padding:.7rem .9rem}
 .sec.got{border-style:solid;border-color:var(--ok)}
@@ -112,32 +112,32 @@ kbd{background:var(--panel2);border:1px solid var(--line);border-bottom-width:3p
 #ammo small{font-size:1.2rem;color:var(--mute)}
 #wname{font-family:var(--display);color:var(--accent);font-size:1.1rem;text-shadow:0 2px 0 rgba(0,0,0,.6)}
 #slots{display:flex;gap:.4rem}
-#slots div{background:rgba(10,14,34,.7);border:2px solid rgba(255,255,255,.18);border-radius:8px;padding:.2rem .6rem;font-size:.78rem;min-width:84px;text-align:center}
+#slots div{background:rgba(33,11,14,.7);border:2px solid rgba(255,255,255,.18);border-radius:8px;padding:.2rem .6rem;font-size:.78rem;min-width:84px;text-align:center}
 #slots div.on{border-color:var(--accent);color:var(--accent)}
 #topInfo{left:50%;top:14px;transform:translateX(-50%);align-items:center;text-shadow:0 2px 0 rgba(0,0,0,.6)}
-#modeTxt{font-family:var(--display);font-size:1.3rem;background:rgba(10,14,34,.7);padding:.2rem 1rem;border-radius:99px}
+#modeTxt{font-family:var(--display);font-size:1.3rem;background:rgba(33,11,14,.7);padding:.2rem 1rem;border-radius:99px}
 #scoreTxt{font-size:.9rem;color:var(--mute)}
 #killfeed{right:16px;top:14px;align-items:flex-end}
-#killfeed div{background:rgba(10,14,34,.75);padding:.25rem .7rem;border-radius:8px;font-size:.85rem;animation:kf 5s forwards}
+#killfeed div{background:rgba(33,11,14,.75);padding:.25rem .7rem;border-radius:8px;font-size:.85rem;animation:kf 5s forwards}
 #killfeed b{color:var(--accent)}
 @keyframes kf{0%,85%{opacity:1}100%{opacity:0}}
 #banner{position:absolute;left:0;right:0;top:22%;text-align:center;font-family:var(--display);font-size:clamp(2rem,6vw,4.5rem);text-shadow:0 5px 0 rgba(0,0,0,.55);opacity:0;transition:opacity .4s}
 #banner.on{opacity:1}
 #prompt{position:absolute;left:0;right:0;bottom:24%;text-align:center;font-family:var(--display);font-size:1.2rem;text-shadow:0 2px 0 #000;opacity:0}
 #prompt.on{opacity:1}
-#toast{position:absolute;left:50%;top:78px;transform:translateX(-50%);background:var(--accent);color:#2a1d00;font-family:var(--display);padding:.5rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+#toast{position:absolute;left:50%;top:78px;transform:translateX(-50%);background:var(--accent);color:#290104;font-family:var(--display);padding:.5rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 #toast.on{opacity:1}
-#board{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(5,8,22,.55);pointer-events:none}
+#board{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(22,5,8,.55);pointer-events:none}
 #board.on{display:flex}
 #board table{background:var(--panel);border-radius:14px;border:2px solid var(--line);padding:.6rem;min-width:min(520px,92vw);border-collapse:separate;border-spacing:0 .2rem}
 #board th{font-family:var(--display);font-weight:400;color:var(--mute);text-align:left;padding:.3rem .8rem}
 #board td{padding:.35rem .8rem;background:var(--panel2)}
-#board tr.me td{background:#34428a}
+#board tr.me td{background:#883641}
 #board td:first-child{border-radius:8px 0 0 8px}#board td:last-child{border-radius:0 8px 8px 0}
-#pause{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(5,8,22,.82)}
+#pause{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(22,5,8,.82)}
 #pause.on{display:flex}
 #pause h2{font-family:var(--display);font-weight:400;font-size:2.6rem;margin:0}
-#end{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(5,8,22,.88);text-align:center;padding:16px}
+#end{position:fixed;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:rgba(22,5,8,.88);text-align:center;padding:16px}
 #end.on{display:flex}
 #end h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,7vw,4rem);margin:0;color:var(--accent)}
 #loading{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:var(--bg);font-family:var(--display);font-size:1.6rem;flex-direction:column;gap:.5rem;text-align:center;padding:16px}
@@ -174,39 +174,86 @@ button.slim{padding:.3em .8em;font-size:.85rem;background:transparent;border:2px
 #warn{position:absolute;left:0;right:0;top:27%;text-align:center;font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.2rem);color:var(--hot);text-shadow:0 3px 0 rgba(0,0,0,.75);opacity:0}
 #warn.on{opacity:1;animation:blink .4s steps(2) infinite}
 @keyframes blink{50%{opacity:.25}}
-#ccArray{position:absolute;left:14px;top:14px;display:flex;flex-direction:column;gap:2px;font:700 13px/1.2 "Chakra Petch",ui-monospace,Menlo,monospace;text-shadow:0 1px 0 rgba(0,0,0,.8);pointer-events:none}
-#ccArray div{padding:1px 8px;border-left:3px solid #c04bff;background:rgba(14,8,26,.55);color:#e9d5ff}
-/* hack client window */
-#cc{position:fixed;inset:0;z-index:40;display:none;pointer-events:none}
+#ccArray{position:absolute;right:16px;top:210px;display:flex;flex-direction:column;align-items:flex-end;gap:1px;font:700 13px/1.25 "Chakra Petch",ui-monospace,Menlo,monospace;text-shadow:0 1px 0 rgba(0,0,0,.9);pointer-events:none}
+#ccArray div{padding:1px 8px;border-right:3px solid #ff3347;background:rgba(10,3,5,.6);color:#ffd5da}
+/* Meteor-style admin client */
+#cc{position:fixed;inset:0;z-index:40;display:none;background:rgba(14,0,3,.5);font:500 13px/1.3 "Chakra Petch",ui-monospace,Menlo,monospace;color:#fff;user-select:none;overflow:hidden}
 #cc.on{display:block}
-.cc-win{pointer-events:auto;position:absolute;top:8vh;left:calc(50% - 300px);width:min(600px,96vw);height:min(560px,80vh);display:flex;flex-direction:column;background:rgba(14,9,26,.93);border:1px solid #5b2a8c;border-radius:6px;box-shadow:0 0 0 1px rgba(255,61,181,.18),0 18px 60px rgba(0,0,0,.65);font:500 13px/1.35 "Chakra Petch",ui-monospace,Menlo,monospace;color:#e9ddff;user-select:none}
-.cc-bar{display:flex;align-items:center;gap:.7rem;padding:.55rem .8rem;border-bottom:1px solid #3d1d63;background:linear-gradient(90deg,#2a0f4a,#14091f);cursor:move;border-radius:6px 6px 0 0}
-.cc-brand{font-weight:700;font-size:1.05rem;letter-spacing:.14em;color:#fff}.cc-brand b{color:#ff3db5;margin-left:.35em}
-.cc-ver{margin-left:auto;color:#9b7cc4;font-size:.78rem}
-.cc-x{padding:0 .5em;font:700 1.3rem/1.2 "Chakra Petch",sans-serif;background:transparent;color:#c9a8f0;border-radius:4px;box-shadow:none}.cc-x:hover{background:#ff3db5;color:#fff}
-.cc-main{flex:1;display:flex;min-height:0}
-.cc-cats{display:flex;flex-direction:column;gap:2px;padding:.5rem;width:116px;border-right:1px solid #3d1d63;background:rgba(0,0,0,.25)}
-.cc-cats button{font:600 .9rem "Chakra Petch",sans-serif;text-align:left;background:transparent;color:#a78bd0;padding:.5em .7em;border-radius:3px;box-shadow:none;letter-spacing:.04em}
-.cc-cats button:hover{background:#27123f;color:#fff}.cc-cats button.on{background:#3b1766;color:#fff;box-shadow:inset 3px 0 0 #ff3db5}
-.cc-mods{flex:1;overflow:auto;padding:.5rem;display:flex;flex-direction:column;gap:5px}
-.cc-mod{background:rgba(255,255,255,.035);border:1px solid #2f1650;border-left:3px solid #3d1d63;border-radius:3px}
-.cc-mod.on{border-left-color:#ff3db5;background:linear-gradient(90deg,rgba(255,61,181,.13),rgba(255,255,255,.03))}
-.cc-head{display:flex}
-.cc-tog{flex:1;display:flex;justify-content:space-between;align-items:center;gap:.6rem;font:600 .92rem "Chakra Petch",sans-serif;background:transparent;color:inherit;text-align:left;padding:.5em .7em;box-shadow:none;border-radius:0;letter-spacing:.02em}
-.cc-tog:hover{background:rgba(255,255,255,.05)}
-.cc-state{font-size:.72rem;color:#8c6cb8;letter-spacing:.1em}.cc-mod.on .cc-state{color:#ff7ad0}
-.cc-gear{padding:0 .8em;background:transparent;color:#a78bd0;font:700 1.1rem "Chakra Petch",sans-serif;box-shadow:none;border-radius:0;border-left:1px solid #2f1650}.cc-gear:hover{color:#fff}
-.cc-desc{padding:0 .7em .5em;color:#8f78b3;font-size:.76rem}
-.cc-opts{display:none;flex-direction:column;gap:.4rem;padding:.4rem .7em .6em;border-top:1px dashed #2f1650}.cc-opts.show{display:flex}
-.cc-opt{display:grid;grid-template-columns:110px 1fr 56px;gap:.6rem;align-items:center;font-size:.8rem;color:#c9b6e6}
-.cc-opt output{text-align:right;color:#ff7ad0}
-.cc-opt select{grid-column:2/4;font:600 .8rem "Chakra Petch",sans-serif;background:#0d0716;border:1px solid #4a2377;color:#e9ddff;border-radius:3px;padding:.3em .4em}
-.cc-opt input[type=checkbox]{justify-self:start;accent-color:#ff3db5;width:16px;height:16px}
-.cc-opt input[type=range]{accent-color:#ff3db5;min-width:0;padding:0;background:none;border:0}
-.cc-run{font:700 .85rem "Chakra Petch",sans-serif;background:#ff3db5;color:#1a0714;border-radius:3px;padding:.45em;box-shadow:none}.cc-run:hover{background:#ff6cc9}
-.cc-foot{padding:.4rem .8rem;border-top:1px solid #3d1d63;color:#8f78b3;font-size:.72rem}
-@media (max-width:640px){.cc-win{left:2vw}.cc-opt{grid-template-columns:90px 1fr 48px}}
-@media (prefers-reduced-motion:reduce){.cap-pop{animation-duration:.01s}#warn.on{animation:none}}
+#ccTabs{position:absolute;left:50%;top:0;transform:translateX(-50%);display:flex;gap:2px;background:rgba(8,2,3,.9);border:1px solid #4b1b25;border-top:0;border-radius:0 0 6px 6px;padding:3px 6px;z-index:2}
+#ccTabs button{font:600 12px "Chakra Petch",sans-serif;background:transparent;color:#d8aab2;padding:2px 10px;border-radius:3px;box-shadow:none;letter-spacing:.03em}
+#ccTabs button:hover{color:#fff;background:transparent}#ccTabs button.on{color:#fff;background:#8f0f1e}
+#ccStage{position:absolute;left:0;top:0;transform-origin:0 0}
+.cp{position:absolute;width:168px;background:rgba(14,5,7,.94);border:1px solid #3a1219;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.5);overflow:hidden;max-height:calc(100vh - 56px);display:flex;flex-direction:column}
+.cp-h{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;font:700 13px "Chakra Petch",sans-serif;letter-spacing:.04em;background:linear-gradient(180deg,#e0213a,#8a0c1b);cursor:move;text-shadow:0 1px 0 rgba(0,0,0,.4)}
+.cp-h i{font-style:normal;font-size:.75em;opacity:.85;transition:transform .15s}.cp.c .cp-h i{transform:rotate(-90deg)}
+.cp-b{overflow:auto;scrollbar-width:thin;scrollbar-color:#5a1620 transparent}.cp.c .cp-b{display:none}
+.cm-h{padding:3px 8px;cursor:pointer;font-size:13px;color:#f0d9dc;border-left:3px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm-h:hover{background:rgba(255,255,255,.08)}
+.cm.on .cm-h{color:#fff;font-weight:700;border-left-color:#ff3347;background:linear-gradient(90deg,rgba(255,51,71,.45),rgba(255,51,71,.1))}
+.cm-o{display:none;background:rgba(0,0,0,.4);padding:4px 8px 6px;border-left:3px solid #4b1b25}.cm.open .cm-o{display:block}
+.cm-d{font-size:11px;color:#b98d95;margin-bottom:4px;line-height:1.3;white-space:normal}.cm-d.pad{padding:6px 8px 8px}
+.co{display:flex;justify-content:space-between;align-items:center;gap:6px;min-height:21px;font-size:12px;color:#e8c9ce}
+.co.st{padding:2px 8px}.co .l{flex:none}
+.co button{font:600 11px "Chakra Petch",sans-serif;padding:1px 7px;border-radius:3px;background:#2a1117;color:#fff;box-shadow:none;max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:0}
+.co button:hover{background:#4a1822}.co button.on{background:#c4172b}
+.co input[type=range]{width:70px;accent-color:#ff3347;min-width:0;padding:0;background:none;border:0;height:14px}
+.co .v{min-width:34px;text-align:right;color:#ff8a98;font-size:11px}
+.co select{font:600 11px "Chakra Petch",sans-serif;background:#1a0a0e;border:1px solid #4b1b25;color:#fff;border-radius:3px;max-width:96px;padding:1px}
+.cs{width:calc(100% - 12px);margin:6px;font:500 12px "Chakra Petch",sans-serif;background:#0a0305;border:1px solid #4b1b25;color:#fff;border-radius:3px;padding:3px 6px}
+#ccTip{position:absolute;left:8px;bottom:8px;max-width:min(560px,80vw);font:500 12px/1.4 "Chakra Petch",sans-serif;color:#fff;text-shadow:0 1px 0 #000;pointer-events:none;display:none;background:rgba(8,2,3,.85);padding:5px 10px;border-radius:4px;border-left:3px solid #ff3347}
+#ccTip b{color:#ff8a98}#ccTip small{display:block;color:#b98d95}
+@media (prefers-reduced-motion:reduce){.cap-pop{animation-duration:.01s}#warn.on{animation:none}.cp-h i{transition:none}}
+
+/* ===== Roblox-style chat, game menu, mouse-lock hint ===== */
+#rb{position:absolute;left:10px;top:10px;width:min(360px,62vw);display:flex;flex-direction:column;gap:8px;pointer-events:none;font-family:"Nunito","Source Sans 3",system-ui,sans-serif}
+#rb *{pointer-events:auto}
+#rbBar{display:flex;gap:8px}
+#rbBar button{width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:8px;background:rgba(30,31,34,.72);box-shadow:none;color:#fff;border:1px solid rgba(255,255,255,.08)}
+#rbBar button:hover{background:rgba(72,74,80,.85)}#rbBar button.on{background:rgba(255,255,255,.92);color:#111}
+#rbBar svg{width:22px;height:22px}
+#rbChat{border-radius:8px;background:rgba(18,19,21,.5);overflow:hidden;transition:background .3s}
+#rbChat[hidden]{display:none}
+#rbLog{height:150px;overflow-y:auto;padding:6px 10px;display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent;user-select:text}
+#rbLog:before{content:"";margin-top:auto}
+.msg{font:700 14px/1.35 "Nunito","Source Sans 3",system-ui,sans-serif;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.9);word-break:break-word;transition:opacity .6s;padding:1px 0}
+.msg .n{font-weight:800}
+.msg.sys{color:#ffb0b8}
+#rbChat.idle:not(:hover):not(:focus-within){background:transparent}
+#rbChat.idle:not(:hover):not(:focus-within) .msg.aged{opacity:0}
+#rbIn{display:block;width:100%;border:0;border-radius:0;background:rgba(10,10,12,.6);color:#fff;font:700 14px "Nunito",system-ui,sans-serif;padding:9px 12px}
+#rbIn::placeholder{color:rgba(255,255,255,.55)}
+#rbIn:focus,#rbIn:focus-visible{background:rgba(10,10,12,.88);outline:2px solid rgba(255,255,255,.85);outline-offset:-2px}
+#pause{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);font-family:"Nunito",system-ui,sans-serif}
+#pause.on{display:flex}
+.rbp{width:min(440px,92vw);background:#232527;border-radius:10px;color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6);overflow:hidden}
+.rbp[hidden]{display:none}
+.rbp-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #393b3d;font:800 1.1rem "Nunito",sans-serif}
+.rbp-h button{padding:0 .5em;font:700 1.4rem/1.2 "Nunito",sans-serif;background:transparent;color:#bdbebe;box-shadow:none;border-radius:6px}.rbp-h button:hover{background:#393b3d;color:#fff}
+.rbp-b{padding:18px 16px;color:#bdbebe;font-size:.92rem;line-height:1.5}
+.rbp-f{display:flex;gap:10px;padding:0 16px 16px}
+.rbp-f button{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;height:48px;padding:0 .8em;border:1px solid rgba(255,255,255,.8);background:transparent;color:#fff;font:800 1rem "Nunito",sans-serif;letter-spacing:0;border-radius:8px;box-shadow:none}
+.rbp-f button:hover{background:rgba(255,255,255,.14)}
+.rbp-f button.leave{border-color:#ff5560;color:#ff7983}.rbp-f button.leave:hover{background:rgba(255,85,96,.15)}
+.rbp-f button.yes{background:#e5303f;border-color:#e5303f;color:#fff}.rbp-f button.yes:hover{background:#ff4352}
+.rbp .k{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border:1px solid currentColor;border-radius:5px;font-size:.72rem;opacity:.8}
+#lockHint{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);display:none;background:rgba(18,19,21,.82);color:#fff;font:800 .92rem "Nunito",sans-serif;padding:.45rem 1rem;border-radius:99px;pointer-events:none;white-space:nowrap}
+#lockHint.on{display:block}
+#lockHint kbd{background:#3a3c40;border-radius:4px;padding:0 .4em;margin:0 .15em}
+
+/* ===== Red / black theme overrides ===== */
+button.primary,.primary{background:linear-gradient(180deg,#ff4658,#cf1a2e);color:#fff;box-shadow:0 4px 0 #6c0b18}
+button.primary:hover{background:linear-gradient(180deg,#ff6272,#e32439)}
+button.cool{background:linear-gradient(180deg,#ff6b7c,#e0293e);color:#fff;box-shadow:0 4px 0 #7a0e1c}
+button.hot{background:linear-gradient(180deg,#ff6a5c,#d83a2c);color:#fff;box-shadow:0 4px 0 #7d1f17}
+#toast{color:#fff;background:linear-gradient(90deg,#ff3347,#a3101f)}
+#menu{background:linear-gradient(100deg,rgba(6,2,3,.97) 0%,rgba(34,6,11,.9) 55%,rgba(74,9,20,.42) 100%)}
+#auth{background:radial-gradient(ellipse at 50% 38%,rgba(70,10,20,.78),rgba(6,2,3,.97) 72%)}
+#logo,.alogo{background:linear-gradient(180deg,#ff7a88 0%,#e8213a 52%,#9a0f20 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 5px 0 #4a0710) drop-shadow(0 10px 16px rgba(0,0,0,.6))}
+#logo small,.alogo small{color:#ff8a98;text-shadow:none}
+nav#tabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-color:#ff4658;color:#fff}
+.atabs button.on{background:linear-gradient(180deg,#ff4658,#b8172b);border-color:#ff4658;color:#fff}
+#acct .capp{background:#3a1216;color:#ff8a98}
+#acct .adm{background:#4a0e17;color:#ffb4bc}
 </style>
 
 </head>
@@ -251,7 +298,7 @@ button.slim{padding:.3em .8em;font-size:.85rem;background:transparent;border:2px
     <label class="f">Bots (deathmatch)<select id="botCount"><option>2</option><option selected>4</option><option>6</option><option>8</option></select></label>
     <label class="f">Mouse sensitivity<input id="sens" type="range" min="1" max="10" value="5"></label>
    </div>
-   <div class="keys"><span><kbd>WASD</kbd> move</span><span><kbd>Space</kbd> jump</span><span><kbd>Shift</kbd> sprint</span><span><kbd>Mouse</kbd> aim / fire</span><span><kbd>Right click</kbd> zoom</span><span><kbd>R</kbd> reload</span><span><kbd>1 2 3 4</kbd> or wheel: weapon</span><span><kbd>Q</kbd> last weapon</span><span><kbd>E</kbd> interact</span><span><kbd>Tab</kbd> scores</span><span><kbd>Esc</kbd> pause</span></div>
+   <div class="keys"><span><kbd>WASD</kbd> move</span><span><kbd>Space</kbd> jump</span><span><kbd>Shift</kbd> sprint</span><span><kbd>Mouse</kbd> aim / fire</span><span><kbd>Right click</kbd> zoom</span><span><kbd>R</kbd> reload</span><span><kbd>1 2 3 4</kbd> or wheel: weapon</span><span><kbd>Q</kbd> last weapon</span><span><kbd>C</kbd> crouch</span><span><kbd>E</kbd> interact</span><span><kbd>Tab</kbd> scores</span><span><kbd>Ctrl</kbd> lock / unlock mouse</span><span><kbd>/</kbd> chat</span><span><kbd>M</kbd> menu</span></div>
   </section>
 
   <section class="tab" id="tab-live">
@@ -297,11 +344,32 @@ button.slim{padding:.3em .8em;font-size:.85rem;background:transparent;border:2px
  <div class="corner" id="killfeed"></div>
  <div class="corner" id="hpBox"><div id="hpTxt">100</div><div class="bar"><div id="hpBar"></div></div></div>
  <div class="corner" id="ammoBox"><div id="wname"></div><div id="ammo"></div><div id="slots"></div></div>
+ <div id="rb">
+  <div id="rbBar">
+   <button id="rbMenuBtn" type="button" aria-label="Menu" title="Menu (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+   <button id="rbChatBtn" type="button" aria-label="Chat" title="Chat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></button>
+  </div>
+  <div id="rbChat" class="idle"><div id="rbLog" role="log" aria-live="polite"></div><input id="rbIn" maxlength="160" autocomplete="off" spellcheck="false" placeholder="To chat click here or press / key" aria-label="Chat message"></div>
+ </div>
  <canvas id="ov"></canvas><div id="warn">MISSILE INBOUND</div><div id="ccArray"></div>
+ <div id="lockHint">Mouse unlocked · press <kbd>Ctrl</kbd> to lock it</div>
+
  <div id="banner"></div><div id="prompt"></div><div id="toast"></div>
 </div>
 <div id="board"><table id="boardT"></table></div>
-<div id="pause"><h2>Paused</h2><button class="primary" id="btnResume">Resume</button><button id="btnQuit" class="hot">Quit to menu</button></div>
+<div id="pause">
+  <div class="rbp" id="rbMain" role="dialog" aria-label="Menu">
+    <div class="rbp-h"><span>Menu</span><button id="rbX" type="button" aria-label="Close menu">×</button></div>
+    <div class="rbp-b">The match keeps running while this menu is open. Press <b>Ctrl</b> to lock your mouse again.</div>
+    <div class="rbp-f"><button id="btnQuit" type="button" class="leave">Leave Game</button><button id="btnResume" type="button">Resume <span class="k">M</span></button></div>
+  </div>
+  <div class="rbp" id="rbConfirm" role="alertdialog" aria-label="Leave game" hidden>
+    <div class="rbp-h"><span>Leave Game</span></div>
+    <div class="rbp-b">Are you sure you want to leave this match and go back to the main menu?</div>
+    <div class="rbp-f"><button id="btnLeaveNo" type="button">Don't Leave</button><button id="btnLeaveYes" type="button" class="yes">Leave</button></div>
+  </div>
+</div>
+
 <div id="end"><h2 id="endT"></h2><div id="endS" class="note"></div><button class="primary" id="btnAgain">Play again</button><button id="btnMenu">Back to menu</button></div>
 <div id="cc"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -326,7 +394,7 @@ const store = {
   set(k, v) { try { localStorage.setItem('rvz_' + k, JSON.stringify(v)); } catch (e) { } }
 };
 /* ===== Admin client state (GUI + logic live further down; game hooks read this) ===== */
-const Cheat = { on: {}, v: { abMode: 'fire', abFov: 70, abSmooth: 55, abBone: 'auto', abVis: 1, abPredict: 1, abBots: 1, trigDelay: 0, rapidMul: 3, dmgMul: 5, hitboxMul: 2, flySpeed: 14, speedMul: 1.6, jumpMul: 2, gravVal: 8, espBoxes: 1, espNames: 1, espHealth: 1, espTrace: 1, espMax: 120, fovVal: 100, timeScale: .5, healRate: 20 } };
+const Cheat = { on: {}, v: { abMode: 'fire', abFov: 70, abSmooth: 55, abBone: 'auto', abVis: 1, abPredict: 1, abBots: 1, trigDelay: 0, rapidMul: 3, dmgMul: 5, hitboxMul: 2, flySpeed: 14, speedMul: 1.6, jumpMul: 2, gravVal: 8, espBoxes: 1, espNames: 1, espHealth: 1, espTrace: 1, espMax: 120, fovVal: 100, timeScale: .5, healRate: 20, hitRange: 60, hitTarget: 'near', hitBots: 1 }, ui: { key: 'ShiftRight', scale: 1, arr: 1, tips: 1 }, binds: { aimbot: 'KeyZ', esp: 'KeyX', fly: 'KeyG', noclip: 'KeyN', a_tp: 'KeyT', god: 'KeyH' } };
 const Warn = { missile: -9, beep: 0 };
 function rayBox(o, d, b, maxT) {
   let tmin = 0, tmax = maxT;
@@ -1730,6 +1798,7 @@ function doMelee(a, w) {
   const me = a.local ? 1 : .6; Snd.shot(w.snd, me, w.snp); swingFx(a, w);
   if (a.local && typeof localSwing === 'function') localSwing(w);
   if (a.net) netShot(a, w, a.pos, [0, 0, 0], true);
+  if (a.local && Cheat.on.hittp && hitTP(a, w)) return;
   later(Math.min(.13, 60 / w.rpm * .4), () => {
     if (!a.alive) return;
     const o = eyePos(a), d = lookDir(a.yaw, 0); let any = false;
@@ -2179,10 +2248,10 @@ function clearActors() { while (Actors.length) { const a = Actors[0]; removeActo
 
 /* ---- modes ---- */
 function startMatch(mode, opts) {
-  if (!Account.name) return; opts = opts || {}; Snd.init(); G.session++; G.mode = mode; G.over = false; G.paused = false; G.freeze = false; G.running = true; G.wins = { me: 0, bot: 0 }; G.round = 0;
+  if (!Account.name) return; opts = opts || {}; Snd.init(); Chat.clear(); Chat.sys('Welcome, ' + Account.name + '. Press / to chat. Chat is never saved.'); G.session++; G.mode = mode; G.over = false; G.paused = false; G.freeze = false; G.running = true; G.wins = { me: 0, bot: 0 }; G.round = 0;
   clearActors(); if (typeof eggsReset === 'function') eggsReset();
   loadMap(G.mapIdx); World.sky.visible = true;
-  const me = makeActor({ local: true, name: (G.name || 'You'), color: '#ffc83d' }); G.player = me; G.loadout = sanitizeLoadout(G.loadout);
+  const me = makeActor({ local: true, name: (G.name || 'You'), color: '#ff3347' }); G.player = me; G.loadout = sanitizeLoadout(G.loadout);
   VM.init && !VM.root && VM.init();
   $('menu').style.display = 'none'; $('hud').classList.add('on'); $('end').classList.remove('on'); $('pause').classList.remove('on'); $('board').classList.remove('on');
   $('modeTxt').textContent = ''; $('killfeed').innerHTML = '';
@@ -2206,7 +2275,7 @@ function startRound() {
   spawnActor(me); spawnActor(opp); opp.spawnShield = 0; me.spawnShield = 0;
   updateScoreTxt(); hudAmmo(); hudSlots();
   const steps = [['Round ' + G.round, 0], ['3', .8], ['2', 1.6], ['1', 2.4], ['FIGHT!', 3.2]];
-  steps.forEach(([t, d]) => later(d, () => { if (G.session !== s || G.over) return; banner(t, t === 'FIGHT!' ? 700 : 0, t === 'FIGHT!' ? '#ffc83d' : '#fff'); if (t === 'FIGHT!') G.freeze = false; }));
+  steps.forEach(([t, d]) => later(d, () => { if (G.session !== s || G.over) return; banner(t, t === 'FIGHT!' ? 700 : 0, t === 'FIGHT!' ? '#ff3347' : '#fff'); if (t === 'FIGHT!') G.freeze = false; }));
 }
 function onKill(v, killer, w, head) {
   if (killer && killer.local && killer !== v && G.mode !== 'live') Account.onKill(head);
@@ -2236,12 +2305,12 @@ function endMatch(title, sub, won) {
   if (typeof netLeave === 'function' && G.mode === 'live') { /* stay in room until the player leaves */ }
 }
 function quitToMenu() {
-  Account.flush(); G.running = false; G.over = true; G.session++; if (G.mode === 'live' && typeof netLeave === 'function') netLeave();
+  Account.flush(); Chat.clear(); Chat.blur(false); closeMenu(false); G.running = false; G.over = true; G.session++; if (G.mode === 'live' && typeof netLeave === 'function') netLeave();
   $('hud').classList.remove('on'); $('pause').classList.remove('on'); $('end').classList.remove('on'); $('board').classList.remove('on'); $('menu').style.display = 'flex';
   if (document.pointerLockElement) document.exitPointerLock(); clearActors(); G.player = null; if (VM.model) { VM.root.remove(VM.model); VM.model = null; } R.camera.fov = 78; R.camera.updateProjectionMatrix();
   loadMap(G.mapIdx); setPrompt(null); $('scope').classList.remove('on'); if (typeof eggsBuild === 'function') eggsBuild();
 }
-function onLockLost() { if (Admin.open) return; if (G.running && !G.over) { if (G.mode !== 'live') G.paused = true; $('pause').classList.add('on'); } }
+function onLockLost() { /* the match never pauses: Ctrl locks the mouse again */ }
 
 /* ---- local player ---- */
 function updatePlayer(dt) {
@@ -2255,8 +2324,8 @@ function updatePlayer(dt) {
   Input.mdx = Input.mdy = 0;
   let fw = 0, st = 0; if (!G.freeze) { fw = (Input.down('KeyW') || Input.down('ArrowUp') ? 1 : 0) - (Input.down('KeyS') || Input.down('ArrowDown') ? 1 : 0); st = (Input.down('KeyD') || Input.down('ArrowRight') ? 1 : 0) - (Input.down('KeyA') || Input.down('ArrowLeft') ? 1 : 0); }
   const sn = Math.sin(p.yaw), cs = Math.cos(p.yaw); let wx = -sn * fw + cs * st, wz = -cs * fw - sn * st; const wl = Math.hypot(wx, wz); if (wl > 1) { wx /= wl; wz /= wl; }
-  setCrouch(p, !G.freeze && (Input.down('KeyC') || Input.down('ControlLeft')));
-  const sprint = (Input.down(Account.admin ? 'ShiftRight' : 'ShiftLeft') || (Cheat.on.autosprint && fw > 0)) && fw > 0 && !p.crouch && !p.ads && p.reloadT < 0 && !Input.lmb;
+  setCrouch(p, !G.freeze && Input.down('KeyC'));
+  const sprint = (Input.down('ShiftLeft') || (Cheat.on.autosprint && fw > 0)) && fw > 0 && !p.crouch && !p.ads && p.reloadT < 0 && !Input.lmb;
   let speed = (p.crouch ? 3.1 : sprint ? 8.6 : 6.2) * (w ? w.mv : 1); if (p.ads) speed *= .7; if (p.boostT > 0) speed *= 1.35; if (Cheat.on.speed) speed *= Cheat.v.speedMul;
   if (Cheat.on.fly || Cheat.on.noclip) { p.nograv = true; p.noclip = !!Cheat.on.noclip; Cheat.flyMove(p, dt, fw, st); }
   else {
@@ -2430,8 +2499,13 @@ const Account = {
     if (was && !this.admin) Admin.revoked(); else if (this.admin !== was) Admin.sync();
   },
   sched() { clearTimeout(this.flushT); this.flushT = setTimeout(() => this.flush(), 30000); },
+  saveClient(obj) { if (!this.name || !this.admin) return; this.clientPending = obj; clearTimeout(this.clientT); this.clientT = setTimeout(() => this.flushClient(), 3000); },
+  async flushClient() {
+    clearTimeout(this.clientT); const o = this.clientPending; if (!o || !this.name) return; this.clientPending = null;
+    try { await this.ref().update({ rvzClient: o }); } catch (e) { this.clientPending = o; this.clientT = setTimeout(() => this.flushClient(), 8000); }
+  },
   async flush() {
-    clearTimeout(this.flushT); if (!this.name || (!this.pend && !this.pendK)) return;
+    this.flushClient(); clearTimeout(this.flushT); if (!this.name || (!this.pend && !this.pendK)) return;
     const n = this.pend, k = this.pendK; this.pend = 0; this.pendK = 0;
     try { const u = {}; if (n) u.rvzCaps = this.FV.increment(n); if (k) u.rvzKills = this.FV.increment(k); await this.ref().update(u); }
     catch (e) { this.pend += n; this.pendK += k; this.sched(); }
@@ -2502,7 +2576,7 @@ function wireAuth() {
 function updateAcct() {
   const el = $('acct'); if (!el || !Account.name) return;
   const lv = myLevel(), nxt = LVL_AT[lv];
-  el.innerHTML = '<span class="who">' + esc(Account.name) + '</span><span class="pill">Level ' + lv + (nxt != null ? ' · ' + (nxt - Account.kills) + ' elims to level ' + (lv + 1) : ' · max level') + '</span><span class="pill capp" title="Bottlecaps">' + CAP_ICON + ' ' + Account.caps.toLocaleString() + '</span>' + (Account.admin ? '<span class="pill adm">Admin · press Left Shift</span>' : '') + '<button id="btnOut" class="slim">Log out</button>';
+  el.innerHTML = '<span class="who">' + esc(Account.name) + '</span><span class="pill">Level ' + lv + (nxt != null ? ' · ' + (nxt - Account.kills) + ' elims to level ' + (lv + 1) : ' · max level') + '</span><span class="pill capp" title="Bottlecaps">' + CAP_ICON + ' ' + Account.caps.toLocaleString() + '</span>' + (Account.admin ? '<span class="pill adm">Admin · press ' + esc(keyName(Cheat.ui.key)) + '</span>' : '') + '<button id="btnOut" class="slim">Log out</button>';
   $('btnOut').onclick = () => Account.logout();
   if ($('tab-armory').classList.contains('on') && armSel) updateWact(armSel);
 }
@@ -2581,13 +2655,11 @@ function wireUI() {
   $('pname').value = G.name; $('ggTag').textContent = WEAPONS.filter(w => w.slot !== 'G' && !w.nobot).length + ' weapons';
   const startOff = mode => { if (!Account.name) return; G.diff = +$('diff').value; G.nbots = +$('botCount').value; store.set('diff', G.diff); store.set('bots', G.nbots); G.name = $('pname').value.trim() || G.name || 'You'; startMatch(mode); };
   $('btnDuel').onclick = () => startOff('duel'); $('btnDM').onclick = () => startOff('dm'); $('btnGG').onclick = () => startOff('gg');
-  $('btnResume').onclick = () => { try { $('view').requestPointerLock(); } catch (e) { } };
-  $('btnQuit').onclick = quitToMenu; $('btnMenu').onclick = quitToMenu;
+  $('btnMenu').onclick = quitToMenu;
   $('btnAgain').onclick = () => { if (G.mode === 'live') quitToMenu(); else startMatch(G.mode); };
   $('view').addEventListener('click', () => { if (G.running && !Input.locked && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } } });
   document.addEventListener('pointerlockchange', () => { if (Input.locked && G.running) { G.paused = false; $('pause').classList.remove('on'); } });
   document.addEventListener('pointerlockerror', () => toast('Click the game to capture your mouse', 3000));
-  document.addEventListener('keydown', e => { if (e.code === 'Escape' && G.running && !Input.locked && !G.over && !Admin.open) { $('pause').classList.add('on'); if (G.mode !== 'live') G.paused = true; } });
 }
 /* ===== Live multiplayer on Firebase Realtime Database ===== */
 const Net = { db: null, uid: Math.random().toString(36).slice(2, 8), room: null, refs: [], remote: {}, joinT: 0, round: 0, off: 0, connected: false, pubT: 0, pub: false, hbT: 0, lostT: 0, base: '' };
@@ -2650,6 +2722,7 @@ async function joinRoom(code, create, opts) {
   });
   on(db.ref(base + '/shots'), 'child_added', s => { const v = s.val(); if (!v || v.f === Net.uid || v.t < Net.joinT - 800) return; remoteShot(v); });
   on(db.ref(base + '/events'), 'child_added', s => { const v = s.val(); if (!v || v.t < Net.joinT - 800) return; netEvent(v); });
+  on(db.ref(base + '/chat'), 'child_added', s => { const v = s.val(); if (!v || v.f === Net.uid || v.t < Net.joinT - 800) return; Chat.add(String(v.n || 'Player').slice(0, 20), String(v.m || '').slice(0, 160)); });
   on(db.ref(base + '/meta/round'), 'value', s => { const r = s.val() | 0; if (r > Net.round) { Net.round = r; liveRoundOver(); } });
   db.ref(base + '/players/' + Net.uid).onDisconnect().remove();
   netPublish(true);
@@ -2676,7 +2749,7 @@ function netTick(dt) {
 }
 function remoteUpdate(id, v, isNew) {
   if (id === Net.uid || !v) return; let a = Net.remote[id];
-  if (!a) { a = makeActor({ remote: true, id, name: v.n || 'Player', color: v.c }); a.alive = false; a.tx = v.x; a.ty = v.y; a.tz = v.z; a.pos = [v.x, v.y, v.z]; Net.remote[id] = a; if (!isNew || Net.joinT + 1000 < netNow()) toast((v.n || 'A player') + ' joined', 2200); }
+  if (!a) { a = makeActor({ remote: true, id, name: v.n || 'Player', color: v.c }); a.alive = false; a.tx = v.x; a.ty = v.y; a.tz = v.z; a.pos = [v.x, v.y, v.z]; Net.remote[id] = a; if (!isNew || Net.joinT + 1000 < netNow()) { toast((v.n || 'A player') + ' joined', 2200); Chat.sys((v.n || 'A player') + ' joined the game'); } }
   a.tx = v.x; a.ty = v.y; a.tz = v.z; a.tyaw = v.yaw; a.tpitch = v.pitch; a.crouch = !!v.cr; a.kills = v.k | 0; a.deaths = v.d | 0; a.hp = v.hp;
   if (v.w !== a.wid) { a.wid = v.w; if (WBY[v.w]) { a.slots = { P: v.w, S: null, M: null }; a.cur = 'P'; setHeld(a); } }
   if (v.sw !== a.sw) { if (a.sw !== undefined) a.swingT = 0; a.sw = v.sw; }
@@ -2684,7 +2757,7 @@ function remoteUpdate(id, v, isNew) {
   if (al && !a.alive) { a.alive = true; a.deadT = 0; a.pos = [v.x, v.y, v.z]; a.yaw = v.yaw || 0; a.mesh.rotation.x = 0; }
   if (!al && a.alive) { a.alive = false; a.deadT = 1.2; }
 }
-function remoteRemove(id) { const a = Net.remote[id]; if (!a) return; toast(a.name + ' left', 2000); removeActor(a); delete Net.remote[id]; }
+function remoteRemove(id) { const a = Net.remote[id]; if (!a) return; toast(a.name + ' left', 2000); Chat.sys(a.name + ' left the game'); removeActor(a); delete Net.remote[id]; }
 function netInterp(a, dt) {
   if (a.tx === undefined) return; const k = 1 - Math.exp(-dt * 16), ox = a.pos[0], oz = a.pos[2];
   if (Math.hypot(a.tx - a.pos[0], a.tz - a.pos[2]) > 7) { a.pos[0] = a.tx; a.pos[2] = a.tz; }
@@ -2729,7 +2802,7 @@ function netEvent(e) {
 }
 function liveRoundOver() {
   Net.db.ref(Net.base + '/meta/winner').once('value').then(s => {
-    const win = s.val() || 'Someone', me = G.player; if (!me) return; G.freeze = true; banner(win + ' wins the round!', 4200, '#ffc83d'); Snd.secret(); if (win === me.name) Account.award(75);
+    const win = s.val() || 'Someone', me = G.player; if (!me) return; G.freeze = true; banner(win + ' wins the round!', 4200, '#ff3347'); Snd.secret(); if (win === me.name) Account.award(75);
     const sess = G.session;
     later(4.5, () => { if (G.session !== sess) return; me.kills = 0; me.deaths = 0; G.freeze = false; giveLoadout(me, G.loadout); spawnActor(me); netPublish(true); banner('New round!', 1200); });
   });
@@ -2738,60 +2811,66 @@ function wireNet() {
   $('btnQuick').onclick = quickMatch; $('btnCreate').onclick = createRoom; $('btnJoin').onclick = joinByCode;
   $('rcode').addEventListener('keydown', e => { if (e.key === 'Enter') joinByCode(); });
 }
-/* ===== Admin client: opens with Left Shift for accounts that have rvzAdmin: true in Firestore ===== */
+/* ===== Admin client (Meteor-style). Opens with Right Shift (rebindable) for accounts with rvzAdmin: true in Firestore ===== */
+const keyName = c => !c ? 'None' : ({ ShiftRight: 'R-Shift', ShiftLeft: 'L-Shift', ControlLeft: 'L-Ctrl', ControlRight: 'R-Ctrl', AltLeft: 'L-Alt', AltRight: 'R-Alt', Space: 'Space', Backquote: '`', Minus: '-', Equal: '=', BracketLeft: '[', BracketRight: ']', Semicolon: ';', Quote: "'", Comma: ',', Period: '.', Slash: '/', Backslash: '\\' }[c] || c.replace(/^Key|^Digit/, '').replace(/^Numpad/, 'Num ').replace(/^Arrow/, ''));
 const CHEAT_DEFS = [
   { cat: 'Combat', mods: [
-    { id: 'aimbot', name: 'Aimbot', desc: 'Pulls your crosshair onto the best target.', opts: [
-      { id: 'abMode', name: 'Active', type: 'sel', list: [['always', 'Always'], ['fire', 'While shooting'], ['ads', 'While aiming']] },
+    { id: 'aimbot', name: 'Aimbot', desc: 'Pulls your crosshair onto the best target inside your FOV.', opts: [
+      { id: 'abMode', name: 'Active', type: 'sel', list: [['always', 'Always'], ['fire', 'Shooting'], ['ads', 'Aiming']] },
       { id: 'abFov', name: 'FOV', min: 5, max: 180, step: 1, unit: '°' }, { id: 'abSmooth', name: 'Strength', min: 1, max: 100, step: 1, unit: '%' },
       { id: 'abBone', name: 'Target', type: 'sel', list: [['auto', 'Auto'], ['head', 'Head'], ['body', 'Body']] },
-      { id: 'abVis', name: 'Visible only', type: 'chk' }, { id: 'abPredict', name: 'Lead moving targets', type: 'chk' }, { id: 'abBots', name: 'Target bots', type: 'chk' }] },
-    { id: 'trigger', name: 'Triggerbot', desc: 'Shoots when an enemy is under the crosshair.', opts: [{ id: 'trigDelay', name: 'Delay', min: 0, max: 300, step: 10, unit: 'ms' }] },
-    { id: 'norecoil', name: 'No Recoil' }, { id: 'nospread', name: 'No Spread' },
-    { id: 'rapid', name: 'Rapid Fire', desc: 'Faster fire rate and faster gadget recharge.', opts: [{ id: 'rapidMul', name: 'Multiplier', min: 1.5, max: 10, step: .5, unit: 'x' }] },
-    { id: 'infammo', name: 'Infinite Ammo' }, { id: 'noreload', name: 'Instant Reload' },
-    { id: 'damage', name: 'Damage Boost', opts: [{ id: 'dmgMul', name: 'Multiplier', min: 1.5, max: 50, step: .5, unit: 'x' }] },
-    { id: 'hitbox', name: 'Hitbox Expander', desc: 'Makes enemies easier to hit.', opts: [{ id: 'hitboxMul', name: 'Scale', min: 1.2, max: 5, step: .1, unit: 'x' }] },
-    { id: 'instalock', name: 'Instant Lock-on', desc: 'Homing Launcher locks the moment you aim.' }] },
-  { cat: 'Movement', mods: [
-    { id: 'fly', name: 'Fly', desc: 'WASD along your view, Space up, Ctrl down, Right Shift boost.', opts: [{ id: 'flySpeed', name: 'Speed', min: 4, max: 60, step: 1, unit: ' m/s' }] },
-    { id: 'noclip', name: 'Noclip', desc: 'Fly through walls. Uses the Fly speed.' },
-    { id: 'speed', name: 'Speed', opts: [{ id: 'speedMul', name: 'Multiplier', min: 1.1, max: 5, step: .1, unit: 'x' }] },
-    { id: 'jump', name: 'Super Jump', opts: [{ id: 'jumpMul', name: 'Multiplier', min: 1.2, max: 4, step: .1, unit: 'x' }] },
-    { id: 'infjump', name: 'Infinite Jump', desc: 'Press Space in the air to jump again.' },
-    { id: 'lowgrav', name: 'Gravity', opts: [{ id: 'gravVal', name: 'Strength', min: 1, max: 24, step: 1, unit: '' }] },
-    { id: 'autosprint', name: 'Auto Sprint' },
-    { id: 'clicktp', name: 'Teleport Key', desc: 'Press T to teleport to where you are looking.' }] },
-  { cat: 'Visuals', mods: [
-    { id: 'esp', name: 'ESP', desc: 'Boxes, names and health through walls.', opts: [
-      { id: 'espBoxes', name: 'Boxes', type: 'chk' }, { id: 'espNames', name: 'Names', type: 'chk' }, { id: 'espHealth', name: 'Health bars', type: 'chk' }, { id: 'espTrace', name: 'Tracers', type: 'chk' },
-      { id: 'espMax', name: 'Max distance', min: 20, max: 300, step: 10, unit: ' m' }] },
-    { id: 'chams', name: 'Chams', desc: 'Lit-up players visible through walls.' },
-    { id: 'xray', name: 'X-Ray Walls', desc: 'Makes the map see-through.' },
-    { id: 'fullbright', name: 'Fullbright' }, { id: 'nofog', name: 'No Fog' },
-    { id: 'fov', name: 'Field of View', opts: [{ id: 'fovVal', name: 'FOV', min: 60, max: 140, step: 1, unit: '°' }] }] },
+      { id: 'abVis', name: 'Visible only', type: 'chk' }, { id: 'abPredict', name: 'Lead target', type: 'chk' }, { id: 'abBots', name: 'Bots', type: 'chk' }] },
+    { id: 'trigger', name: 'Trigger', desc: 'Fires on its own when an enemy is under your crosshair.', opts: [{ id: 'trigDelay', name: 'Delay', min: 0, max: 300, step: 10, unit: 'ms' }] },
+    { id: 'norecoil', name: 'No Recoil', desc: 'Removes the camera kick when you shoot.' },
+    { id: 'nospread', name: 'No Spread', desc: 'Every shot goes exactly where you aim.' },
+    { id: 'rapid', name: 'Rapid Fire', desc: 'Fires faster and recharges gadgets quicker.', opts: [{ id: 'rapidMul', name: 'Speed', min: 1.5, max: 10, step: .5, unit: 'x' }] },
+    { id: 'infammo', name: 'Inf Ammo', desc: 'Your magazine never runs dry.' },
+    { id: 'noreload', name: 'Fast Reload', desc: 'Reloads finish immediately.' },
+    { id: 'damage', name: 'Damage', desc: 'Multiplies all damage you deal.', opts: [{ id: 'dmgMul', name: 'Amount', min: 1.5, max: 50, step: .5, unit: 'x' }] },
+    { id: 'hitbox', name: 'Hitboxes', desc: 'Makes enemy hitboxes bigger so shots land more easily.', opts: [{ id: 'hitboxMul', name: 'Scale', min: 1.2, max: 5, step: .1, unit: 'x' }] },
+    { id: 'instalock', name: 'InstaLock', desc: 'The Homing Launcher locks on the moment you aim.' },
+    { id: 'hittp', name: 'HitTP', desc: 'Every melee swing teleports you to a target, lands the hit, then snaps you straight back.', opts: [
+      { id: 'hitRange', name: 'Range', min: 5, max: 150, step: 5, unit: 'm' }, { id: 'hitTarget', name: 'Target', type: 'sel', list: [['near', 'Nearest'], ['aim', 'Crosshair']] }, { id: 'hitBots', name: 'Bots', type: 'chk' }] }] },
   { cat: 'Player', mods: [
-    { id: 'god', name: 'God Mode', desc: 'Take no damage.' },
-    { id: 'autoheal', name: 'Auto Heal', opts: [{ id: 'healRate', name: 'Per second', min: 2, max: 100, step: 2, unit: ' hp' }] },
-    { id: 'bigheads', name: 'Big Heads', set(on) { G.bigHead = on; applyBigHead(); } },
-    { id: 'timescale', name: 'Time Scale', desc: 'Slow-mo or fast-forward the whole game.', opts: [{ id: 'timeScale', name: 'Speed', min: .1, max: 3, step: .1, unit: 'x' }] }] },
+    { id: 'god', name: 'God', desc: 'You take no damage at all.' },
+    { id: 'autoheal', name: 'Regen', desc: 'Regenerates your health over time.', opts: [{ id: 'healRate', name: 'Per second', min: 2, max: 100, step: 2, unit: 'hp' }] },
+    { id: 'autosprint', name: 'Sprint', desc: 'Sprints whenever you move forward.' }] },
+  { cat: 'Movement', mods: [
+    { id: 'fly', name: 'Fly', desc: 'Fly where you look. Space goes up, C goes down, Left Shift boosts.', opts: [{ id: 'flySpeed', name: 'Speed', min: 4, max: 60, step: 1, unit: 'm/s' }] },
+    { id: 'noclip', name: 'Noclip', desc: 'Fly straight through walls. Uses the Fly speed.' },
+    { id: 'speed', name: 'Speed', desc: 'Multiplies your walking and sprinting speed.', opts: [{ id: 'speedMul', name: 'Amount', min: 1.1, max: 5, step: .1, unit: 'x' }] },
+    { id: 'jump', name: 'High Jump', desc: 'Jump much higher.', opts: [{ id: 'jumpMul', name: 'Amount', min: 1.2, max: 4, step: .1, unit: 'x' }] },
+    { id: 'infjump', name: 'Air Jump', desc: 'Press Space in mid-air to jump again.' },
+    { id: 'lowgrav', name: 'Gravity', desc: 'Changes how hard gravity pulls you down.', opts: [{ id: 'gravVal', name: 'Pull', min: 1, max: 24, step: 1, unit: '' }] },
+    { id: 'a_tp', name: 'Teleport', desc: 'Teleports you to the spot you are looking at.', action() { if (G.running) Cheat.tp(G.player); } }] },
+  { cat: 'Render', mods: [
+    { id: 'esp', name: 'ESP', desc: 'Boxes, names and health bars for everyone, through walls.', opts: [
+      { id: 'espBoxes', name: 'Boxes', type: 'chk' }, { id: 'espNames', name: 'Names', type: 'chk' }, { id: 'espHealth', name: 'Health', type: 'chk' }, { id: 'espTrace', name: 'Tracers', type: 'chk' },
+      { id: 'espMax', name: 'Range', min: 20, max: 300, step: 10, unit: 'm' }] },
+    { id: 'chams', name: 'Chams', desc: 'Lights up players so you can see them through walls.' },
+    { id: 'xray', name: 'X-Ray', desc: 'Makes the map walls see-through.' },
+    { id: 'fullbright', name: 'Fullbright', desc: 'Maximum brightness everywhere.' },
+    { id: 'nofog', name: 'No Fog', desc: 'Removes distance fog so you can see the whole map.' },
+    { id: 'bigheads', name: 'Big Heads', desc: 'Gives everyone an oversized head.', set(on) { G.bigHead = on; applyBigHead(); } },
+    { id: 'fov', name: 'FOV', desc: 'Changes your field of view.', opts: [{ id: 'fovVal', name: 'Angle', min: 60, max: 140, step: 1, unit: '°' }] }] },
   { cat: 'World', mods: [
-    { id: 'botfreeze', name: 'Freeze Bots' },
-    { id: 'a_spawn', name: 'Spawn 4 bots', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); makeBots(4).forEach(b => { botPickLoadout(b); spawnActor(b); }); } },
-    { id: 'a_kill', name: 'Eliminate all bots', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); Actors.slice().forEach(a => { if (a.bot && a.alive) killActor(a, G.player, { name: 'Admin', id: 'admin' }, false); }); } },
-    { id: 'a_tp', name: 'Teleport to crosshair', action() { if (G.running) Cheat.tp(G.player); } },
-    { id: 'a_boom', name: 'Explosion at crosshair', action() { if (!G.running) return; const p = G.player, o = eyePos(p), d = lookDir(p.yaw, p.pitch), t = Math.min(200, World.ray(o, d, 200)); explode([o[0] + d[0] * t, o[1] + d[1] * t, o[2] + d[2] * t], { name: 'Admin Strike', id: 'admin', rad: 9, dmg: 200 }, p); } }] },
-  { cat: 'Items', mods: [
-    { id: 'unlockall', name: 'Unlock All Weapons', desc: 'Every weapon is usable this session. Nothing is bought.' },
-    { id: 'a_caps', name: 'Give 1,000 Bottlecaps', action() { Account.award(1000); } },
-    { id: 'give', name: 'Equip any weapon', type: 'give' }] }
+    { id: 'botfreeze', name: 'Freeze Bots', desc: 'Bots stop moving and shooting.' },
+    { id: 'timescale', name: 'Timer', desc: 'Slow motion or fast forward for the whole game.', opts: [{ id: 'timeScale', name: 'Speed', min: .1, max: 3, step: .1, unit: 'x' }] },
+    { id: 'a_spawn', name: 'Spawn Bots', desc: 'Adds 4 more bots to the match. Bot matches only.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); makeBots(4).forEach(b => { botPickLoadout(b); spawnActor(b); }); } },
+    { id: 'a_kill', name: 'Kill Bots', desc: 'Eliminates every bot in the match. Bot matches only.', action() { if (!G.running || G.mode === 'live') return toast('Only works in bot matches'); Actors.slice().forEach(a => { if (a.bot && a.alive) killActor(a, G.player, { name: 'Admin', id: 'admin' }, false); }); } },
+    { id: 'a_boom', name: 'Airstrike', desc: 'Drops a huge explosion where you are looking.', action() { if (!G.running) return; const p = G.player, o = eyePos(p), d = lookDir(p.yaw, p.pitch), t = Math.min(200, World.ray(o, d, 200)); explode([o[0] + d[0] * t, o[1] + d[1] * t, o[2] + d[2] * t], { name: 'Admin Strike', id: 'admin', rad: 9, dmg: 200 }, p); } }] },
+  { cat: 'Misc', mods: [
+    { id: 'unlockall', name: 'Unlock All', desc: 'Every weapon is usable this session. Nothing is bought.' },
+    { id: 'a_caps', name: 'Bottlecaps', desc: 'Adds 1,000 Bottlecaps to your account.', action() { Account.award(1000); } },
+    { id: 'give', name: 'Give Weapon', desc: 'Equip any weapon, even ones you have not bought.', type: 'give' },
+    { id: 'a_off', name: 'Disable All', desc: 'Turns every module off at once.', action() { Admin.allOff(); } }] }
 ];
 const MOD_BY_ID = {}; CHEAT_DEFS.forEach(c => c.mods.forEach(m => { MOD_BY_ID[m.id] = m; }));
-try { Object.assign(Cheat.v, JSON.parse(localStorage.getItem('rvz_cc') || '{}')); } catch (e) { }
+function ccSave() { if (typeof Admin === 'undefined' || !Account.admin) return; Account.saveClient(JSON.parse(JSON.stringify({ on: Cheat.on, v: Cheat.v, ui: Cheat.ui, binds: Cheat.binds, pos: Admin.pos, col: Admin.col }))); }
 
 Cheat.flyMove = function (p, dt, fw, st) {
-  const sp = Cheat.v.flySpeed * (Input.down('ShiftRight') ? 2 : 1), look = lookDir(p.yaw, p.pitch), r = [Math.cos(p.yaw), 0, -Math.sin(p.yaw)];
-  const up = (Input.down('Space') ? 1 : 0) - (Input.down('ControlLeft') || Input.down('KeyC') ? 1 : 0);
+  const sp = Cheat.v.flySpeed * (Input.down('ShiftLeft') ? 2 : 1), look = lookDir(p.yaw, p.pitch), r = [Math.cos(p.yaw), 0, -Math.sin(p.yaw)];
+  const up = (Input.down('Space') ? 1 : 0) - (Input.down('KeyC') ? 1 : 0);
   let v = [look[0] * fw + r[0] * st, look[1] * fw + r[1] * st + up, look[2] * fw + r[2] * st + 0]; const l = Math.hypot(v[0], v[1], v[2]);
   if (l > .01) { v = [v[0] / l * sp, v[1] / l * sp, v[2] / l * sp]; } else v = [0, 0, 0];
   p.vel[0] = v[0]; p.vel[1] = v[1]; p.vel[2] = v[2]; physics(p, dt);
@@ -2855,69 +2934,168 @@ Cheat.apply = function () {
   Cheat.chams();
 };
 Cheat.reapply = function () { if (World.lights[0]) World.lights[0]._i0 = undefined; if (R.scene.fog) R.scene.fog._f0 = undefined; Cheat.apply(); };
+/* HitTP: a melee swing jumps you to a target, lands the hit, and puts you straight back */
+function hitTP(a, w) {
+  const v = Cheat.v, o = eyePos(a), look = lookDir(a.yaw, a.pitch); let best = null, bs = 1e9;
+  for (const t of Actors) {
+    if (t === a || !t.alive || t.spawnShield > 0 || (t.bot && !v.hitBots)) continue;
+    const dx = t.pos[0] - a.pos[0], dy = t.pos[1] + 1 - o[1], dz = t.pos[2] - a.pos[2], dist = Math.hypot(dx, dy, dz); if (dist > v.hitRange) continue;
+    const score = v.hitTarget === 'aim' ? Math.acos(clamp((dx * look[0] + dy * look[1] + dz * look[2]) / (dist || 1), -1, 1)) : dist;
+    if (score < bs) { bs = score; best = t; }
+  }
+  if (!best) return false;
+  const hx = a.pos[0], hy = a.pos[1], hz = a.pos[2], dx = best.pos[0] - hx, dz = best.pos[2] - hz, L = Math.hypot(dx, dz) || 1, stand = Math.min(1.1, w.rng * .5);
+  a.pos[0] = best.pos[0] - dx / L * stand; a.pos[1] = best.pos[1]; a.pos[2] = best.pos[2] - dz / L * stand;
+  const dirv = [dx / L, 0, dz / L], vf = lookDir(best.yaw, 0); let dmg = w.dmg; if (w.bs && (vf[0] * dirv[0] + vf[2] * dirv[2]) > .5) dmg *= w.bs;
+  const head = Math.random() < .25; if (head) dmg *= (w.hs || 1.3);
+  const tp = [best.pos[0], best.pos[1] + 1.1, best.pos[2]];
+  dealDamage(best, Math.round(dmg), a, w, head);
+  arc([o[0], o[1] - .3, o[2]], tp, '#ff3347', .06); glow(tp, [0, 0, 0], .25, 1.1, .1, '#ffffff', '#ff3347', 0, 0); glow([o[0], o[1] - .4, o[2]], [0, 0, 0], .25, .9, .1, '#ffffff', '#ff3347', 0, 0);
+  burst(tp, 6, '#ff3b3b', 3, .35, 8, .06); Snd.tone(1300, 260, .12, .25, 'sawtooth'); if (w.id === 'fryingpan') Snd.shot('bonk', 1);
+  a.pos[0] = hx; a.pos[1] = hy; a.pos[2] = hz;   // back where you were, in the same frame
+  return true;
+}
 function giveWeapon(p, w) {
   p.slots[w.slot] = w.id; p.ammo[w.slot] = w.mag || 0; p.heldId = null; p.cur = w.slot; p.reloadT = -1; p.burst = 0; p.cd = .2; setHeld(p); localEquip();
 }
 
 const Admin = {
-  open: false, built: false, tab: 'Combat', openMods: {},
-  sync() { document.body.classList.toggle('isadmin', !!Account.admin); if (Account.admin) { if (!this.built) this.build(); } else this.close(true); this.arr(); },
-  revoked(silent) { Cheat.on = {}; if (G.bigHead) { G.bigHead = false; applyBigHead(); } try { Cheat.apply(); } catch (e) { } if (G.player) { G.player.nograv = false; G.player.noclip = false; } this.close(true); this.arr(); if (!silent) toast('Admin access was removed from this account', 3500); },
+  open: false, built: false, view: 'mods', pos: {}, col: {}, openMods: {}, listen: null, q: '',
+  loaded: false,
+  loadSaved() {
+    const d = (Account.profile && Account.profile.rvzClient) || {};
+    Object.assign(Cheat.v, d.v || {}); Object.assign(Cheat.ui, d.ui || {}); if (d.binds) Cheat.binds = d.binds; this.pos = d.pos || {}; this.col = d.col || {};
+    Cheat.on = {}; for (const id of Object.keys(d.on || {})) { const m = MOD_BY_ID[id]; if (d.on[id] && m && !m.action && m.type !== 'give') { Cheat.on[id] = true; if (m.set) m.set(true); } }
+    this.loaded = true; try { Cheat.apply(); } catch (e) { } this.arr();
+  },
+  sync() { document.body.classList.toggle('isadmin', !!Account.admin); if (Account.admin) { if (!this.built) this.build(); if (!this.loaded) this.loadSaved(); } else this.close(true); this.arr(); if (typeof updateAcct === 'function') updateAcct(); },
+  revoked(silent) { this.allOff(true); this.loaded = false; this.close(true); this.arr(); if (!silent) toast('Admin access was removed from this account', 3500); },
+  allOff(quiet) {
+    Object.keys(Cheat.on).forEach(k => { const m = MOD_BY_ID[k]; if (Cheat.on[k] && m && m.set) m.set(false); });
+    Cheat.on = {}; if (G.bigHead) { G.bigHead = false; applyBigHead(); }
+    try { Cheat.apply(); } catch (e) { } if (G.player) { G.player.nograv = false; G.player.noclip = false; }
+    this.arr(); if (this.built) this.render(); ccSave(); if (!quiet) toast('All modules disabled', 1200);
+  },
   toggle() { this.open ? this.close() : this.show(); },
-  show() { if (!Account.admin) return; this.open = true; $('cc').classList.add('on'); if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; },
-  close(quiet) { const was = this.open; this.open = false; $('cc').classList.remove('on'); if (was && !quiet && G.running && !G.over) { try { $('view').requestPointerLock(); } catch (e) { } } },
+  show() { if (!Account.admin) return; this.open = true; $('cc').classList.add('on'); if (document.pointerLockElement) document.exitPointerLock(); Input.lmb = false; Input.rmb = false; this.render(); },
+  close(quiet) { const was = this.open; this.open = false; this.listen = null; $('cc').classList.remove('on'); const tp = $('ccTip'); if (tp) tp.style.display = 'none'; if (was && !quiet && G.running && !G.over) relockMouse(); },
   arr() {
-    const list = Object.keys(Cheat.on).filter(k => Cheat.on[k] && MOD_BY_ID[k]).map(k => MOD_BY_ID[k].name).sort((a, b) => b.length - a.length);
-    $('ccArray').innerHTML = list.map(n => '<div>' + esc(n) + '</div>').join('');
+    const el = $('ccArray'); if (!el) return;
+    const list = !Cheat.ui.arr ? [] : Object.keys(Cheat.on).filter(k => Cheat.on[k] && MOD_BY_ID[k]).map(k => MOD_BY_ID[k].name).sort((a, b) => b.length - a.length || a.localeCompare(b));
+    el.innerHTML = list.map(n => '<div>' + esc(n) + '</div>').join('');
   },
-  setMod(id, v) { const m = MOD_BY_ID[id]; Cheat.on[id] = v; if (m && m.set) m.set(v); Cheat.apply(); if (G.player && !v && (id === 'fly' || id === 'noclip')) { G.player.nograv = false; G.player.noclip = false; } this.arr(); },
-  save() { try { localStorage.setItem('rvz_cc', JSON.stringify(Cheat.v)); } catch (e) { } },
+  setMod(id, v) {
+    const m = MOD_BY_ID[id]; Cheat.on[id] = v; if (m && m.set) m.set(v); Cheat.apply();
+    if (G.player && !v && (id === 'fly' || id === 'noclip')) { G.player.nograv = false; G.player.noclip = false; }
+    this.arr(); ccSave();
+  },
+  run(id, fromBind) {
+    const m = MOD_BY_ID[id]; if (!m || m.type === 'give') return;
+    if (m.action) { m.action(); if (fromBind) toast(m.name, 700); return; }
+    const v = !Cheat.on[id]; this.setMod(id, v); if (fromBind) toast(m.name + (v ? ' enabled' : ' disabled'), 900); if (this.open) this.syncRows();
+  },
+  setBind(id, code) {
+    if (id !== '_gui' && code && code === Cheat.ui.key) { toast(keyName(code) + ' already opens this menu', 1800); return; }
+    for (const k of Object.keys(Cheat.binds)) if (code && Cheat.binds[k] === code && k !== id) delete Cheat.binds[k];
+    if (id === '_gui') Cheat.ui.key = code || 'ShiftRight'; else if (code) Cheat.binds[id] = code; else delete Cheat.binds[id];
+    ccSave(); if (typeof updateAcct === 'function') updateAcct();
+  },
+  syncRows() { document.querySelectorAll('#ccStage .cm').forEach(r => r.classList.toggle('on', !!Cheat.on[r.dataset.id])); },
   build() {
-    this.built = true; const cc = $('cc');
-    cc.innerHTML = '<div class="cc-win" id="ccWin" role="dialog" aria-label="Rivalz Client"><div class="cc-bar" id="ccBar"><span class="cc-brand">RIVALZ<b>CLIENT</b></span><span class="cc-ver">admin build</span><button class="cc-x" id="ccX" aria-label="Close">×</button></div><div class="cc-main"><nav class="cc-cats" id="ccCats"></nav><div class="cc-mods" id="ccMods"></div></div><div class="cc-foot">Left Shift closes this · Right Shift sprints · drag the title bar to move</div></div>';
-    $('ccX').onclick = () => this.close();
-    const win = $('ccWin'), bar = $('ccBar'); let drag = null;
-    bar.addEventListener('mousedown', e => { if (e.target.id === 'ccX') return; const r = win.getBoundingClientRect(); drag = [e.clientX - r.left, e.clientY - r.top]; win.style.right = 'auto'; e.preventDefault(); });
-    window.addEventListener('mousemove', e => { if (!drag) return; win.style.left = clamp(e.clientX - drag[0], 0, window.innerWidth - 80) + 'px'; win.style.top = clamp(e.clientY - drag[1], 0, window.innerHeight - 40) + 'px'; });
-    window.addEventListener('mouseup', () => { drag = null; });
-    this.cats();
-  },
-  cats() {
-    const nav = $('ccCats'); nav.innerHTML = '';
-    CHEAT_DEFS.forEach(c => { const b = document.createElement('button'); b.textContent = c.cat; b.className = c.cat === this.tab ? 'on' : ''; b.onclick = () => { this.tab = c.cat; this.cats(); }; nav.appendChild(b); });
-    const box = $('ccMods'); box.innerHTML = ''; CHEAT_DEFS.find(c => c.cat === this.tab).mods.forEach(m => box.appendChild(this.row(m)));
-  },
-  row(m) {
-    const row = document.createElement('div'); row.className = 'cc-mod' + (Cheat.on[m.id] ? ' on' : '');
-    if (m.type === 'give') {
-      row.innerHTML = '<div class="cc-head"><span class="cc-name">' + m.name + '</span></div><div class="cc-opts show"><label class="cc-opt"><span>Weapon</span><select id="ccGive"></select></label><button class="cc-run" id="ccGiveGo">Equip</button></div>';
-      const sel = row.querySelector('#ccGive'); ['P', 'S', 'M', 'G'].forEach(s => { const g = document.createElement('optgroup'); g.label = SLOT_NAME[s]; WEAPONS.filter(w => w.slot === s).forEach(w => { const o = document.createElement('option'); o.value = w.id; o.textContent = w.name; g.appendChild(o); }); sel.appendChild(g); });
-      row.querySelector('#ccGiveGo').onclick = () => { if (G.running && G.player) { giveWeapon(G.player, WBY[sel.value]); toast('Equipped ' + WBY[sel.value].name); } else toast('Start a match first'); };
-      return row;
-    }
-    const head = document.createElement('div'); head.className = 'cc-head';
-    const main = document.createElement('button'); main.className = 'cc-tog'; main.title = m.desc || ''; main.innerHTML = '<span class="cc-name">' + m.name + '</span>' + (m.action ? '<span class="cc-state">RUN</span>' : '<span class="cc-state">' + (Cheat.on[m.id] ? 'ON' : 'OFF') + '</span>');
-    main.onclick = () => { if (m.action) { m.action(); return; } const v = !Cheat.on[m.id]; this.setMod(m.id, v); row.classList.toggle('on', v); main.querySelector('.cc-state').textContent = v ? 'ON' : 'OFF'; };
-    head.appendChild(main);
-    if (m.opts) { const g = document.createElement('button'); g.className = 'cc-gear'; g.setAttribute('aria-label', 'Options for ' + m.name); g.textContent = '⋯'; g.onclick = () => { this.openMods[m.id] = !this.openMods[m.id]; ob.classList.toggle('show', !!this.openMods[m.id]); }; head.appendChild(g); }
-    row.appendChild(head);
-    if (m.desc) { const d = document.createElement('div'); d.className = 'cc-desc'; d.textContent = m.desc; row.appendChild(d); }
-    const ob = document.createElement('div'); ob.className = 'cc-opts' + (this.openMods[m.id] ? ' show' : '');
-    (m.opts || []).forEach(o => {
-      const l = document.createElement('label'); l.className = 'cc-opt'; const nm = document.createElement('span'); nm.textContent = o.name; l.appendChild(nm);
-      if (o.type === 'sel') { const s = document.createElement('select'); o.list.forEach(([v, t]) => { const op = document.createElement('option'); op.value = v; op.textContent = t; s.appendChild(op); }); s.value = Cheat.v[o.id]; s.onchange = () => { Cheat.v[o.id] = s.value; this.save(); }; l.appendChild(s); }
-      else if (o.type === 'chk') { const c = document.createElement('input'); c.type = 'checkbox'; c.checked = !!Cheat.v[o.id]; c.onchange = () => { Cheat.v[o.id] = c.checked ? 1 : 0; this.save(); }; l.appendChild(c); }
-      else { const r = document.createElement('input'); r.type = 'range'; r.min = o.min; r.max = o.max; r.step = o.step; r.value = Cheat.v[o.id]; const out = document.createElement('output'); const show = () => { out.textContent = (+r.value).toString() + (o.unit || ''); }; show(); r.oninput = () => { Cheat.v[o.id] = +r.value; show(); this.save(); }; l.appendChild(r); l.appendChild(out); }
-      ob.appendChild(l);
+    this.built = true;
+    $('cc').innerHTML = '<div id="ccTabs"></div><div id="ccStage"></div><div id="ccTip"></div>';
+    window.addEventListener('mousemove', e => {
+      const d = this._drag; if (!d) return; const s = Cheat.ui.scale;
+      const x = clamp(e.clientX / s - d.dx, -100, window.innerWidth / s - 40), y = clamp(e.clientY / s - d.dy, 0, window.innerHeight / s - 30);
+      d.el.style.left = x + 'px'; d.el.style.top = y + 'px'; this.pos[d.key] = [Math.round(x), Math.round(y)];
     });
-    row.appendChild(ob); return row;
+    window.addEventListener('mouseup', () => { if (this._drag) { this._drag = null; ccSave(); } });
+    window.addEventListener('resize', () => { if (this.open) this.render(); });
+  },
+  tip(m) {
+    const t = $('ccTip'); if (!m || !Cheat.ui.tips) { t.style.display = 'none'; return; }
+    t.innerHTML = '<b>' + esc(m.name) + '</b> ' + esc(m.desc || '') + '<small>' + (m.action ? 'Left click - Run' : 'Left click - Toggle module') + ' · Right click - Open module settings</small>'; t.style.display = 'block';
+  },
+  panel(key, title, body, i) {
+    const s = Cheat.ui.scale, W = window.innerWidth / s, per = Math.max(1, Math.floor((W - 14) / 174)), p = this.pos[key] || [14 + (i % per) * 174, 40 + Math.floor(i / per) * 120];
+    const el = document.createElement('div'); el.className = 'cp' + (this.col[key] ? ' c' : ''); el.style.left = p[0] + 'px'; el.style.top = p[1] + 'px';
+    const h = document.createElement('div'); h.className = 'cp-h'; h.innerHTML = '<span>' + esc(title) + '</span><i>▾</i>'; el.appendChild(h);
+    h.addEventListener('mousedown', e => { if (e.button !== 0) return; const r = el.getBoundingClientRect(); this._drag = { el, key, dx: (e.clientX - r.left) / s, dy: (e.clientY - r.top) / s }; e.preventDefault(); });
+    h.addEventListener('contextmenu', e => { e.preventDefault(); this.col[key] = !this.col[key]; el.classList.toggle('c', !!this.col[key]); ccSave(); });
+    const b = document.createElement('div'); b.className = 'cp-b'; el.appendChild(b); body(b); return el;
+  },
+  bindBtn(id) {
+    const b = document.createElement('button'); const cur = id === '_gui' ? Cheat.ui.key : Cheat.binds[id];
+    b.textContent = this.listen === id ? 'Press a key…' : '[' + keyName(cur) + ']'; if (this.listen === id) b.classList.add('on');
+    b.title = 'Click, then press a key. Backspace clears.'; b.onclick = () => { this.listen = this.listen === id ? null : id; this.render(); };
+    return b;
+  },
+  optRow(o) {
+    const r = document.createElement('div'); r.className = 'co'; const l = document.createElement('span'); l.className = 'l'; l.textContent = o.name; r.appendChild(l);
+    if (o.type === 'sel') { const b = document.createElement('button'); const lab = () => (o.list.find(x => x[0] === Cheat.v[o.id]) || o.list[0])[1]; b.textContent = lab(); b.onclick = () => { const i = o.list.findIndex(x => x[0] === Cheat.v[o.id]); Cheat.v[o.id] = o.list[(i + 1) % o.list.length][0]; b.textContent = lab(); ccSave(); }; r.appendChild(b); }
+    else if (o.type === 'chk') { const b = document.createElement('button'); const lab = () => { b.textContent = Cheat.v[o.id] ? 'ON' : 'OFF'; b.classList.toggle('on', !!Cheat.v[o.id]); }; lab(); b.onclick = () => { Cheat.v[o.id] = Cheat.v[o.id] ? 0 : 1; lab(); ccSave(); }; r.appendChild(b); }
+    else { const i = document.createElement('input'); i.type = 'range'; i.min = o.min; i.max = o.max; i.step = o.step; i.value = Cheat.v[o.id]; const v = document.createElement('span'); v.className = 'v'; const show = () => { v.textContent = (+i.value) + (o.unit || ''); }; show(); i.oninput = () => { Cheat.v[o.id] = +i.value; show(); ccSave(); }; r.appendChild(i); r.appendChild(v); }
+    return r;
+  },
+  modRow(m) {
+    const row = document.createElement('div'); row.dataset.id = m.id; row.className = 'cm' + (Cheat.on[m.id] ? ' on' : '') + (this.openMods[m.id] ? ' open' : '');
+    const h = document.createElement('div'); h.className = 'cm-h'; h.textContent = m.name; row.appendChild(h);
+    h.onclick = () => { if (m.type === 'give') { this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); return; } this.run(m.id); };
+    h.oncontextmenu = e => { e.preventDefault(); this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); };
+    h.onmouseenter = () => this.tip(m); h.onmouseleave = () => this.tip(null);
+    const o = document.createElement('div'); o.className = 'cm-o'; const d = document.createElement('div'); d.className = 'cm-d'; d.textContent = m.desc || ''; o.appendChild(d);
+    if (m.type === 'give') {
+      const r = document.createElement('div'); r.className = 'co'; const sel = document.createElement('select');
+      ['P', 'S', 'M', 'G'].forEach(s => { const g = document.createElement('optgroup'); g.label = SLOT_NAME[s]; WEAPONS.filter(w => w.slot === s).forEach(w => { const op = document.createElement('option'); op.value = w.id; op.textContent = w.name; g.appendChild(op); }); sel.appendChild(g); });
+      const b = document.createElement('button'); b.textContent = 'Equip'; b.onclick = () => { if (G.running && G.player) { giveWeapon(G.player, WBY[sel.value]); toast('Equipped ' + WBY[sel.value].name); } else toast('Start a match first'); };
+      r.appendChild(sel); r.appendChild(b); o.appendChild(r);
+    } else {
+      (m.opts || []).forEach(op => o.appendChild(this.optRow(op)));
+      const br = document.createElement('div'); br.className = 'co'; const l = document.createElement('span'); l.className = 'l'; l.textContent = 'Bind'; br.appendChild(l); br.appendChild(this.bindBtn(m.id)); o.appendChild(br);
+    }
+    row.appendChild(o); return row;
+  },
+  render() {
+    if (!this.built) return; const s = Cheat.ui.scale, st = $('ccStage'); st.innerHTML = ''; st.style.transform = 'scale(' + s + ')'; st.style.width = (100 / s) + '%'; st.style.height = (100 / s) + '%';
+    const tabs = $('ccTabs'); tabs.innerHTML = ''; [['mods', 'Modules'], ['set', 'Settings'], ['binds', 'Binds']].forEach(([v, t]) => { const b = document.createElement('button'); b.textContent = t; b.className = this.view === v ? 'on' : ''; b.onclick = () => { this.view = v; this.render(); }; tabs.appendChild(b); });
+    if (this.view === 'mods') {
+      CHEAT_DEFS.forEach((c, i) => st.appendChild(this.panel(c.cat, c.cat, b => c.mods.forEach(m => b.appendChild(this.modRow(m))), i)));
+      st.appendChild(this.panel('Search', 'Search', b => {
+        const inp = document.createElement('input'); inp.className = 'cs'; inp.placeholder = 'Search modules…'; inp.value = this.q; b.appendChild(inp); const res = document.createElement('div'); b.appendChild(res);
+        const fill = () => { res.innerHTML = ''; const q = this.q.trim().toLowerCase(); if (!q) return; Object.values(MOD_BY_ID).filter(m => m.name.toLowerCase().includes(q) || (m.desc || '').toLowerCase().includes(q)).slice(0, 14).forEach(m => res.appendChild(this.modRow(m))); };
+        inp.oninput = () => { this.q = inp.value; fill(); }; fill(); setTimeout(() => { if (this.q) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } }, 0);
+      }, CHEAT_DEFS.length));
+    } else if (this.view === 'set') {
+      st.appendChild(this.panel('GUI', 'GUI', b => {
+        const row = (label, ctl) => { const r = document.createElement('div'); r.className = 'co st'; const l = document.createElement('span'); l.className = 'l'; l.textContent = label; r.appendChild(l); r.appendChild(ctl); b.appendChild(r); };
+        row('GUI key', this.bindBtn('_gui'));
+        const sc = document.createElement('input'); sc.type = 'range'; sc.min = .7; sc.max = 1.5; sc.step = .05; sc.value = Cheat.ui.scale; sc.onchange = () => { Cheat.ui.scale = +sc.value; ccSave(); this.render(); }; row('Scale', sc);
+        const tg = (k) => { const x = document.createElement('button'); const lab = () => { x.textContent = Cheat.ui[k] ? 'ON' : 'OFF'; x.classList.toggle('on', !!Cheat.ui[k]); }; lab(); x.onclick = () => { Cheat.ui[k] = Cheat.ui[k] ? 0 : 1; lab(); ccSave(); this.arr(); }; return x; };
+        row('Arraylist', tg('arr')); row('Tooltips', tg('tips'));
+        const rl = document.createElement('button'); rl.textContent = 'Reset'; rl.onclick = () => { this.pos = {}; this.col = {}; ccSave(); this.render(); }; row('Panel layout', rl);
+        const off = document.createElement('button'); off.textContent = 'Run'; off.onclick = () => this.allOff(); row('Disable all', off);
+        const hint = document.createElement('div'); hint.className = 'cm-d pad'; hint.textContent = 'Left click a module to toggle it. Right click a module to open its settings and bind. Right click a panel title to collapse it. Drag titles to move panels.'; b.appendChild(hint);
+      }, 0));
+    } else {
+      st.appendChild(this.panel('Binds', 'Binds', b => {
+        Object.values(MOD_BY_ID).filter(m => m.type !== 'give').forEach(m => { const r = document.createElement('div'); r.className = 'co st'; const l = document.createElement('span'); l.className = 'l'; l.textContent = m.name; r.appendChild(l); r.appendChild(this.bindBtn(m.id)); b.appendChild(r); });
+        const clr = document.createElement('div'); clr.className = 'co st'; const cb = document.createElement('button'); cb.textContent = 'Clear all binds'; cb.onclick = () => { Cheat.binds = {}; ccSave(); this.render(); }; clr.appendChild(cb); b.appendChild(clr);
+      }, 0));
+    }
   }
 };
 window.addEventListener('keydown', e => {
+  const t = e.target, typing = t && (t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || (t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox'));
+  if (Admin.listen) {
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (e.code !== 'Escape') Admin.setBind(Admin.listen, ['Backspace', 'Delete'].includes(e.code) ? '' : e.code);
+    Admin.listen = null; Admin.render(); return;
+  }
   if (e.code === 'Escape' && Admin.open) { e.stopImmediatePropagation(); Admin.close(); return; }
-  if (!Account.admin || !Account.name) return;
-  if (e.code === 'ShiftLeft' && !e.repeat) { const t = e.target; if (t && t.tagName === 'INPUT' && t.type !== 'range' && t.type !== 'checkbox') return; e.preventDefault(); Admin.toggle(); }
-  else if (e.code === 'KeyT' && !e.repeat && Cheat.on.clicktp && G.running && !Admin.open) Cheat.tp(G.player);
+  if (typing || !Account.admin || !Account.name) return;
+  if (e.code === Cheat.ui.key && !e.repeat) { e.preventDefault(); Admin.toggle(); return; }
+  if (e.repeat || !G.running || (typeof Chat !== 'undefined' && Chat.open)) return;
+  for (const id of Object.keys(Cheat.binds)) if (Cheat.binds[id] === e.code && MOD_BY_ID[id]) { e.preventDefault(); Admin.run(id, true); return; }
 }, true);
 
 /* ---- overlay canvas: homing lock-on reticle, missile warning, admin ESP ---- */
@@ -2932,6 +3110,7 @@ function drawOverlay() {
   const g = _og; g.clearRect(0, 0, W, H); const p = G.player; if (!p) return;
   R.camera.updateMatrixWorld(true); R.camera.matrixWorldInverse.copy(R.camera.matrixWorld).invert();
   $('warn').classList.toggle('on', NOW - Warn.missile < .3 && p.alive);
+  $('lockHint').classList.toggle('on', G.running && !G.over && !Input.locked && !Admin.open && !Chat.open && !menuOpen());
   const w = curW(p), L = p.lk;
   if (L && L.c && L.c.alive && w && w.lock) {
     const s = toScreen(L.c.pos[0], L.c.pos[1] + 1, L.c.pos[2], W, H);
@@ -2939,9 +3118,9 @@ function drawOverlay() {
       const [x, y] = s; g.lineWidth = 3; g.font = '800 15px Nunito, sans-serif'; g.textAlign = 'center';
       if (L.ok) { g.strokeStyle = '#ff4b6e'; g.beginPath(); g.moveTo(x, y - 34); g.lineTo(x + 34, y); g.lineTo(x, y + 34); g.lineTo(x - 34, y); g.closePath(); g.stroke(); g.fillStyle = '#ff4b6e'; g.fillText('LOCKED', x, y + 56); }
       else {
-        const f = clamp(L.t / w.lock, 0, 1), r = 46 - 20 * f; g.strokeStyle = '#ffc83d'; g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + TAU * f); g.stroke();
+        const f = clamp(L.t / w.lock, 0, 1), r = 46 - 20 * f; g.strokeStyle = '#ff3347'; g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + TAU * f); g.stroke();
         g.lineWidth = 2; g.beginPath(); g.moveTo(x - r, y - r + 12); g.lineTo(x - r, y - r); g.lineTo(x - r + 12, y - r); g.moveTo(x + r, y - r + 12); g.lineTo(x + r, y - r); g.lineTo(x + r - 12, y - r); g.moveTo(x - r, y + r - 12); g.lineTo(x - r, y + r); g.lineTo(x - r + 12, y + r); g.moveTo(x + r, y + r - 12); g.lineTo(x + r, y + r); g.lineTo(x + r - 12, y + r); g.stroke();
-        g.fillStyle = '#ffc83d'; g.fillText('LOCKING ' + Math.max(0, w.lock - L.t).toFixed(1) + 's', x, y + r + 22);
+        g.fillStyle = '#ff3347'; g.fillText('LOCKING ' + Math.max(0, w.lock - L.t).toFixed(1) + 's', x, y + r + 22);
       }
     }
   } else if (w && w.lock && p.ads && p.alive) { g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '800 14px Nunito, sans-serif'; g.textAlign = 'center'; g.fillText('Keep aiming at an enemy to lock on', W / 2, H / 2 + 60); }
@@ -2958,6 +3137,64 @@ function drawOverlay() {
     if (v.espNames) { g.fillStyle = '#fff'; g.fillText(a.name + ' · ' + Math.round(dist) + 'm', (minX + maxX) / 2, minY - 5); }
     if (v.espTrace) { g.strokeStyle = col + '99'; g.beginPath(); g.moveTo(W / 2, H); g.lineTo((minX + maxX) / 2, maxY); g.stroke(); }
   }
+}
+/* ===== Chat (Roblox-style, never saved), game menu, and Ctrl to lock / unlock the mouse ===== */
+const CHAT_COLS = ['#fd2943', '#01a2ff', '#02b857', '#a75eb8', '#f58225', '#f5cd30', '#e91e8c', '#9ad94b'];
+function relockMouse() { try { const p = $('view').requestPointerLock(); if (p && p.catch) p.catch(() => { }); } catch (e) { } }
+const menuOpen = () => $('pause').classList.contains('on');
+const Chat = {
+  open: false, max: 80, last: 0, idleT: 0,
+  colorFor(n) { let h = 0; for (let i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) | 0; return CHAT_COLS[Math.abs(h) % CHAT_COLS.length]; },
+  push(d) {
+    const log = $('rbLog'); log.appendChild(d); while (log.children.length > this.max) log.removeChild(log.firstChild);
+    log.scrollTop = log.scrollHeight; setTimeout(() => d.classList.add('aged'), 9000); this.poke();
+  },
+  add(name, text) {
+    const d = document.createElement('div'); d.className = 'msg'; const n = document.createElement('span'); n.className = 'n'; n.style.color = this.colorFor(name); n.textContent = '[' + name + ']:';
+    const t = document.createElement('span'); t.textContent = ' ' + text; d.appendChild(n); d.appendChild(t); this.push(d);
+  },
+  sys(text) { const d = document.createElement('div'); d.className = 'msg sys'; d.textContent = text; this.push(d); },
+  poke() { const c = $('rbChat'); c.classList.remove('idle'); clearTimeout(this.idleT); this.idleT = setTimeout(() => { if (!this.open) c.classList.add('idle'); }, 9000); },
+  clear() { $('rbLog').innerHTML = ''; },
+  focus() {
+    if (!G.running || G.over) return; this.open = true; $('rbChat').hidden = false; $('rbChatBtn').classList.add('on');
+    Input.keys = {}; Input.lmb = false; Input.rmb = false; if (document.pointerLockElement) document.exitPointerLock(); $('rbIn').focus(); this.poke();
+  },
+  blur(relock) { this.open = false; $('rbIn').value = ''; $('rbIn').blur(); $('rbChatBtn').classList.toggle('on', !$('rbChat').hidden && false); this.poke(); if (relock && G.running && !G.over) relockMouse(); },
+  send(raw) {
+    const t = String(raw || '').replace(/\s+/g, ' ').trim().slice(0, 160); if (!t) return;
+    const now = performance.now(); if (now - this.last < 700) { this.sys('You are chatting too fast.'); return; } this.last = now;
+    this.add(Account.name, t);
+    if (G.mode === 'live' && Net.room) { try { const r = Net.db.ref(Net.base + '/chat').push({ f: Net.uid, n: Account.name, m: t, t: netNow() }); setTimeout(() => { try { r.remove(); } catch (e) { } }, 6000); } catch (e) { } }
+  }
+};
+function openMenu() { if (!G.running || G.over) return; Chat.blur(false); $('rbMain').hidden = false; $('rbConfirm').hidden = true; $('pause').classList.add('on'); if (document.pointerLockElement) document.exitPointerLock(); Input.keys = {}; }
+function closeMenu(relock) { $('pause').classList.remove('on'); if (relock && G.running && !G.over) relockMouse(); }
+function wireChat() {
+  $('rbIn').addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); Chat.send($('rbIn').value); Chat.blur(true); }
+    else if (e.key === 'Escape') { e.preventDefault(); Chat.blur(true); }
+  });
+  $('rbChatBtn').onclick = () => { const c = $('rbChat'); c.hidden = !c.hidden; $('rbChatBtn').classList.toggle('on', !c.hidden); if (!c.hidden) { Chat.focus(); } };
+  $('rbChatBtn').classList.add('on');
+  $('rbMenuBtn').onclick = () => (menuOpen() ? closeMenu(true) : openMenu());
+  $('rbX').onclick = () => closeMenu(true); $('btnResume').onclick = () => closeMenu(true);
+  $('btnQuit').onclick = () => { $('rbMain').hidden = true; $('rbConfirm').hidden = false; };
+  $('btnLeaveNo').onclick = () => { $('rbMain').hidden = false; $('rbConfirm').hidden = true; };
+  $('btnLeaveYes').onclick = () => { closeMenu(false); quitToMenu(); };
+  window.addEventListener('keydown', e => {
+    if (!Account.name || !G.running || G.over) return;
+    if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
+      if (e.repeat) return;
+      if (Chat.open) Chat.blur(true); else if (Admin.open) Admin.close(); else if (menuOpen()) closeMenu(true);
+      else if (document.pointerLockElement) document.exitPointerLock(); else relockMouse();
+      return;
+    }
+    const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.code === 'Slash' || e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); if (!Admin.open && !menuOpen()) Chat.focus(); }
+    else if (e.code === 'KeyM' && !e.repeat && !Admin.open) { if (menuOpen()) closeMenu(true); else openMenu(); }
+  }, true);
 }
 
 /* ===== Easter eggs + boot ===== */
@@ -3089,7 +3326,7 @@ setInterval(() => { if (G.bigHead) applyBigHead(); }, 1500);
 function boot() {
   try {
     if (typeof THREE === 'undefined') throw new Error('Three.js could not be loaded. Check your connection and reload.');
-    initRenderer(); initFX(); VM.init(); wireUI(); wireNet(); wireAuth();
+    initRenderer(); initFX(); VM.init(); wireUI(); wireNet(); wireAuth(); wireChat();
     let lc = 0, lt = 0;
     $('logo').onclick = () => { const n = Date.now(); if (n - lt > 4000) lc = 0; lt = n; lc++; if (lc >= 7) { lc = 0; $('logo').classList.remove('spin'); void $('logo').offsetWidth; $('logo').classList.add('spin'); Snd.init(); foundSecret('logo'); } };
     eggsBuild(); requestAnimationFrame(loop); $('menu').inert = true; $('menu').style.visibility = 'hidden'; Account.boot().then(() => $('loading').classList.add('off'), () => $('loading').classList.add('off'));
