@@ -266,14 +266,49 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:1.1re
 .srow .rng{display:flex;align-items:center;gap:.6rem}.srow .rng input{width:9rem}.srow .rng output{min-width:3.2rem;text-align:right;color:var(--accent);font-weight:800}
 #cross i{background:var(--xh,#fff)!important}#cross.melee:after{background:var(--xh,#fff)!important}#cross{transform:scale(var(--xs,1))}
 #fps{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);display:none;font:700 12px "Chakra Petch",ui-monospace,monospace;color:#fff;text-shadow:0 1px 2px #000;pointer-events:none}
-#pick{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);width:min(700px,94vw);background:rgba(18,19,21,.92);border-radius:12px;color:#fff;font-family:"Nunito",system-ui,sans-serif;padding:12px 14px;pointer-events:auto;box-shadow:0 14px 40px rgba(0,0,0,.55)}
+#pick{position:absolute;left:50%;bottom:120px;transform:translateX(-50%);width:min(780px,95vw);background:rgba(18,19,21,.94);border-radius:14px;color:#fff;font-family:"Nunito",system-ui,sans-serif;padding:12px 14px;pointer-events:auto;box-shadow:0 14px 40px rgba(0,0,0,.55)}
 #pick[hidden]{display:none}
 .pk-h{display:flex;flex-direction:column;gap:.1rem;margin-bottom:.6rem}.pk-h b{font:800 1.1rem "Nunito",sans-serif}.pk-h span{color:#bdbebe;font-size:.82rem}
-.pk-b{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
-.pk-c{display:flex;flex-direction:column;gap:.25rem;font-size:.75rem;color:#bdbebe;text-transform:uppercase;letter-spacing:.06em}
-.pk-c select{font:700 .9rem "Nunito",sans-serif;text-transform:none;letter-spacing:0;background:#2b2d30;color:#fff;border:1px solid #4a4d52;border-radius:8px;padding:.5em .4em;min-width:0}
+.pk-main{display:grid;grid-template-columns:210px 1fr;gap:12px}
+.pk-slots{display:flex;flex-direction:column;gap:6px}
+.pk-s{display:grid;text-align:left;gap:1px;padding:.5rem .7rem;border-radius:10px;background:#26282b;border:1px solid #3a3d41;color:#fff;box-shadow:none;letter-spacing:0}
+.pk-s small{font:700 .66rem "Nunito",sans-serif;text-transform:uppercase;letter-spacing:.07em;color:#9a9ca1}.pk-s b{font:800 .95rem "Nunito",sans-serif}.pk-s i{font-style:normal;font-size:.72rem;color:#bdbebe}
+.pk-s:hover{background:#31343a}.pk-s.on{border-color:#ff3347;background:#3a1a1f}
+.pk-list{display:flex;flex-direction:column;gap:8px;min-width:0}
+#pkQ{width:100%;font:700 .95rem "Nunito",sans-serif;background:#26282b;color:#fff;border:1px solid #3a3d41;border-radius:10px;padding:.55em .8em}
+#pkQ:focus,#pkQ:focus-visible{outline:2px solid #ff3347;outline-offset:-1px}
+.pk-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px;max-height:190px;overflow:auto;scrollbar-width:thin;align-content:start}
+.pk-i{display:grid;grid-template-columns:1fr auto;grid-template-areas:'n c' 'e e';text-align:left;gap:2px 8px;padding:.45rem .65rem;border-radius:10px;background:#26282b;border:1px solid #3a3d41;color:#fff;box-shadow:none;letter-spacing:0}
+.pk-i b{grid-area:n;font:800 .88rem "Nunito",sans-serif}.pk-i span{grid-area:c;font-size:.68rem;color:#ff8a98;align-self:center}.pk-i em{grid-area:e;font-style:normal;font-size:.72rem;color:#9a9ca1}
+.pk-i:hover{background:#31343a}.pk-i.on{border-color:#ff3347;background:#3a1a1f}
+.pk-none{color:#9a9ca1;padding:.6rem}
 .pk-f{display:flex;justify-content:flex-end;margin-top:.7rem}.pk-f button{padding:.5em 1.4em}
-@media (max-width:640px){.pk-b{grid-template-columns:repeat(2,1fr)}.lrow{flex-wrap:wrap}}
+@media (max-width:640px){.pk-main{grid-template-columns:1fr}.pk-slots{flex-direction:row;flex-wrap:wrap}.pk-s{flex:1 1 40%}}
+
+/* armory search */
+#wsearch{width:100%;margin-bottom:.5rem;font:700 .95rem "Nunito",sans-serif;background:var(--panel2);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:.55em .8em}
+#wsearch:focus{outline:2px solid var(--accent);outline-offset:-2px}
+/* admin search page */
+.ss{position:absolute;top:44px;display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 70px)}
+.ss-in{width:100%;font:600 17px "Chakra Petch",sans-serif;background:rgba(10,3,5,.94);color:#fff;border:1px solid #6a1624;border-radius:8px;padding:.7em 1em;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.ss-in:focus{outline:2px solid #ff3347;outline-offset:-1px}
+.ss-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ss-chips button{font:600 12px "Chakra Petch",sans-serif;padding:3px 12px;border-radius:99px;background:rgba(14,5,7,.9);color:#d8aab2;border:1px solid #3a1219;box-shadow:none;letter-spacing:.03em}
+.ss-chips button:hover{color:#fff;background:rgba(40,10,16,.95)}.ss-chips button.on{background:linear-gradient(180deg,#e0213a,#8a0c1b);color:#fff;border-color:#e0213a}
+.ss-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px;overflow:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#5a1620 transparent;align-content:start}
+.sc{background:rgba(14,5,7,.94);border:1px solid #3a1219;border-left:3px solid #4b1b25;border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;gap:5px}
+.sc.on{border-left-color:#ff3347;background:linear-gradient(90deg,rgba(255,51,71,.22),rgba(14,5,7,.94) 70%)}
+.sc.sel{outline:2px solid #ff6272;outline-offset:1px}
+.sc-h{display:flex;justify-content:space-between;align-items:center;gap:8px}.sc-h b{font-size:14px}
+.sc-c{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#ff8a98;background:rgba(255,51,71,.12);padding:1px 7px;border-radius:99px}
+.sc-d{font-size:12px;color:#b98d95;line-height:1.35;flex:1}
+.sc mark{background:#ff3347;color:#fff;border-radius:2px;padding:0 1px}
+.sc-f{display:flex;align-items:center;gap:8px}
+.sc-sw{font:700 11px "Chakra Petch",sans-serif;padding:2px 12px;border-radius:99px;background:#2a1117;color:#fff;box-shadow:none;letter-spacing:.05em}.sc.on .sc-sw{background:#c4172b}
+.sc-k{font-size:11px;color:#ff8a98;margin-right:auto}.sc-g{padding:0 .5em;background:transparent;color:#a78bd0;font:700 14px sans-serif;box-shadow:none}.sc-g:hover{color:#fff}
+.sc>.cm-o{display:none;border-left:0;border-top:1px dashed #3a1219;margin:2px -2px 0;border-radius:0}.sc.open>.cm-o{display:block}.sc>.cm-o .cm-d{display:none}
+.ss-none{grid-column:1/-1;color:#b98d95;padding:1.2rem;text-align:center}
+.ss-foot{font-size:11px;color:#8f78b3;text-shadow:0 1px 0 #000}
 </style>
 
 </head>
@@ -309,16 +344,16 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:1.1re
   <section class="tab on" id="tab-play">
    <h2 class="sec">Queue for a mode</h2>
    <div class="cards">
-    <div class="card"><span class="tag">Free for all</span><h3>Deathmatch</h3><p>Drop into a public lobby packed with Nightmare bots. First to 15 eliminations wins. Your loadout.</p><button class="primary" data-queue="dm">Queue</button></div>
+    <div class="card"><span class="tag">Free for all</span><h3>Deathmatch</h3><p>Drop into a public lobby with a full crowd. First to 15 eliminations wins. Your loadout.</p><button class="primary" data-queue="dm">Queue</button></div>
     <div class="card"><span class="tag" id="ggTag">Every weapon</span><h3>Gun Game</h3><p>Every kill swaps you to the next weapon. Land a kill with the last one to win. The weapons are chosen for you.</p><button class="primary" data-queue="gg">Queue</button></div>
-    <div class="card"><span class="tag">1 vs 1</span><h3>Duel</h3><p>First to 5 round wins against a Nightmare bot. Your loadout every round.</p><button class="primary" data-queue="duel">Start</button></div>
+    <div class="card"><span class="tag">1 vs 1</span><h3>Duel</h3><p>First to 5 round wins against one opponent. Your loadout every round.</p><button class="primary" data-queue="duel">Start</button></div>
    </div>
    <h2 class="sec">Lobbies</h2>
    <div class="card live">
-    <p>Open a public lobby, make a private one for friends, or join one from the list. Every lobby is full of Nightmare bots. Up to 8 players.</p>
+    <p>Open a public lobby, make a private one for friends, or join one from the list.</p>
     <div class="row">
      <label class="f">Mode<select id="lobMode"><option value="dm">Deathmatch</option><option value="gg">Gun Game</option></select></label>
-     <label class="f">Bots<select id="lobBots"><option>0</option><option>4</option><option selected>8</option><option>12</option><option>16</option><option>20</option></select></label>
+     <label class="f">Lobby size<select id="lobBots"><option value="3">4 players</option><option value="7">8 players</option><option value="11" selected>12 players</option><option value="15">16 players</option><option value="19">20 players</option></select></label>
      <label class="f">Map<select id="mapSel"></select></label>
     </div>
     <div class="row">
@@ -332,7 +367,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:1.1re
     <div id="lobbyList"></div>
     <div id="lobbyPlayers"></div>
     <input id="pname" type="hidden">
-    <p class="note">Bots run on each player's own computer to keep the database light, so every player sees their own bots. Lobbies need the Firebase Realtime Database to be set up. If it is not reachable, queueing starts a solo match with bots instead.</p>
+    <p class="note">Lobbies need the Firebase Realtime Database to be set up. If it is not reachable, queueing starts an offline match instead.</p>
    </div>
    <div class="keys"><span><kbd>WASD</kbd> move</span><span><kbd>Space</kbd> jump</span><span><kbd>Shift</kbd> sprint</span><span><kbd>C</kbd> crouch</span><span><kbd>Mouse</kbd> aim / fire</span><span><kbd>Right click</kbd> zoom</span><span><kbd>R</kbd> reload</span><span><kbd>1 2 3 4</kbd> or wheel: weapon</span><span><kbd>Q</kbd> last weapon</span><span><kbd>E</kbd> interact</span><span><kbd>Tab</kbd> scores</span><span><kbd>Ctrl</kbd> lock / unlock mouse</span><span><kbd>/</kbd> chat</span><span><kbd>M</kbd> menu</span></div>
   </section>
@@ -347,7 +382,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:1.1re
    <div class="slots3" id="slotBtns"></div>
    <div class="armory">
     <div><canvas id="wprev" width="640" height="400"></canvas><div id="wstats"></div><div id="wact"></div></div>
-    <div id="wlist"></div>
+    <div class="wcol"><input id="wsearch" type="search" placeholder="Search weapons…" autocomplete="off" spellcheck="false" aria-label="Search weapons"><div id="wlist"></div></div>
    </div>
   </section>
 
@@ -375,7 +410,7 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:1.1re
   <div id="rbChat" class="idle"><div id="rbLog" role="log" aria-live="polite"></div><input id="rbIn" maxlength="160" autocomplete="off" spellcheck="false" placeholder="To chat click here or press / key" aria-label="Chat message"></div>
  </div>
  <canvas id="ov"></canvas><div id="warn">MISSILE INBOUND</div><div id="ccArray"></div>
- <div id="pick" hidden><div class="pk-h"><b id="pkT">Respawning…</b><span id="pkS"></span></div><div class="pk-b" id="pkB"></div><div class="pk-f"><button id="pkGo" type="button" class="primary">Deploy</button></div></div>
+ <div id="pick" hidden><div class="pk-h"><b id="pkT">Respawning…</b><span id="pkS"></span></div><div class="pk-main"><div class="pk-slots" id="pkSlots"></div><div class="pk-list"><input id="pkQ" type="search" placeholder="Search your weapons…" autocomplete="off" spellcheck="false" aria-label="Search weapons"><div class="pk-items" id="pkL"></div></div></div><div class="pk-f"><button id="pkGo" type="button" class="primary">Deploy</button></div></div>
  <div id="fps"></div>
  <div id="lockHint">Mouse unlocked · press <kbd>Ctrl</kbd> to lock it</div>
 
@@ -696,21 +731,21 @@ def(Object.assign({}, MELEE, { name: 'Scythe', slot: 'M', cls: 'Melee', dmg: 64,
 
 /* ===== GADGETS ===== */
 const GADGET = { gadget: true, cls: 'Gadget', slot: 'G', mv: 1.05, L: .3, zoom: 1, spr: 0, rng: 60, kz: -.1, kr: -.25, fa: 'throw', ra: 'cycle', eq: 'raise', mz: 0 };
-def(Object.assign({}, GADGET, { name: 'Frag Grenade', dmg: 95, rpm: 50, mag: 2, rel: 7, proj: 'nade', spd: 21, grav: 14, rad: 4.6, snd: 'swish', snp: .8, col: '#84cc16', free: 1, note: 'Bounces, then explodes after 2 seconds.' }), [
+def(Object.assign({}, GADGET, { name: 'Frag Grenade', dmg: 80, rpm: 50, mag: 2, rel: 7, proj: 'nade', spd: 21, grav: 14, rad: 4.6, snd: 'swish', snp: .8, col: '#84cc16', free: 1, note: 'Bounces, then explodes after 2 seconds. 2 per life.' }), [
   S(.055, 0, 0, -.12, '#4d7c0f', { n: 'mag' }), C(.03, .03, 0, .06, -.12, '#9ca3af', { n: 'mag', rx: 1.57 }), B(.02, .02, .09, .03, .075, -.1, '#facc15', { n: 'mag' })]);
-def(Object.assign({}, GADGET, { name: 'Cryo Grenade', dmg: 15, rpm: 50, mag: 2, rel: 9, proj: 'cryo', spd: 21, grav: 14, rad: 6, slow: 3, snd: 'swish', snp: 1.2, col: '#7dd3fc', note: 'Freezing burst slows everyone caught in it for 3s.' }), [
+def(Object.assign({}, GADGET, { name: 'Cryo Grenade', dmg: 15, rpm: 50, mag: 2, rel: 9, proj: 'cryo', spd: 21, grav: 14, rad: 6, slow: 2.5, snd: 'swish', snp: 1.2, col: '#7dd3fc', note: 'Freezing burst slows everyone caught in it for 2.5s. 2 per life.' }), [
   S(.055, 0, 0, -.12, '#7dd3fc', { n: 'mag', g: 1 }), C(.03, .03, 0, .06, -.12, '#e0f2fe', { n: 'mag', rx: 1.57 }), B(.02, .02, .09, .03, .075, -.1, '#ffffff', { n: 'mag' })]);
-def(Object.assign({}, GADGET, { name: 'Molotov', dmg: 4, rpm: 50, mag: 2, rel: 10, proj: 'molotov', spd: 17, grav: 16, rad: 3, snd: 'swish', snp: .9, col: '#f97316', ignite: 2, note: 'Shatters into a fire pool for 5s. Anyone standing in it burns.' }), [
+def(Object.assign({}, GADGET, { name: 'Molotov', dmg: 4, rpm: 50, mag: 1, rel: 10, proj: 'molotov', spd: 17, grav: 16, rad: 3, snd: 'swish', snp: .9, col: '#f97316', ignite: 2, note: 'Shatters into a fire pool for 5s. Anyone standing in it burns.' }), [
   C(.045, .2, 0, 0, -.12, '#78350f', { n: 'mag', rx: 1.57 }), C(.02, .1, 0, 0, -.12, '#92400e', { n: 'mag', rx: 1.57 }), S(.03, 0, .01, -.2, '#fb923c', { n: 'mag', g: 1 })]);
-def(Object.assign({}, GADGET, { name: 'Sticky Bomb', dmg: 110, rpm: 50, mag: 1, rel: 9, proj: 'sticky', spd: 20, grav: 12, rad: 4, snd: 'swish', snp: .7, col: '#facc15', note: 'Sticks to walls and players. Detonates 1.5s after it lands.' }), [
+def(Object.assign({}, GADGET, { name: 'Sticky Bomb', dmg: 90, rpm: 50, mag: 1, rel: 9, proj: 'sticky', spd: 20, grav: 12, rad: 4, snd: 'swish', snp: .7, col: '#facc15', note: 'Sticks to walls and players. Detonates 1.5s after it lands.' }), [
   B(.12, .07, .12, 0, 0, -.12, '#facc15', { n: 'mag' }), S(.022, 0, .05, -.12, '#ef4444', { n: 'mag', g: 1 }), B(.13, .02, .13, 0, -.02, -.12, '#1c1917', { n: 'mag' })]);
-def(Object.assign({}, GADGET, { name: 'Proximity Mine', dmg: 100, rpm: 40, mag: 2, rel: 14, proj: 'mine', spd: 13, grav: 22, rad: 4.2, snd: 'swish', snp: .6, col: '#ef4444', note: 'Lands, arms after 1s, then explodes when an enemy walks within 3m. Max 3 out.' }), [
+def(Object.assign({}, GADGET, { name: 'Proximity Mine', dmg: 80, rpm: 40, mag: 2, rel: 14, proj: 'mine', spd: 13, grav: 22, rad: 4.2, snd: 'swish', snp: .6, col: '#ef4444', note: 'Lands, arms after 1s, then explodes when an enemy walks within 3m. Max 3 out.' }), [
   C(.1, .05, 0, 0, -.12, '#3f3f46', { n: 'mag' }), C(.04, .06, 0, 0, -.12, '#52525b', { n: 'mag' }), S(.018, 0, .0, -.15, '#ef4444', { n: 'mag', g: 1 })]);
-def(Object.assign({}, GADGET, { name: 'Medkit', dmg: 0, rpm: 40, mag: 1, rel: 22, use: 'heal', snd: 'swish', snp: 1.3, col: '#4ade80', kz: .02, kr: .1, fa: 'kick', note: 'Restores 45 health over 2.5s.' }), [
+def(Object.assign({}, GADGET, { name: 'Medkit', dmg: 0, rpm: 40, mag: 1, rel: 22, use: 'heal', snd: 'swish', snp: 1.3, col: '#4ade80', kz: .02, kr: .1, fa: 'kick', note: 'Restores 75 health over 2.5s. One use per life.' }), [
   B(.16, .11, .1, 0, 0, -.14, '#f8fafc'), B(.14, .035, .035, 0, 0, -.19, '#ef4444'), B(.035, .09, .035, 0, 0, -.19, '#ef4444'), B(.06, .02, .04, 0, .065, -.14, '#9ca3af')]);
-def(Object.assign({}, GADGET, { name: 'Adrenaline Shot', dmg: 0, rpm: 40, mag: 1, rel: 26, use: 'boost', snd: 'swish', snp: 1.5, col: '#f472b6', kz: .02, kr: .1, fa: 'kick', note: 'Move 35% faster and jump higher for 7s.' }), [
+def(Object.assign({}, GADGET, { name: 'Adrenaline Shot', dmg: 0, rpm: 40, mag: 1, rel: 26, use: 'boost', snd: 'swish', snp: 1.5, col: '#f472b6', kz: .02, kr: .1, fa: 'kick', note: 'Move 35% faster and jump higher for 5s. One use per life.' }), [
   C(.025, .22, 0, 0, -.16, '#f9a8d4', { g: 1 }), C(.032, .04, 0, 0, -.28, '#9ca3af'), B(.1, .015, .015, 0, 0, -.05, '#9ca3af'), C(.008, .1, 0, 0, -.34, '#e5e7eb'), C(.03, .05, 0, 0, -.04, '#be185d')]);
-def(Object.assign({}, GADGET, { name: 'Grapple Hook', dmg: 0, rpm: 60, mag: 3, rel: 5, use: 'grapple', rng: 45, snd: 'bow', snp: 1.4, col: '#d6d3d1', kz: .04, kr: .12, fa: 'kick', note: 'Fires a hook at a wall and reels you in. Jump to let go.' }), [
+def(Object.assign({}, GADGET, { name: 'Grapple Hook', dmg: 80, rpm: 60, mag: 8, rel: 5, use: 'grapple', rng: 45, snd: 'bow', snp: 1.4, col: '#d6d3d1', kz: .04, kr: .12, fa: 'kick', note: 'Hook a wall, the floor or a player and reel in. 8 uses per life. Hitting a player deals 80, but if they duck behind a wall you crash into it for 25. Jump to let go.' }), [
   B(.07, .08, .2, 0, 0, -.1, '#57534e'), C(.02, .14, 0, .01, -.26, '#a8a29e'), B(.05, .012, .04, 0, .01, -.34, '#d6d3d1'), B(.012, .05, .04, 0, .01, -.34, '#d6d3d1'), C(.045, .05, 0, .0, .0, '#44403c'), grip(.04, '#292524', .14)]);
 
 /* ===== PRICES: [level, Bottlecaps]. Free items are owned from the start. ===== */
@@ -1672,35 +1707,51 @@ function updateStatus(a, dt) {
   if (a.poisonT > 0 && Math.random() < dt * 14) glow([a.pos[0] + (Math.random() - .5) * .5, a.pos[1] + .4 + Math.random() * 1.4, a.pos[2] + (Math.random() - .5) * .5], [0, .8, 0], .55, .2, .35, '#c6f26b', '#2f8a1c', 0, 0);
   if (a.stunT > 0 && Math.random() < dt * 30) glow([a.pos[0] + (Math.random() - .5) * .8, a.pos[1] + .3 + Math.random() * 1.7, a.pos[2] + (Math.random() - .5) * .8], [0, 0, 0], .12, .22, .04, '#fffbe0', '#facc15', 0, 0);
   if (a.remote) { if (a.stunT > 0) a.stunT -= dt; return; }
+  if (a._hp0 !== undefined && a.hp < a._hp0 - 1e-6) a.lastHurt = NOW; a._hp0 = a.hp;
+  if (a.local && a.alive && a.hp < 100 && NOW - (a.lastHurt === undefined ? -99 : a.lastHurt) >= 20) { a.hp = Math.min(100, a.hp + 5 * dt); a._hp0 = a.hp; }
   if (a.burnT > 0) { a.burnT -= dt; a.burnTick = (a.burnTick || 0) + dt; if (a.burnTick >= .5) { a.burnTick = 0; dot(a, 5, a.burnBy, a.burnW); } }
   if (a.poisonT > 0) { a.poisonT -= dt; a.poisonTick = (a.poisonTick || 0) + dt; if (a.poisonTick >= .5) { a.poisonTick = 0; dot(a, 3, a.poisonBy, a.poisonW); } }
   if (a.stunT > 0) a.stunT -= dt;
-  if (a.healT > 0) { const h = Math.min(a.healT, dt); a.healT -= h; a.hp = Math.min(100, a.hp + h * 18); if (Math.random() < dt * 14) glow([a.pos[0] + (Math.random() - .5) * .6, a.pos[1] + .3, a.pos[2] + (Math.random() - .5) * .6], [0, 1.6, 0], .6, .18, .3, '#d9ffe0', '#22c55e', 0, 0); }
+  if (a.healT > 0) { const h = Math.min(a.healT, dt); a.healT -= h; a.hp = Math.min(100, a.hp + h * 30); if (Math.random() < dt * 14) glow([a.pos[0] + (Math.random() - .5) * .6, a.pos[1] + .3, a.pos[2] + (Math.random() - .5) * .6], [0, 1.6, 0], .6, .18, .3, '#d9ffe0', '#22c55e', 0, 0); }
   if (a.boostT > 0) a.boostT -= dt;
 }
 
 /* ---- gadget helpers ---- */
-function gadgetCharge(a, dt) {
-  const g = a.slots.G && WBY[a.slots.G]; if (!g) return;
-  if (a.ammo.G < g.mag) { a.gT = (a.gT || 0) + dt * (a.local && Cheat.on.rapid ? 6 : 1); if (a.gT >= g.rel) { a.gT = 0; a.ammo.G++; if (a.local && typeof hudAmmo === 'function') hudAmmo(); } }
-  else a.gT = 0;
-}
+/* gadgets no longer recharge: you get a fixed number of uses every life (every round in a duel) */
+function gadgetCharge(a, dt) { }
 function gadgetUse(a, w, o, d) {
   if (w.use === 'heal') { a.healT = 2.5; if (a.local) { Snd.pickup(); toast('Healing…', 1400); } }
-  else if (w.use === 'boost') { a.boostT = 7; if (a.local) { Snd.tone(300, 900, .3, .3, 'sawtooth'); toast('Adrenaline!', 1400); } }
+  else if (w.use === 'boost') { a.boostT = 5; if (a.local) { Snd.tone(300, 900, .3, .3, 'sawtooth'); toast('Adrenaline!', 1400); } }
   else if (w.use === 'grapple') {
-    const t = World.ray(o, d, w.rng);
-    if (t === Infinity) { a.ammo[a.cur]++; a.cd = .2; if (a.local) toast('Nothing to hook in range', 1200); return; }
-    a.grap = { pt: [o[0] + d[0] * t, o[1] + d[1] * t, o[2] + d[2] * t], t: 0 }; Snd.tone(900, 300, .15, .3, 'square');
-    burst(a.grap.pt, 6, '#d6d3d1', 3, .3, 6, .05);
+    const hit = grappleRay(a, o, d, w.rng);
+    if (!hit) { a.ammo[a.cur]++; a.cd = .2; if (a.local) toast('Nothing to hook in range', 1200); return; }
+    a.grap = { pt: hit.pt, t: 0, target: hit.target }; Snd.tone(900, 300, .15, .3, 'square'); burst(hit.pt, 6, '#d6d3d1', 3, .3, 6, .05);
   }
 }
+/* the hook can catch walls, the floor, and players (the first of those the ray meets) */
+function grappleRay(a, o, d, rng) {
+  let tw = World.ray(o, d, rng), tg = Infinity;
+  if (d[1] < -1e-4) { const t0 = (o[1] - .02) / -d[1], hx = o[0] + d[0] * t0, hz = o[2] + d[2] * t0; if (t0 <= rng && World.groundAt(hx, hz) > -5) tg = t0; }
+  let bt = Math.min(tw, tg, rng), best = null;
+  for (const v of Actors) { if (v === a || !v.alive || v.spawnShield > 0) continue; const hb = hitBoxes(v), t = Math.min(rayBox(o, d, hb.head, bt), rayBox(o, d, hb.body, bt)); if (t < bt) { bt = t; best = v; } }
+  if (!isFinite(bt) || bt > rng) return null;
+  return { pt: [o[0] + d[0] * bt, o[1] + d[1] * bt, o[2] + d[2] * bt], target: best };
+}
+function grappleRelease(p) { p.grap = null; FX.rope.visible = false; }
 function grapplePull(p, dt) {
   const g = p.grap;
   if (!g) { if (FX.rope && FX.rope.visible) FX.rope.visible = false; return; }
-  g.t += dt; const e = eyePos(p), dx = g.pt[0] - e[0], dy = g.pt[1] - e[1], dz = g.pt[2] - e[2], L = Math.hypot(dx, dy, dz) || 1;
-  if (L < 1.8 || g.t > 2.2 || !p.alive || (g.t > .1 && Input.took('Space'))) { if (g.t > .1) p.vel[1] = Math.max(p.vel[1], 6); p.grap = null; FX.rope.visible = false; return; }
-  const s = 27; p.vel[0] = dx / L * s; p.vel[1] = dy / L * s; p.vel[2] = dz / L * s; p.onGround = false;
+  g.t += dt; const e = eyePos(p), hw = WBY.grapplehook;
+  if (g.target) { if (!g.target.alive) { grappleRelease(p); return; } g.pt = [g.target.pos[0], g.target.pos[1] + 1, g.target.pos[2]]; }   // keeps following them while they move
+  const dx = g.pt[0] - e[0], dy = g.pt[1] - e[1], dz = g.pt[2] - e[2], L = Math.hypot(dx, dy, dz) || 1, dir = [dx / L, dy / L, dz / L];
+  if (!p.alive || (g.t > .1 && Input.took('Space'))) { if (g.t > .1) p.vel[1] = Math.max(p.vel[1], 6); grappleRelease(p); return; }
+  if (g.target) {
+    const reach = Math.min(L, 1.7);
+    if (World.ray(e, dir, reach) < reach - .05) { dot(p, 25, null, hw); toast('You hit a wall! -25', 1600); Snd.hurt(); burst([e[0] + dir[0] * reach, e[1] + dir[1] * reach, e[2] + dir[2] * reach], 8, '#d6d3d1', 4, .35, 8, .06); grappleRelease(p); return; }   // they ducked behind cover
+    if (L < 2) { dealDamage(g.target, hw.dmg, p, hw, false); burst(g.pt, 8, '#ff3b3b', 4, .4, 8, .06); p.vel[0] = -dir[0] * 5; p.vel[1] = 5; p.vel[2] = -dir[2] * 5; grappleRelease(p); return; }
+    if (g.t > 4) { grappleRelease(p); return; }
+  } else if (L < 1.8 || g.t > 2.2) { if (g.t > .1) p.vel[1] = Math.max(p.vel[1], 6); grappleRelease(p); return; }
+  const s = g.target ? 31 : 27; p.vel[0] = dir[0] * s; p.vel[1] = dir[1] * s; p.vel[2] = dir[2] * s; p.onGround = false;
   const pos = FX.rope.geometry.attributes.position; pos.setXYZ(0, e[0], e[1] - .35, e[2]); pos.setXYZ(1, g.pt[0], g.pt[1], g.pt[2]); pos.needsUpdate = true; FX.rope.visible = true;
 }
 
@@ -1735,6 +1786,7 @@ function swingFx(a, w) {
 function fireOnce(a, w) {
   a.ammo[a.cur]--; a.cd = w.burst ? 0 : 60 / w.rpm; a.lastShot = NOW;
   if (a.local && Cheat.on.rapid) a.cd /= Cheat.v.rapidMul;
+  if (a.local && Cheat.on.hittp && Cheat.v.hitGuns && !w.melee && !w.use) Cheat.hitTPBegin(a, w);
   const o = eyePos(a); let d = lookDir(a.yaw, a.pitch); if (a.local && Cheat.on.silent) d = Cheat.silent(a, o, d, w);
   if (w.use) { if (a.local) localFired(w); gadgetUse(a, w, o, d); return; }
   const sp = Math.hypot(a.vel[0], a.vel[2]);
@@ -1823,7 +1875,7 @@ function doMelee(a, w) {
   const me = a.local ? 1 : .6; Snd.shot(w.snd, me, w.snp); swingFx(a, w);
   if (a.local && typeof localSwing === 'function') localSwing(w);
   if (a.net) netShot(a, w, a.pos, [0, 0, 0], true);
-  if (a.local && Cheat.on.hittp && hitTP(a, w)) return;
+  if (a.local && Cheat.on.hittp) Cheat.hitTPBegin(a, w);
   later(Math.min(.13, 60 / w.rpm * .4), () => {
     if (!a.alive) return;
     const o = eyePos(a), d = lookDir(a.yaw, 0), rr = w.rng + (a.local && Cheat.on.reach ? Cheat.v.reachAdd : 0); let any = false;
@@ -2063,7 +2115,7 @@ function killActor(v, killer, w, head) {
   if (typeof onKill === 'function') onKill(v, killer, w, head);
 }
 /* ===== Bot AI: A* on the ground grid, line-of-sight combat ===== */
-const BOT_NAMES = ['Zerg_Rush', 'FragFest', 'LootGoblin', 'SniperSam', 'Wobbles', 'QuickScopeQ', 'HeadshotHank', 'NadeSpam', 'StrafeKing', 'BoomStick', 'CampFire', 'LowPingLarry', 'Rizzlord', 'TacoTuesday', 'VoidWalker', 'Mr_Clutch', 'BigBrainBen', 'JumpPadJoe', 'RocketRaccoon', 'Noob_1337', 'xX_Sniper_Xx', 'BonkMaster', 'TryHard9', 'Lagzilla', 'DuckHunter', 'Ping999', 'SweatyPalms', 'CtrlAltDefeat', 'NotABot', 'RespawnRick', 'Camper42', 'ClutchKing', 'GG_EZ', 'PotatoAim'];
+const BOT_NAMES = ['Zerg_Rush', 'FragFest', 'LootGoblin', 'SniperSam', 'Wobbles', 'QuickScopeQ', 'HeadshotHank', 'NadeSpam', 'StrafeKing', 'BoomStick', 'CampFire', 'LowPingLarry', 'Rizzlord', 'TacoTuesday', 'VoidWalker', 'Mr_Clutch', 'BigBrainBen', 'JumpPadJoe', 'RocketRaccoon', 'Noob_1337', 'xX_Sniper_Xx', 'BonkMaster', 'TryHard9', 'Lagzilla', 'DuckHunter', 'Ping999', 'SweatyPalms', 'CtrlAltDefeat', 'RespawnRick', 'Camper42', 'ClutchKing', 'GG_EZ', 'PotatoAim'];
 const SKILL = [
   { react: .75, err: 7, turn: 150, spd: .78, rng: 1 },
   { react: .5, err: 4.2, turn: 230, spd: .9, rng: 1.1 },
@@ -2220,7 +2272,7 @@ function localSwing(w) { VM.S.swing = 0; }
 function localEquip() { const p = G.player; VM.set(curW(p)); hudAmmo(); hudSlots(); }
 function hudAmmo() {
   const p = G.player; if (!p) return; const w = curW(p); if (!w) return;
-  $('wname').textContent = w.name; $('ammo').innerHTML = w.melee ? '<small>MELEE</small>' : w.slot === 'G' ? p.ammo.G + '<small> / ' + w.mag + (p.ammo.G < w.mag ? ' · +' + Math.max(1, Math.ceil(w.rel - (p.gT || 0))) + 's' : '') + '</small>' : (p.reloadT >= 0 ? '<small>RELOADING</small>' : p.ammo[p.cur] + '<small> / ' + w.mag + '</small>');
+  $('wname').textContent = w.name; $('ammo').innerHTML = w.melee ? '<small>MELEE</small>' : w.slot === 'G' ? p.ammo.G + '<small> / ' + w.mag + ' uses' + '</small>' : (p.reloadT >= 0 ? '<small>RELOADING</small>' : p.ammo[p.cur] + '<small> / ' + w.mag + '</small>');
   $('cross').className = w.melee ? 'melee' : '';
 }
 function hudSlots() {
@@ -2239,7 +2291,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 function setPrompt(txt) { const p = $('prompt'); if (txt) { p.textContent = txt; p.classList.add('on'); } else p.classList.remove('on'); }
 function renderBoard() {
   const rows = Actors.filter(a => !a.hidden).slice().sort((a, b) => b.kills - a.kills || a.deaths - b.deaths);
-  $('boardT').innerHTML = '<tr><th>Player</th><th>Elims</th><th>Deaths</th></tr>' + rows.map(a => '<tr class="' + (a.local ? 'me' : '') + '"><td>' + esc(a.name) + (a.bot ? ' <span class="pill">bot</span>' : '') + '</td><td>' + a.kills + '</td><td>' + a.deaths + '</td></tr>').join('');
+  $('boardT').innerHTML = '<tr><th>Player</th><th>Elims</th><th>Deaths</th></tr>' + rows.map(a => '<tr class="' + (a.local ? 'me' : '') + '"><td>' + esc(a.name) + '</td><td>' + a.kills + '</td><td>' + a.deaths + '</td></tr>').join('');
 }
 function updateScoreTxt() {
   const m = G.mode, me = G.player; if (!me) return;
@@ -2624,7 +2676,7 @@ function capPop(n) {
 function wstatRows(w) {
   const rows = [['Class', w.cls + ' · ' + SLOT_NAME[w.slot]]];
   if (w.dmg) rows.push(['Damage', w.dmg + (w.pel ? ' x ' + w.pel : '')]);
-  if (w.gadget) { rows.push(['Charges', w.mag], ['Recharge', w.rel + ' s each']); if (w.rad && w.proj) rows.push(['Blast radius', w.rad + ' m']); }
+  if (w.gadget) { rows.push(['Uses per life', w.mag]); if (w.rad && w.proj) rows.push(['Blast radius', w.rad + ' m']); }
   else {
     rows.push(['Fire rate', w.melee ? Math.round(w.rpm) + ' swings/min' : Math.round(w.rpm) + ' rpm' + (w.burst ? ' (' + w.burst + '-burst)' : '')], ['Fire mode', w.melee ? w.fa : (w.burst ? 'Burst' : w.auto ? 'Full auto' : 'Semi auto')]);
     if (!w.melee) rows.push(['Magazine', w.mag], ['Reload', w.rel.toFixed(1) + ' s'], ['Range', w.rng + ' m'], ['Zoom', w.zoom + 'x']); else rows.push(['Reach', w.rng + ' m']);
@@ -2666,8 +2718,14 @@ function buildArmory() {
     const w = WBY[G.loadout[s]]; const b = document.createElement('button'); b.className = 'slotb' + (s === armSlot ? ' on' : '');
     b.innerHTML = '<small>' + SLOT_NAME[s] + '</small><b>' + esc(w ? w.name : '-') + '</b>'; b.onclick = () => { armSlot = s; buildArmory(); }; sb.appendChild(b);
   });
+  fillWList();
+  if (!armSel || armSel.slot !== armSlot) showWeapon(WBY[G.loadout[armSlot]]); else showWeapon(armSel);
+}
+let armQ = '';
+function armMatch(w) { const q = armQ.trim().toLowerCase(); return !q || (w.name + ' ' + w.cls + ' ' + (w.note || '')).toLowerCase().includes(q); }
+function fillWList() {
   const list = $('wlist'); list.innerHTML = '';
-  WEAPONS.filter(w => w.slot === armSlot).sort((a, b) => (a.secret ? 1 : 0) - (b.secret ? 1 : 0) || (a.lvl || 1) - (b.lvl || 1) || (a.cost || 0) - (b.cost || 0)).forEach(w => {
+  WEAPONS.filter(w => w.slot === armSlot && armMatch(w)).sort((a, b) => (a.secret ? 1 : 0) - (b.secret ? 1 : 0) || (a.lvl || 1) - (b.lvl || 1) || (a.cost || 0) - (b.cost || 0)).forEach(w => {
     const own = ownsWeapon(w), lockLv = !own && !w.secret && myLevel() < (w.lvl || 1), b = document.createElement('button');
     b.className = 'wi' + (G.loadout[armSlot] === w.id ? ' eq' : '') + (armSel === w ? ' sel' : '') + (own ? ' own' : lockLv ? ' lock' : '');
     const sub = G.loadout[armSlot] === w.id ? 'Equipped' : own ? 'Owned' : w.secret ? 'Secret' : lockLv ? 'Level ' + w.lvl : CAP_ICON + ' ' + w.cost.toLocaleString();
@@ -2675,7 +2733,7 @@ function buildArmory() {
     b.onclick = () => { showWeapon(w); if (own) { G.loadout[armSlot] = w.id; Account.saveLoadout(); } buildArmoryKeep(); };
     list.appendChild(b);
   });
-  if (!armSel || armSel.slot !== armSlot) showWeapon(WBY[G.loadout[armSlot]]); else showWeapon(armSel);
+  if (!list.children.length) list.innerHTML = '<div class="note" style="padding:.6rem">No weapons match your search.</div>';
 }
 function buildArmoryKeep() { const st = $('wlist').scrollTop; buildArmory(); $('wlist').scrollTop = st; }
 function buildSecrets() {
@@ -2834,14 +2892,15 @@ const CHEAT_DEFS = [
       { id: 'trigMode', name: 'Mode', type: 'sel', def: 'any', list: [['any', 'Always'], ['lock', 'Ignore until lock'], ['head', 'Headshots only'], ['ads', 'Only aiming']] },
       { id: 'trigDelay', name: 'Delay', min: 0, max: 300, step: 10, unit: 'ms' }] },
     { id: 'autofire', name: 'AutoFire', desc: 'Hold fire to shoot semi-auto weapons at full speed.' },
-    { id: 'hittp', name: 'HitTP', desc: 'Every melee swing teleports you to a target, lands the hit, then snaps you straight back.', opts: [
-      { id: 'hitRange', name: 'Range', min: 5, max: 150, step: 5, unit: 'm' }, { id: 'hitTarget', name: 'Target', type: 'sel', list: [['near', 'Nearest'], ['aim', 'Crosshair'], ['low', 'Lowest HP'], ['rand', 'Random']] }, { id: 'hitBots', name: 'Bots', type: 'chk' }] },
+    { id: 'hittp', name: 'HitTP', desc: 'Every melee swing (or gun shot, with Guns too) teleports you behind a target so you can watch it land, then snaps you back.', opts: [
+      { id: 'hitRange', name: 'Range', min: 5, max: 150, step: 5, unit: 'm' }, { id: 'hitTarget', name: 'Target', type: 'sel', list: [['near', 'Nearest'], ['aim', 'Crosshair'], ['low', 'Lowest HP'], ['rand', 'Random']] },
+      { id: 'hitGuns', name: 'Guns too', type: 'chk', def: 0 }, { id: 'hitStay', name: 'Stay', min: .1, max: 1, step: .05, unit: 's', def: .3 }, { id: 'hitBots', name: 'Bots', type: 'chk' }] },
     { id: 'killaura', name: 'KillAura', desc: 'Hits enemies around you with your melee weapon, no aiming needed.', opts: [
       { id: 'kaRange', name: 'Range', min: 2, max: 15, step: 1, unit: 'm', def: 5 }, { id: 'kaMode', name: 'Mode', type: 'sel', def: 'multi', list: [['multi', 'Everyone'], ['single', 'Nearest']] }, { id: 'kaBots', name: 'Bots', type: 'chk', def: 1 }] },
     { id: 'automelee', name: 'AutoMelee', desc: 'Switches to melee when an enemy gets close, then back when they leave.', opts: [{ id: 'amRange', name: 'Range', min: 1.5, max: 8, step: .5, unit: 'm', def: 3 }] },
     { id: 'reach', name: 'Reach', desc: 'Melee swings reach much farther.', opts: [{ id: 'reachAdd', name: 'Extra', min: 1, max: 12, step: 1, unit: 'm', def: 4 }] },
     { id: 'fastmelee', name: 'FastMelee', desc: 'Melee weapons swing much faster.', opts: [{ id: 'swingMul', name: 'Speed', min: 1.5, max: 6, step: .5, unit: 'x', def: 2.5 }] },
-    { id: 'rapid', name: 'Rapid Fire', desc: 'Fires faster and recharges gadgets quicker.', opts: [{ id: 'rapidMul', name: 'Speed', min: 1.5, max: 10, step: .5, unit: 'x' }] },
+    { id: 'rapid', name: 'Rapid Fire', desc: 'Fires much faster.', opts: [{ id: 'rapidMul', name: 'Speed', min: 1.5, max: 10, step: .5, unit: 'x' }] },
     { id: 'multishot', name: 'Pellets', desc: 'Fires extra pellets or bullets with every shot.', opts: [{ id: 'pelMul', name: 'Amount', min: 2, max: 10, step: 1, unit: 'x', def: 3 }] },
     { id: 'pierce', name: 'Pierce', desc: 'Shots go through every player in the line.' },
     { id: 'wallbang', name: 'Wallbang', desc: 'Bullets pass straight through walls.' },
@@ -2852,7 +2911,7 @@ const CHEAT_DEFS = [
     { id: 'norecoil', name: 'No Recoil', desc: 'Removes the camera kick when you shoot.' },
     { id: 'nospread', name: 'No Spread', desc: 'Every shot goes exactly where you aim.' },
     { id: 'infammo', name: 'Inf Ammo', desc: 'Your magazine never runs dry.' },
-    { id: 'infgadget', name: 'InfGadgets', desc: 'Gadgets never run out and never need to recharge.' },
+    { id: 'infgadget', name: 'InfGadgets', desc: 'Gadgets never run out of uses.' },
     { id: 'noreload', name: 'Fast Reload', desc: 'Reloads finish immediately.' },
     { id: 'autoreload', name: 'AutoReload', desc: 'Reloads for you when your magazine runs low.', opts: [{ id: 'arThresh', name: 'Below', min: 0, max: 60, step: 5, unit: '%', def: 20 }] },
     { id: 'autoswap', name: 'AutoSwap', desc: 'Switches to another weapon when yours runs dry.' },
@@ -2942,6 +3001,11 @@ const CHEAT_DEFS = [
 ];
 const MOD_BY_ID = {}; CHEAT_DEFS.forEach(c => c.mods.forEach(m => { MOD_BY_ID[m.id] = m; (m.opts || []).forEach(o => { if (o.def !== undefined && Cheat.v[o.id] === undefined) Cheat.v[o.id] = o.def; }); }));
 
+function ccScore(m, cat, q) {
+  if (!q) return 1; const n = m.name.toLowerCase(), d = (m.desc || '').toLowerCase(), c = cat.toLowerCase();
+  if (n === q) return 100; if (n.startsWith(q)) return 80; if (n.includes(q)) return 60; if (c.startsWith(q)) return 40; if (d.includes(q)) return 30;
+  let i = 0; for (const ch of n) if (ch === q[i]) i++; return i === q.length ? 20 : 0;
+}
 function ccSave() { if (typeof Admin === 'undefined' || !Account.admin) return; Account.saveClient(JSON.parse(JSON.stringify({ on: Cheat.on, v: Cheat.v, ui: Cheat.ui, binds: Cheat.binds, pos: Admin.pos, col: Admin.col }))); }
 
 Cheat.flyMove = function (p, dt, fw, st) {
@@ -3003,6 +3067,7 @@ function killPerks(k) {
 }
 Cheat.tick = function (p, dt) {
   if (!Account.admin) return; const w = curW(p), on = Cheat.on, v = Cheat.v;
+  Cheat.hitTPTick(p, dt);
   if (on.infammo && w && !w.melee) p.ammo[p.cur] = w.mag;
   if (on.infgadget && p.slots.G) { p.ammo.G = WBY[p.slots.G].mag; p.gT = 0; }
   if (on.noreload && p.reloadT >= 0) p.reloadT = 1;
@@ -3058,8 +3123,8 @@ Cheat.apply = function () {
   Cheat.chams();
 };
 Cheat.reapply = function () { if (World.lights[0]) World.lights[0]._i0 = undefined; if (R.scene.fog) R.scene.fog._f0 = undefined; Cheat.apply(); };
-/* HitTP: a melee swing jumps you to a target, lands the hit, and puts you straight back */
-function hitTP(a, w) {
+/* HitTP: jump behind a target, let the hit land while you can see it, then go back to where you were */
+Cheat.hitTPPick = function (a) {
   const v = Cheat.v, o = eyePos(a), look = lookDir(a.yaw, a.pitch); let best = null, bs = 1e9;
   for (const t of Actors) {
     if (t === a || !t.alive || t.spawnShield > 0 || (t.bot && !v.hitBots)) continue;
@@ -3067,24 +3132,41 @@ function hitTP(a, w) {
     const score = v.hitTarget === 'aim' ? Math.acos(clamp((dx * look[0] + dy * look[1] + dz * look[2]) / (dist || 1), -1, 1)) : v.hitTarget === 'low' ? t.hp : v.hitTarget === 'rand' ? Math.random() : dist;
     if (score < bs) { bs = score; best = t; }
   }
-  if (!best) return false;
-  const hx = a.pos[0], hy = a.pos[1], hz = a.pos[2], dx = best.pos[0] - hx, dz = best.pos[2] - hz, L = Math.hypot(dx, dz) || 1, stand = Math.min(1.1, w.rng * .5);
-  a.pos[0] = best.pos[0] - dx / L * stand; a.pos[1] = best.pos[1]; a.pos[2] = best.pos[2] - dz / L * stand;
-  const dirv = [dx / L, 0, dz / L], vf = lookDir(best.yaw, 0); let dmg = w.dmg; if (w.bs && (vf[0] * dirv[0] + vf[2] * dirv[2]) > .5) dmg *= w.bs;
-  const head = Math.random() < .25; if (head) dmg *= (w.hs || 1.3);
-  const tp = [best.pos[0], best.pos[1] + 1.1, best.pos[2]];
-  dealDamage(best, Math.round(dmg), a, w, head);
-  arc([o[0], o[1] - .3, o[2]], tp, '#ff3347', .06); glow(tp, [0, 0, 0], .25, 1.1, .1, '#ffffff', '#ff3347', 0, 0); glow([o[0], o[1] - .4, o[2]], [0, 0, 0], .25, .9, .1, '#ffffff', '#ff3347', 0, 0);
-  burst(tp, 6, '#ff3b3b', 3, .35, 8, .06); Snd.tone(1300, 260, .12, .25, 'sawtooth'); if (w.id === 'fryingpan') Snd.shot('bonk', 1);
-  a.pos[0] = hx; a.pos[1] = hy; a.pos[2] = hz;   // back where you were, in the same frame
+  return best;
+};
+Cheat.hitTPStand = function (a, t) { const f = lookDir(t.yaw, 0); a.pos[0] = t.pos[0] - f[0] * 1.1; a.pos[1] = t.pos[1]; a.pos[2] = t.pos[2] - f[2] * 1.1; a.vel[0] = 0; a.vel[1] = 0; a.vel[2] = 0; };
+Cheat.hitTPAim = function (a, t, gun) {
+  const e = eyePos(a), dx = t.pos[0] - e[0], dy = t.pos[1] + (gun ? 1.2 : 1) - e[1], dz = t.pos[2] - e[2];
+  a.yaw = Math.atan2(-dx, -dz); a.pitch = clamp(Math.atan2(dy, Math.hypot(dx, dz)), -1.4, 1.4);
+};
+Cheat.hitTPBegin = function (a, w) {
+  let st = Cheat._htp; const gun = !w.melee;
+  if (!st || !st.target.alive) {
+    const t = Cheat.hitTPPick(a); if (!t) return false; const o = eyePos(a);
+    Cheat._htp = st = { home: [a.pos[0], a.pos[1], a.pos[2]], yaw: a.yaw, pitch: a.pitch, target: t, t: 0 };
+    arc([o[0], o[1] - .3, o[2]], [t.pos[0], t.pos[1] + 1.1, t.pos[2]], '#ff3347', .06); glow([o[0], o[1] - .4, o[2]], [0, 0, 0], .25, 1.1, .1, '#ffffff', '#ff3347', 0, 0); Snd.tone(1300, 260, .12, .25, 'sawtooth');
+  }
+  st.t = Cheat.v.hitStay; Cheat.hitTPStand(a, st.target); Cheat.hitTPAim(a, st.target, gun);
+  glow([a.pos[0], a.pos[1] + 1, a.pos[2]], [0, 0, 0], .25, 1.1, .1, '#ffffff', '#ff3347', 0, 0);
   return true;
-}
+};
+Cheat.hitTPTick = function (p, dt) {
+  const st = Cheat._htp; if (!st) return;
+  if (!p.alive || !Cheat.on.hittp) { Cheat._htp = null; return; }
+  st.t -= dt;
+  if (st.target.alive) { Cheat.hitTPStand(p, st.target); Cheat.hitTPAim(p, st.target, !!(curW(p) && !curW(p).melee)); } else { p.vel[0] = 0; p.vel[1] = 0; p.vel[2] = 0; }
+  if (st.t <= 0) {
+    glow([p.pos[0], p.pos[1] + 1, p.pos[2]], [0, 0, 0], .25, .9, .1, '#ffffff', '#ff3347', 0, 0);
+    p.pos[0] = st.home[0]; p.pos[1] = st.home[1]; p.pos[2] = st.home[2]; p.vel[0] = 0; p.vel[1] = 0; p.vel[2] = 0; p.yaw = st.yaw; p.pitch = st.pitch; Cheat._htp = null;
+    glow([p.pos[0], p.pos[1] + 1, p.pos[2]], [0, 0, 0], .25, .9, .1, '#ffffff', '#ff3347', 0, 0);
+  }
+};
 function giveWeapon(p, w) {
   p.slots[w.slot] = w.id; p.ammo[w.slot] = w.mag || 0; p.heldId = null; p.cur = w.slot; p.reloadT = -1; p.burst = 0; p.cd = .2; setHeld(p); localEquip();
 }
 
 const Admin = {
-  open: false, built: false, view: 'mods', pos: {}, col: {}, openMods: {}, listen: null, q: '',
+  open: false, built: false, view: 'mods', sf: 'All', ssSel: 0, ssList: [], pos: {}, col: {}, openMods: {}, listen: null, q: '',
   loaded: false,
   loadSaved() {
     const d = (Account.profile && Account.profile.rvzClient) || {};
@@ -3124,7 +3206,48 @@ const Admin = {
     if (id === '_gui') Cheat.ui.key = code || 'ShiftRight'; else if (code) Cheat.binds[id] = code; else delete Cheat.binds[id];
     ccSave(); if (typeof updateAcct === 'function') updateAcct();
   },
-  syncRows() { document.querySelectorAll('#ccStage .cm').forEach(r => r.classList.toggle('on', !!Cheat.on[r.dataset.id])); },
+  syncRows() { document.querySelectorAll('#ccStage .cm, #ccStage .sc').forEach(r => { r.classList.toggle('on', !!Cheat.on[r.dataset.id]); const sw = r.querySelector('.sc-sw'); const m = MOD_BY_ID[r.dataset.id]; if (sw && m && !m.action) sw.textContent = Cheat.on[r.dataset.id] ? 'ON' : 'OFF'; }); },
+  ssMark(res) { [...res.children].forEach((c, i) => { c.classList.toggle('sel', i === this.ssSel); if (i === this.ssSel && c.scrollIntoView) c.scrollIntoView({ block: 'nearest' }); }); },
+  card(it, q, i) {
+    const m = it.m, el = document.createElement('div'); el.className = 'sc' + (Cheat.on[m.id] ? ' on' : '') + (i === this.ssSel ? ' sel' : ''); el.dataset.id = m.id;
+    const hl = s => { const k = q ? s.toLowerCase().indexOf(q) : -1; return k < 0 ? esc(s) : esc(s.slice(0, k)) + '<mark>' + esc(s.slice(k, k + q.length)) + '</mark>' + esc(s.slice(k + q.length)); };
+    el.innerHTML = '<div class="sc-h"><b>' + hl(m.name) + '</b><span class="sc-c">' + esc(it.c) + '</span></div><div class="sc-d">' + hl(m.desc || '') + '</div>';
+    const f = document.createElement('div'); f.className = 'sc-f';
+    const sw = document.createElement('button'); sw.className = 'sc-sw'; sw.textContent = m.action ? 'Run' : (Cheat.on[m.id] ? 'ON' : 'OFF'); if (m.type === 'give') sw.style.display = 'none';
+    sw.onclick = () => { this.run(m.id); this.syncRows(); };
+    const bd = document.createElement('span'); bd.className = 'sc-k'; bd.textContent = Cheat.binds[m.id] ? '[' + keyName(Cheat.binds[m.id]) + ']' : '';
+    const gear = document.createElement('button'); gear.className = 'sc-g'; gear.textContent = '⚙'; gear.title = 'Settings and bind'; gear.onclick = () => el.classList.toggle('open');
+    f.appendChild(sw); f.appendChild(bd); f.appendChild(gear); el.appendChild(f); el.appendChild(this.optsBlock(m)); return el;
+  },
+  searchView(st) {
+    const W = window.innerWidth / Cheat.ui.scale, w = Math.min(940, W - 28), box = document.createElement('div'); box.className = 'ss'; box.style.width = w + 'px'; box.style.left = Math.max(14, (W - w) / 2) + 'px';
+    const inp = document.createElement('input'); inp.className = 'ss-in'; inp.placeholder = 'Search ' + Object.keys(MOD_BY_ID).length + ' modules by name, description or category…'; inp.value = this.q; inp.spellcheck = false; inp.autocomplete = 'off'; box.appendChild(inp);
+    const chips = document.createElement('div'); chips.className = 'ss-chips'; box.appendChild(chips);
+    const res = document.createElement('div'); res.className = 'ss-res'; box.appendChild(res);
+    const foot = document.createElement('div'); foot.className = 'ss-foot'; box.appendChild(foot);
+    const chipList = ['All'].concat(CHEAT_DEFS.map(c => c.cat), ['On', 'Bound']);
+    const fill = () => {
+      chips.innerHTML = ''; chipList.forEach(c => { const b = document.createElement('button'); b.textContent = c; b.className = this.sf === c ? 'on' : ''; b.onclick = () => { this.sf = c; this.ssSel = 0; fill(); inp.focus(); }; chips.appendChild(b); });
+      const q = this.q.trim().toLowerCase(), list = [];
+      CHEAT_DEFS.forEach(c => c.mods.forEach(m => {
+        if (this.sf === 'On' ? !Cheat.on[m.id] : this.sf === 'Bound' ? !Cheat.binds[m.id] : (this.sf !== 'All' && c.cat !== this.sf)) return;
+        const s = ccScore(m, c.cat, q); if (s > 0) list.push({ m, c: c.cat, s });
+      }));
+      list.sort((a, b) => b.s - a.s || a.m.name.localeCompare(b.m.name)); this.ssList = list; if (this.ssSel >= Math.min(60, list.length)) this.ssSel = 0;
+      res.innerHTML = ''; if (!list.length) { res.innerHTML = '<div class="ss-none">No modules match “' + esc(this.q) + '”.</div>'; foot.textContent = ''; return; }
+      list.slice(0, 60).forEach((it, i) => res.appendChild(this.card(it, q, i)));
+      foot.textContent = list.length + ' result' + (list.length === 1 ? '' : 's') + '  ·  ↑ ↓ move  ·  Enter toggles  ·  ⚙ opens settings and bind  ·  press / anywhere to search';
+    };
+    inp.oninput = () => { this.q = inp.value; this.ssSel = 0; fill(); };
+    inp.onkeydown = e => {
+      const n = Math.min(60, this.ssList.length);
+      if (e.key === 'ArrowDown' && n) { e.preventDefault(); this.ssSel = (this.ssSel + 1) % n; this.ssMark(res); }
+      else if (e.key === 'ArrowUp' && n) { e.preventDefault(); this.ssSel = (this.ssSel - 1 + n) % n; this.ssMark(res); }
+      else if (e.key === 'Enter') { e.preventDefault(); const it = this.ssList[this.ssSel]; if (!it) return; if (it.m.type === 'give') { const c = res.children[this.ssSel]; if (c) c.classList.toggle('open'); } else { this.run(it.m.id); this.syncRows(); } }
+      else if (e.key === 'Escape' && this.q) { e.preventDefault(); this.q = ''; inp.value = ''; this.ssSel = 0; fill(); }
+    };
+    st.appendChild(box); fill(); setTimeout(() => inp.focus(), 0);
+  },
   build() {
     this.built = true;
     $('cc').innerHTML = '<div id="ccTabs"></div><div id="ccStage"></div><div id="ccTip"></div>';
@@ -3167,6 +3290,9 @@ const Admin = {
     h.onclick = () => { if (m.type === 'give') { this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); return; } this.run(m.id); };
     h.oncontextmenu = e => { e.preventDefault(); this.openMods[m.id] = !this.openMods[m.id]; row.classList.toggle('open', !!this.openMods[m.id]); };
     h.onmouseenter = () => this.tip(m); h.onmouseleave = () => this.tip(null);
+    row.appendChild(this.optsBlock(m)); return row;
+  },
+  optsBlock(m) {
     const o = document.createElement('div'); o.className = 'cm-o'; const d = document.createElement('div'); d.className = 'cm-d'; d.textContent = m.desc || ''; o.appendChild(d);
     if (m.type === 'give') {
       const r = document.createElement('div'); r.className = 'co'; const sel = document.createElement('select');
@@ -3177,18 +3303,16 @@ const Admin = {
       (m.opts || []).forEach(op => o.appendChild(this.optRow(op)));
       const br = document.createElement('div'); br.className = 'co'; const l = document.createElement('span'); l.className = 'l'; l.textContent = 'Bind'; br.appendChild(l); br.appendChild(this.bindBtn(m.id)); o.appendChild(br);
     }
-    row.appendChild(o); return row;
+    return o;
   },
+
   render() {
     if (!this.built) return; const s = Cheat.ui.scale, st = $('ccStage'); st.innerHTML = ''; st.style.transform = 'scale(' + s + ')'; st.style.width = (100 / s) + '%'; st.style.height = (100 / s) + '%';
-    const tabs = $('ccTabs'); tabs.innerHTML = ''; [['mods', 'Modules'], ['set', 'Settings'], ['binds', 'Binds']].forEach(([v, t]) => { const b = document.createElement('button'); b.textContent = t; b.className = this.view === v ? 'on' : ''; b.onclick = () => { this.view = v; this.render(); }; tabs.appendChild(b); });
+    const tabs = $('ccTabs'); tabs.innerHTML = ''; [['mods', 'Modules'], ['search', 'Search'], ['set', 'Settings'], ['binds', 'Binds']].forEach(([v, t]) => { const b = document.createElement('button'); b.textContent = t; b.className = this.view === v ? 'on' : ''; b.onclick = () => { this.view = v; this.render(); }; tabs.appendChild(b); });
     if (this.view === 'mods') {
       CHEAT_DEFS.forEach((c, i) => st.appendChild(this.panel(c.cat, c.cat, b => c.mods.forEach(m => b.appendChild(this.modRow(m))), i)));
-      st.appendChild(this.panel('Search', 'Search', b => {
-        const inp = document.createElement('input'); inp.className = 'cs'; inp.placeholder = 'Search modules…'; inp.value = this.q; b.appendChild(inp); const res = document.createElement('div'); b.appendChild(res);
-        const fill = () => { res.innerHTML = ''; const q = this.q.trim().toLowerCase(); if (!q) return; Object.values(MOD_BY_ID).filter(m => m.name.toLowerCase().includes(q) || (m.desc || '').toLowerCase().includes(q)).slice(0, 14).forEach(m => res.appendChild(this.modRow(m))); };
-        inp.oninput = () => { this.q = inp.value; fill(); }; fill(); setTimeout(() => { if (this.q) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } }, 0);
-      }, CHEAT_DEFS.length));
+    } else if (this.view === 'search') {
+      this.searchView(st);
     } else if (this.view === 'set') {
       st.appendChild(this.panel('GUI', 'GUI', b => {
         const row = (label, ctl) => { const r = document.createElement('div'); r.className = 'co st'; const l = document.createElement('span'); l.className = 'l'; l.textContent = label; r.appendChild(l); r.appendChild(ctl); b.appendChild(r); };
@@ -3215,7 +3339,8 @@ window.addEventListener('keydown', e => {
     if (e.code !== 'Escape') Admin.setBind(Admin.listen, ['Backspace', 'Delete'].includes(e.code) ? '' : e.code);
     Admin.listen = null; Admin.render(); return;
   }
-  if (e.code === 'Escape' && Admin.open) { e.stopImmediatePropagation(); Admin.close(); return; }
+  if (e.code === 'Escape' && Admin.open) { if (t && t.className === 'ss-in' && t.value) return; e.stopImmediatePropagation(); Admin.close(); return; }
+  if (Admin.open && !typing && e.code === 'Slash') { e.preventDefault(); Admin.view = 'search'; Admin.render(); return; }
   if (typing || !Account.admin || !Account.name) return;
   if (e.code === Cheat.ui.key && !e.repeat) { e.preventDefault(); Admin.toggle(); return; }
   if (e.repeat || !G.running || (typeof Chat !== 'undefined' && Chat.open)) return;
@@ -3378,7 +3503,7 @@ function wireChat() {
 }
 /* ===== Player settings (saved to Firestore), lobbies and queues, bot chat, respawn weapon picker ===== */
 const SET_DEFS = [
-  { id: 'showHitboxes', name: 'Show hitboxes', desc: 'Draws every player and bot hitbox so you can see exactly where shots land.', type: 'chk', def: 0 },
+  { id: 'showHitboxes', name: 'Show hitboxes', desc: 'Draws the hitbox of every player so you can see exactly where shots land.', type: 'chk', def: 0 },
   { id: 'showFps', name: 'Show FPS', desc: 'Shows a frames-per-second counter.', type: 'chk', def: 0 },
   { id: 'fov', name: 'Field of view', desc: 'How wide your view is.', type: 'range', min: 60, max: 120, step: 1, unit: '°', def: 78 },
   { id: 'sens', name: 'Mouse sensitivity', desc: 'How fast your view turns.', type: 'range', min: 1, max: 10, step: .5, unit: '', def: 5 },
@@ -3452,21 +3577,33 @@ function liveWin(me) {
   ref.transaction(m => { if (!m || (m.round | 0) !== rd) return; m.round = (m.round | 0) + 1; m.winner = me.name; return m; });
 }
 
-/* ---- the weapon picker shown while you are dead ---- */
+/* ---- the weapon picker shown while you are dead: slot cards, a search box and a list of the weapons you own ---- */
 const PK = {
-  on: false, until: 0,
+  on: false, until: 0, slot: 'P', sel: {}, q: '',
+  owned(s) { return WEAPONS.filter(w => w.slot === s && ownsWeapon(w)).sort((a, c) => (a.lvl || 1) - (c.lvl || 1) || (a.cost || 0) - (c.cost || 0)); },
   show(delay) {
-    if (!Account.name) return; this.on = true; this.until = NOW + delay; G.pick = null; const b = $('pkB'); b.innerHTML = '';
-    ['P', 'S', 'M', 'G'].forEach(s => {
-      const lab = document.createElement('label'); lab.className = 'pk-c'; const sp = document.createElement('span'); sp.textContent = SLOT_NAME[s]; lab.appendChild(sp);
-      const sel = document.createElement('select');
-      WEAPONS.filter(w => w.slot === s && ownsWeapon(w)).sort((a, c) => (a.lvl || 1) - (c.lvl || 1) || (a.cost || 0) - (c.cost || 0)).forEach(w => { const o = document.createElement('option'); o.value = w.id; o.textContent = w.name; sel.appendChild(o); });
-      sel.value = G.loadout[s]; if (sel.selectedIndex < 0) sel.selectedIndex = 0;
-      sel.onchange = () => { G.pick = G.pick || {}; G.pick[s] = sel.value; }; lab.appendChild(sel); b.appendChild(lab);
-    });
-    $('pkGo').style.display = G.mode === 'duel' ? 'none' : ''; $('pick').hidden = false;
+    if (!Account.name) return; this.on = true; this.until = NOW + delay; G.pick = null; this.slot = 'P'; this.q = ''; this.sel = Object.assign({}, G.loadout);
+    ['P', 'S', 'M', 'G'].forEach(s => { const list = this.owned(s); if (!list.some(w => w.id === this.sel[s]) && list[0]) this.sel[s] = list[0].id; });
+    $('pkQ').value = ''; this.render(); $('pkGo').style.display = G.mode === 'duel' ? 'none' : ''; $('pick').hidden = false;
   },
   hide() { this.on = false; const p = $('pick'); if (p) p.hidden = true; },
+  choose(s, id) { this.sel[s] = id; G.pick = G.pick || {}; G.pick[s] = id; this.render(); },
+  items() { const q = this.q.trim().toLowerCase(); return this.owned(this.slot).filter(w => !q || (w.name + ' ' + w.cls + ' ' + (w.note || '')).toLowerCase().includes(q)); },
+  render() {
+    const sl = $('pkSlots'); sl.innerHTML = '';
+    ['P', 'S', 'M', 'G'].forEach(s => {
+      const w = WBY[this.sel[s]], b = document.createElement('button'); b.type = 'button'; b.className = 'pk-s' + (s === this.slot ? ' on' : '');
+      b.innerHTML = '<small>' + SLOT_NAME[s] + '</small><b>' + esc(w ? w.name : '-') + '</b><i>' + esc(w ? w.cls : '') + '</i>';
+      b.onclick = () => { this.slot = s; this.q = ''; $('pkQ').value = ''; this.render(); }; sl.appendChild(b);
+    });
+    const list = $('pkL'); list.innerHTML = ''; const items = this.items();
+    if (!items.length) { list.innerHTML = '<div class="pk-none">Nothing unlocked matches “' + esc(this.q) + '”.</div>'; return; }
+    items.forEach(w => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'pk-i' + (this.sel[this.slot] === w.id ? ' on' : '');
+      const stat = w.gadget ? w.mag + ' use' + (w.mag > 1 ? 's' : '') : w.melee ? w.dmg + ' dmg' : w.dmg + (w.pel ? 'x' + w.pel : '') + ' dmg · ' + Math.round(w.rpm) + ' rpm';
+      b.innerHTML = '<b>' + esc(w.name) + '</b><span>' + esc(w.cls) + '</span><em>' + esc(stat) + '</em>'; b.onclick = () => this.choose(this.slot, w.id); list.appendChild(b);
+    });
+  },
   tick() {
     if (!this.on) return; const p = G.player; if (!p || p.alive || G.over) { this.hide(); return; }
     $('pkT').textContent = 'Respawning in ' + Math.max(0, Math.ceil(this.until - NOW)) + 's';
@@ -3481,20 +3618,20 @@ const BotChat = {
   REPLY: ['lol', 'fr', 'true', 'same', 'nah', 'haha', 'bet', 'facts', 'not really', 'wdym', 'bro', 'lmao', '^', 'this', 'ok {n}', 'skill issue'],
   KILL: ['ez', 'sit', 'gg', 'too easy', 'get good', 'nt', 'sorry {n}', 'nice try'],
   DEATH: ['lag', 'how', 'wow ok', 'bruh', 'sus', 'nice shot', 'no way', 'rematch', 'ok that was lucky'],
-  reset() { this.t = 0; this.next = 4 + Math.random() * 5; },
+  reset() { this.t = 0; this.next = 20 + Math.random() * 20; },
   say(b, text) { if (b && G.running && !G.over) Chat.add(b.name, text); },
   fill(t, o) { return t.replace('{n}', o ? o.name : 'someone'); },
   update(dt) {
-    if (!G.running || G.over) return; this.t += dt; if (this.t < this.next) return; this.t = 0; this.next = 5 + Math.random() * 10;
+    if (!G.running || G.over) return; this.t += dt; if (this.t < this.next) return; this.t = 0; this.next = 25 + Math.random() * 35;
     const bots = Actors.filter(a => a.bot); if (!bots.length) return;
     const a = pick(bots), others = Actors.filter(x => x !== a && !x.hidden); this.say(a, this.fill(pick(this.OPEN), others.length ? pick(others) : null));
     const rest = bots.filter(x => x !== a);
-    if (rest.length && Math.random() < .55) { const b = pick(rest), s = G.session; later(1 + Math.random() * 2.5, () => { if (G.session === s) this.say(b, this.fill(pick(this.REPLY), a)); }); }
+    if (rest.length && Math.random() < .3) { const b = pick(rest), s = G.session; later(1 + Math.random() * 2.5, () => { if (G.session === s) this.say(b, this.fill(pick(this.REPLY), a)); }); }
   },
   onKill(v, killer) {
     const s = G.session;
-    if (killer && killer.bot && killer !== v && Math.random() < .14) later(.6 + Math.random(), () => { if (G.session === s) this.say(killer, this.fill(pick(this.KILL), v)); });
-    if (v.bot && Math.random() < .18) later(1 + Math.random() * 1.5, () => { if (G.session === s) this.say(v, this.fill(pick(this.DEATH), killer)); });
+    if (killer && killer.bot && killer !== v && Math.random() < .05) later(.6 + Math.random(), () => { if (G.session === s) this.say(killer, this.fill(pick(this.KILL), v)); });
+    if (v.bot && Math.random() < .06) later(1 + Math.random() * 1.5, () => { if (G.session === s) this.say(v, this.fill(pick(this.DEATH), killer)); });
   }
 };
 
@@ -3527,7 +3664,7 @@ async function listRooms(pubOnly) {
 }
 
 /* ---- play tab: queues, lobbies, and the public lobby list ---- */
-function soloFallback(mode) { toast('Lobbies are unavailable, starting a solo match with bots', 4500); G.nbots = 12; startMatch(mode); }
+function soloFallback(mode) { toast('Could not reach the lobby servers. Starting an offline match.', 4500); G.nbots = 12; startMatch(mode); }
 async function queueMode(mode) {
   if (!Account.name) return; readName();
   if (mode === 'duel') { startMatch('duel'); return; }
@@ -3557,7 +3694,7 @@ async function refreshLobbies() {
     if (!live.length) { el.innerHTML = '<span class="note">No public lobbies right now. Queue for a mode, or open one yourself.</span>'; return; }
     live.forEach(r => {
       const row = document.createElement('div'); row.className = 'lrow'; const mp = MAPS[clamp(r.v.map | 0, 0, MAPS.length - 1)];
-      row.innerHTML = '<b>' + esc(MODE_NAME[r.v.mode || 'dm'] || 'Deathmatch') + '</b><span>' + esc(mp.name) + '</span><span>' + r.n + '/8 players · ' + (r.v.bots | 0) + ' bots' + (r.n === 0 ? ' · empty, closes in ' + Math.max(1, Math.ceil((ROOM_TTL - (now - (r.v.t || 0))) / 60000)) + ' min' : '') + '</span>';
+      row.innerHTML = '<b>' + esc(MODE_NAME[r.v.mode || 'dm'] || 'Deathmatch') + '</b><span>' + esc(mp.name) + '</span><span>' + (r.n + (r.v.bots | 0)) + ' players' + (r.n === 0 ? ' · closes in ' + Math.max(1, Math.ceil((ROOM_TTL - (now - (r.v.t || 0))) / 60000)) + ' min' : '') + '</span>';
       const b = document.createElement('button'); b.textContent = r.n >= 8 ? 'Full' : 'Join'; b.disabled = r.n >= 8; b.className = 'cool'; b.onclick = () => { readName(); netStatus('Joining ' + r.code + '…'); waitConnected().then(() => joinRoom(r.code, false, { pub: true })).catch(netError); };
       row.appendChild(b); el.appendChild(row);
     });
@@ -3567,6 +3704,9 @@ function wireNet() {
   document.querySelectorAll('[data-queue]').forEach(b => { b.onclick = () => queueMode(b.dataset.queue); });
   $('btnHost').onclick = () => hostLobby(true); $('btnCreate').onclick = () => hostLobby(false); $('btnJoin').onclick = joinByCode; $('btnRefresh').onclick = refreshLobbies;
   $('rcode').addEventListener('keydown', e => { if (e.key === 'Enter') joinByCode(); });
+  $('pkQ').oninput = () => { PK.q = $('pkQ').value; PK.render(); };
+  $('pkQ').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); const it = PK.items()[0]; if (it) PK.choose(PK.slot, it.id); } });
+  $('wsearch').oninput = () => { armQ = $('wsearch').value; fillWList(); };
   $('pkGo').onclick = () => { const p = G.player; if (p && !p.alive && G.mode !== 'duel') doRespawn(p); relockMouse(); };
   Settings.apply();
 }
